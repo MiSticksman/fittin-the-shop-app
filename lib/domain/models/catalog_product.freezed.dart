@@ -28,8 +28,7 @@ mixin _$CatalogProduct {
   String get name => throw _privateConstructorUsedError;
   String get brand => throw _privateConstructorUsedError;
   String get picture => throw _privateConstructorUsedError;
-  String get article =>
-      throw _privateConstructorUsedError; // required List<Badge> badges,
+  String get article => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews_count')
   int? get reviewsCount => throw _privateConstructorUsedError;
@@ -251,7 +250,6 @@ class _$_CatalogProduct implements _CatalogProduct {
   final String picture;
   @override
   final String article;
-// required List<Badge> badges,
   @override
   final double? rating;
   @override
@@ -336,7 +334,7 @@ abstract class _CatalogProduct implements CatalogProduct {
   String get picture;
   @override
   String get article;
-  @override // required List<Badge> badges,
+  @override
   double? get rating;
   @override
   @JsonKey(name: 'reviews_count')

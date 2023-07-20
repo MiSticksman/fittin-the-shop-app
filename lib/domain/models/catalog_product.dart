@@ -15,7 +15,6 @@ abstract class CatalogProduct with _$CatalogProduct {
         required String brand,
         required String picture,
         required String article,
-        // required List<Badge> badges,
         double? rating,
         @JsonKey(name: 'reviews_count')
         int? reviewsCount
