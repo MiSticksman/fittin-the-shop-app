@@ -24,11 +24,11 @@ mixin _$CatalogProduct {
   String get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'old_price')
   String? get oldPrice => throw _privateConstructorUsedError;
-  String get discount => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  double? get discount => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String get brand => throw _privateConstructorUsedError;
   String get picture => throw _privateConstructorUsedError;
-  String get article => throw _privateConstructorUsedError;
+  String? get article => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews_count')
   int? get reviewsCount => throw _privateConstructorUsedError;
@@ -49,11 +49,11 @@ abstract class $CatalogProductCopyWith<$Res> {
       {int id,
       String price,
       @JsonKey(name: 'old_price') String? oldPrice,
-      String discount,
-      String name,
+      double? discount,
+      String? name,
       String brand,
       String picture,
-      String article,
+      String? article,
       double? rating,
       @JsonKey(name: 'reviews_count') int? reviewsCount});
 }
@@ -74,11 +74,11 @@ class _$CatalogProductCopyWithImpl<$Res, $Val extends CatalogProduct>
     Object? id = null,
     Object? price = null,
     Object? oldPrice = freezed,
-    Object? discount = null,
-    Object? name = null,
+    Object? discount = freezed,
+    Object? name = freezed,
     Object? brand = null,
     Object? picture = null,
-    Object? article = null,
+    Object? article = freezed,
     Object? rating = freezed,
     Object? reviewsCount = freezed,
   }) {
@@ -95,14 +95,14 @@ class _$CatalogProductCopyWithImpl<$Res, $Val extends CatalogProduct>
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
               as String?,
-      discount: null == discount
+      discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as double?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       brand: null == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -111,10 +111,10 @@ class _$CatalogProductCopyWithImpl<$Res, $Val extends CatalogProduct>
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String,
-      article: null == article
+      article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -139,11 +139,11 @@ abstract class _$$_CatalogProductCopyWith<$Res>
       {int id,
       String price,
       @JsonKey(name: 'old_price') String? oldPrice,
-      String discount,
-      String name,
+      double? discount,
+      String? name,
       String brand,
       String picture,
-      String article,
+      String? article,
       double? rating,
       @JsonKey(name: 'reviews_count') int? reviewsCount});
 }
@@ -162,11 +162,11 @@ class __$$_CatalogProductCopyWithImpl<$Res>
     Object? id = null,
     Object? price = null,
     Object? oldPrice = freezed,
-    Object? discount = null,
-    Object? name = null,
+    Object? discount = freezed,
+    Object? name = freezed,
     Object? brand = null,
     Object? picture = null,
-    Object? article = null,
+    Object? article = freezed,
     Object? rating = freezed,
     Object? reviewsCount = freezed,
   }) {
@@ -183,14 +183,14 @@ class __$$_CatalogProductCopyWithImpl<$Res>
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
               as String?,
-      discount: null == discount
+      discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as double?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       brand: null == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -199,10 +199,10 @@ class __$$_CatalogProductCopyWithImpl<$Res>
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String,
-      article: null == article
+      article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -222,11 +222,11 @@ class _$_CatalogProduct implements _CatalogProduct {
       {required this.id,
       required this.price,
       @JsonKey(name: 'old_price') this.oldPrice,
-      required this.discount,
-      required this.name,
+      this.discount,
+      this.name,
       required this.brand,
       required this.picture,
-      required this.article,
+      this.article,
       this.rating,
       @JsonKey(name: 'reviews_count') this.reviewsCount});
 
@@ -241,15 +241,15 @@ class _$_CatalogProduct implements _CatalogProduct {
   @JsonKey(name: 'old_price')
   final String? oldPrice;
   @override
-  final String discount;
+  final double? discount;
   @override
-  final String name;
+  final String? name;
   @override
   final String brand;
   @override
   final String picture;
   @override
-  final String article;
+  final String? article;
   @override
   final double? rating;
   @override
@@ -305,11 +305,11 @@ abstract class _CatalogProduct implements CatalogProduct {
           {required final int id,
           required final String price,
           @JsonKey(name: 'old_price') final String? oldPrice,
-          required final String discount,
-          required final String name,
+          final double? discount,
+          final String? name,
           required final String brand,
           required final String picture,
-          required final String article,
+          final String? article,
           final double? rating,
           @JsonKey(name: 'reviews_count') final int? reviewsCount}) =
       _$_CatalogProduct;
@@ -325,15 +325,15 @@ abstract class _CatalogProduct implements CatalogProduct {
   @JsonKey(name: 'old_price')
   String? get oldPrice;
   @override
-  String get discount;
+  double? get discount;
   @override
-  String get name;
+  String? get name;
   @override
   String get brand;
   @override
   String get picture;
   @override
-  String get article;
+  String? get article;
   @override
   double? get rating;
   @override

@@ -23,8 +23,6 @@ mixin _$CartUpdate {
   @JsonKey(name: 'product_id')
   int get productId => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
-  @JsonKey(name: 'city_fias')
-  String? get cityFias => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,10 +36,7 @@ abstract class $CartUpdateCopyWith<$Res> {
           CartUpdate value, $Res Function(CartUpdate) then) =
       _$CartUpdateCopyWithImpl<$Res, CartUpdate>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'product_id') int productId,
-      int? count,
-      @JsonKey(name: 'city_fias') String? cityFias});
+  $Res call({@JsonKey(name: 'product_id') int productId, int? count});
 }
 
 /// @nodoc
@@ -59,7 +54,6 @@ class _$CartUpdateCopyWithImpl<$Res, $Val extends CartUpdate>
   $Res call({
     Object? productId = null,
     Object? count = freezed,
-    Object? cityFias = freezed,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -70,10 +64,6 @@ class _$CartUpdateCopyWithImpl<$Res, $Val extends CartUpdate>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-      cityFias: freezed == cityFias
-          ? _value.cityFias
-          : cityFias // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -86,10 +76,7 @@ abstract class _$$_CartUpdateCopyWith<$Res>
       __$$_CartUpdateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'product_id') int productId,
-      int? count,
-      @JsonKey(name: 'city_fias') String? cityFias});
+  $Res call({@JsonKey(name: 'product_id') int productId, int? count});
 }
 
 /// @nodoc
@@ -105,7 +92,6 @@ class __$$_CartUpdateCopyWithImpl<$Res>
   $Res call({
     Object? productId = null,
     Object? count = freezed,
-    Object? cityFias = freezed,
   }) {
     return _then(_$_CartUpdate(
       productId: null == productId
@@ -116,10 +102,6 @@ class __$$_CartUpdateCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-      cityFias: freezed == cityFias
-          ? _value.cityFias
-          : cityFias // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -128,9 +110,7 @@ class __$$_CartUpdateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CartUpdate implements _CartUpdate {
   const _$_CartUpdate(
-      {@JsonKey(name: 'product_id') required this.productId,
-      this.count,
-      @JsonKey(name: 'city_fias') this.cityFias});
+      {@JsonKey(name: 'product_id') required this.productId, this.count});
 
   factory _$_CartUpdate.fromJson(Map<String, dynamic> json) =>
       _$$_CartUpdateFromJson(json);
@@ -140,13 +120,10 @@ class _$_CartUpdate implements _CartUpdate {
   final int productId;
   @override
   final int? count;
-  @override
-  @JsonKey(name: 'city_fias')
-  final String? cityFias;
 
   @override
   String toString() {
-    return 'CartUpdate(productId: $productId, count: $count, cityFias: $cityFias)';
+    return 'CartUpdate(productId: $productId, count: $count)';
   }
 
   @override
@@ -156,14 +133,12 @@ class _$_CartUpdate implements _CartUpdate {
             other is _$_CartUpdate &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
-            (identical(other.count, count) || other.count == count) &&
-            (identical(other.cityFias, cityFias) ||
-                other.cityFias == cityFias));
+            (identical(other.count, count) || other.count == count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productId, count, cityFias);
+  int get hashCode => Object.hash(runtimeType, productId, count);
 
   @JsonKey(ignore: true)
   @override
@@ -182,8 +157,7 @@ class _$_CartUpdate implements _CartUpdate {
 abstract class _CartUpdate implements CartUpdate {
   const factory _CartUpdate(
       {@JsonKey(name: 'product_id') required final int productId,
-      final int? count,
-      @JsonKey(name: 'city_fias') final String? cityFias}) = _$_CartUpdate;
+      final int? count}) = _$_CartUpdate;
 
   factory _CartUpdate.fromJson(Map<String, dynamic> json) =
       _$_CartUpdate.fromJson;
@@ -193,9 +167,6 @@ abstract class _CartUpdate implements CartUpdate {
   int get productId;
   @override
   int? get count;
-  @override
-  @JsonKey(name: 'city_fias')
-  String? get cityFias;
   @override
   @JsonKey(ignore: true)
   _$$_CartUpdateCopyWith<_$_CartUpdate> get copyWith =>

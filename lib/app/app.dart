@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the_shop/app/app_components.dart';
+import 'package:the_shop/pages/catalog_page/bloc/catalog_bloc.dart';
 import 'package:the_shop/pages/catalog_page/catalog_page.dart';
 
 final class AppText {
@@ -15,36 +18,47 @@ class ShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.montserratTextTheme(
-          TextTheme(
-            titleMedium: AppText.title,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CatalogBloc(
+                  products: [], catalogRepository: AppComponents().catalogRepository)
+              ..add(
+            const LoadCatalogProductsEvent(),
           ),
         ),
-        colorScheme: const ColorScheme(
-          brightness: Brightness.light,
-          primary: Colors.black,
-          onPrimary: Colors.white,
-          secondary: Color(0xFFF5F5F5),
-          secondaryContainer: Color(0xFF595959),
-          onSecondary: Colors.black,
-          error: Colors.red,
-          onError: Colors.white,
-          background: Colors.white,
-          onBackground: Colors.black,
-          surface: Colors.white,
-          onSurface: Colors.black,
-        ),
-        appBarTheme: AppBarTheme(
-          titleTextStyle: AppText.title.copyWith(
-            color: Colors.black,
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          textTheme: GoogleFonts.montserratTextTheme(
+            TextTheme(
+              titleMedium: AppText.title,
+            ),
           ),
-          color: Colors.white,
-          elevation: 0,
+          colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: Colors.black,
+            onPrimary: Colors.white,
+            secondary: Color(0xFFF5F5F5),
+            secondaryContainer: Color(0xFF595959),
+            onSecondary: Colors.black,
+            error: Colors.red,
+            onError: Colors.white,
+            background: Colors.white,
+            onBackground: Colors.black,
+            surface: Colors.white,
+            onSurface: Colors.black,
+          ),
+          appBarTheme: AppBarTheme(
+            titleTextStyle: AppText.title.copyWith(
+              color: Colors.black,
+            ),
+            color: Colors.white,
+            elevation: 0,
+          ),
         ),
+        home: const CatalogPage(),
       ),
-      home: const CatalogPage(),
     );
   }
 }

@@ -19,15 +19,9 @@ class _CatalogService implements CatalogService {
   String? baseUrl;
 
   @override
-  Future<CatalogProduct> getCatalogProduct({
-    productId,
-    cityFias,
-  }) async {
+  Future<CatalogProduct> getCatalogProduct({productId}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'product_id': productId,
-      r'city_fias': cityFias,
-    };
+    final queryParameters = <String, dynamic>{r'product_id': productId};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
@@ -49,13 +43,13 @@ class _CatalogService implements CatalogService {
   }
 
   @override
-  Future<List<CatalogProductsResponse>> getCatalogProducts() async {
+  Future<CatalogProductsResponse> getCatalogProducts() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<CatalogProductsResponse>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CatalogProductsResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -67,10 +61,7 @@ class _CatalogService implements CatalogService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) =>
-            CatalogProductsResponse.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = CatalogProductsResponse.fromJson(_result.data!);
     return value;
   }
 

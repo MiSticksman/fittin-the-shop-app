@@ -7,7 +7,6 @@ part 'calculated_cart_request.g.dart';
 @freezed
 abstract class CalculatedCartRequest with _$CalculatedCartRequest {
   const factory CalculatedCartRequest({
-    @JsonKey(name: 'city_fias') String? citiFias,
     String? promocode,
     List<CartProductRequest>? products,
   }) = _CalculatedCartRequest;

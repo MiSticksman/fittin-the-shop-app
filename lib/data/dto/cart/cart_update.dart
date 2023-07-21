@@ -9,7 +9,6 @@ abstract class CartUpdate with _$CartUpdate {
   const factory CartUpdate({
     @JsonKey(name: 'product_id') required int productId,
     int? count,
-    @JsonKey(name: 'city_fias') String? cityFias,
   }) = _CartUpdate;
 
   factory CartUpdate.fromJson(Map<String, dynamic> json) =>

@@ -14,9 +14,8 @@ abstract class CatalogService {
   @GET(CatalogUrl.catalogProduct)
   Future<CatalogProduct> getCatalogProduct({
     @Query('product_id') int? productId,
-    @Query('city_fias') String? cityFias,
   });
 
   @POST(CatalogUrl.catalogProducts)
-  Future<List<CatalogProductsResponse>> getCatalogProducts();
+  Future<CatalogProductsResponse> getCatalogProducts();
 }

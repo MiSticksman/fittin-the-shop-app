@@ -21,8 +21,6 @@ CalculatedCartRequest _$CalculatedCartRequestFromJson(
 
 /// @nodoc
 mixin _$CalculatedCartRequest {
-  @JsonKey(name: 'city_fias')
-  String? get citiFias => throw _privateConstructorUsedError;
   String? get promocode => throw _privateConstructorUsedError;
   List<CartProductRequest>? get products => throw _privateConstructorUsedError;
 
@@ -38,10 +36,7 @@ abstract class $CalculatedCartRequestCopyWith<$Res> {
           $Res Function(CalculatedCartRequest) then) =
       _$CalculatedCartRequestCopyWithImpl<$Res, CalculatedCartRequest>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'city_fias') String? citiFias,
-      String? promocode,
-      List<CartProductRequest>? products});
+  $Res call({String? promocode, List<CartProductRequest>? products});
 }
 
 /// @nodoc
@@ -58,15 +53,10 @@ class _$CalculatedCartRequestCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? citiFias = freezed,
     Object? promocode = freezed,
     Object? products = freezed,
   }) {
     return _then(_value.copyWith(
-      citiFias: freezed == citiFias
-          ? _value.citiFias
-          : citiFias // ignore: cast_nullable_to_non_nullable
-              as String?,
       promocode: freezed == promocode
           ? _value.promocode
           : promocode // ignore: cast_nullable_to_non_nullable
@@ -87,10 +77,7 @@ abstract class _$$_CalculatedCartRequestCopyWith<$Res>
       __$$_CalculatedCartRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'city_fias') String? citiFias,
-      String? promocode,
-      List<CartProductRequest>? products});
+  $Res call({String? promocode, List<CartProductRequest>? products});
 }
 
 /// @nodoc
@@ -104,15 +91,10 @@ class __$$_CalculatedCartRequestCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? citiFias = freezed,
     Object? promocode = freezed,
     Object? products = freezed,
   }) {
     return _then(_$_CalculatedCartRequest(
-      citiFias: freezed == citiFias
-          ? _value.citiFias
-          : citiFias // ignore: cast_nullable_to_non_nullable
-              as String?,
       promocode: freezed == promocode
           ? _value.promocode
           : promocode // ignore: cast_nullable_to_non_nullable
@@ -129,17 +111,12 @@ class __$$_CalculatedCartRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CalculatedCartRequest implements _CalculatedCartRequest {
   const _$_CalculatedCartRequest(
-      {@JsonKey(name: 'city_fias') this.citiFias,
-      this.promocode,
-      final List<CartProductRequest>? products})
+      {this.promocode, final List<CartProductRequest>? products})
       : _products = products;
 
   factory _$_CalculatedCartRequest.fromJson(Map<String, dynamic> json) =>
       _$$_CalculatedCartRequestFromJson(json);
 
-  @override
-  @JsonKey(name: 'city_fias')
-  final String? citiFias;
   @override
   final String? promocode;
   final List<CartProductRequest>? _products;
@@ -154,7 +131,7 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
 
   @override
   String toString() {
-    return 'CalculatedCartRequest(citiFias: $citiFias, promocode: $promocode, products: $products)';
+    return 'CalculatedCartRequest(promocode: $promocode, products: $products)';
   }
 
   @override
@@ -162,8 +139,6 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CalculatedCartRequest &&
-            (identical(other.citiFias, citiFias) ||
-                other.citiFias == citiFias) &&
             (identical(other.promocode, promocode) ||
                 other.promocode == promocode) &&
             const DeepCollectionEquality().equals(other._products, _products));
@@ -171,8 +146,8 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, citiFias, promocode,
-      const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(
+      runtimeType, promocode, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -191,16 +166,12 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
 
 abstract class _CalculatedCartRequest implements CalculatedCartRequest {
   const factory _CalculatedCartRequest(
-      {@JsonKey(name: 'city_fias') final String? citiFias,
-      final String? promocode,
+      {final String? promocode,
       final List<CartProductRequest>? products}) = _$_CalculatedCartRequest;
 
   factory _CalculatedCartRequest.fromJson(Map<String, dynamic> json) =
       _$_CalculatedCartRequest.fromJson;
 
-  @override
-  @JsonKey(name: 'city_fias')
-  String? get citiFias;
   @override
   String? get promocode;
   @override
