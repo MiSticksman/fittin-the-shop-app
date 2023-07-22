@@ -1,0 +1,29 @@
+import 'package:retrofit/retrofit.dart';
+import 'package:dio/dio.dart';
+import 'package:the_shop/data/dto/payment/payment_create.dart';
+import 'package:the_shop/data/dto/payment/payment_request.dart';
+import 'package:the_shop/data/url/payment_url.dart';
+import 'package:the_shop/domain/models/payment/payment.dart';
+
+part 'payment_service.g.dart';
+
+@RestApi()
+abstract class DeliveryService {
+  factory DeliveryService(Dio dio, {String baseUrl}) = _DeliveryService;
+
+  @POST(PaymentUrl.payments)
+  Future<List<Payment>> payments({
+    @Body() required PaymentRequest request,
+  });
+
+  @GET(PaymentUrl.paymentsCallback)
+  Future<List<Payment>> paymentsCallback({
+    @Query('order_id') int? orderId,
+  });
+
+  // todo не забыть убедиться что здесь void
+  @POST(PaymentUrl.paymentsPay)
+  Future<void> paymentsPay({
+    @Body() required PaymentCreate request,
+  });
+}
