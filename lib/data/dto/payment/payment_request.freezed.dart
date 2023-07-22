@@ -22,7 +22,8 @@ PaymentRequest _$PaymentRequestFromJson(Map<String, dynamic> json) {
 mixin _$PaymentRequest {
   @JsonKey(name: 'city_fias')
   String? get cityFias => throw _privateConstructorUsedError;
-  List<CartProductRequest>? get products => throw _privateConstructorUsedError;
+  List<CartProductWithCount>? get products =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_id')
   String? get deliveryId => throw _privateConstructorUsedError;
 
@@ -40,7 +41,7 @@ abstract class $PaymentRequestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'city_fias') String? cityFias,
-      List<CartProductRequest>? products,
+      List<CartProductWithCount>? products,
       @JsonKey(name: 'delivery_id') String? deliveryId});
 }
 
@@ -69,7 +70,7 @@ class _$PaymentRequestCopyWithImpl<$Res, $Val extends PaymentRequest>
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
       deliveryId: freezed == deliveryId
           ? _value.deliveryId
           : deliveryId // ignore: cast_nullable_to_non_nullable
@@ -88,7 +89,7 @@ abstract class _$$_PaymentRequestCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'city_fias') String? cityFias,
-      List<CartProductRequest>? products,
+      List<CartProductWithCount>? products,
       @JsonKey(name: 'delivery_id') String? deliveryId});
 }
 
@@ -115,7 +116,7 @@ class __$$_PaymentRequestCopyWithImpl<$Res>
       products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
       deliveryId: freezed == deliveryId
           ? _value.deliveryId
           : deliveryId // ignore: cast_nullable_to_non_nullable
@@ -129,7 +130,7 @@ class __$$_PaymentRequestCopyWithImpl<$Res>
 class _$_PaymentRequest implements _PaymentRequest {
   const _$_PaymentRequest(
       {@JsonKey(name: 'city_fias') this.cityFias,
-      final List<CartProductRequest>? products,
+      final List<CartProductWithCount>? products,
       @JsonKey(name: 'delivery_id') this.deliveryId})
       : _products = products;
 
@@ -139,9 +140,9 @@ class _$_PaymentRequest implements _PaymentRequest {
   @override
   @JsonKey(name: 'city_fias')
   final String? cityFias;
-  final List<CartProductRequest>? _products;
+  final List<CartProductWithCount>? _products;
   @override
-  List<CartProductRequest>? get products {
+  List<CartProductWithCount>? get products {
     final value = _products;
     if (value == null) return null;
     if (_products is EqualUnmodifiableListView) return _products;
@@ -192,7 +193,7 @@ class _$_PaymentRequest implements _PaymentRequest {
 abstract class _PaymentRequest implements PaymentRequest {
   const factory _PaymentRequest(
           {@JsonKey(name: 'city_fias') final String? cityFias,
-          final List<CartProductRequest>? products,
+          final List<CartProductWithCount>? products,
           @JsonKey(name: 'delivery_id') final String? deliveryId}) =
       _$_PaymentRequest;
 
@@ -203,7 +204,7 @@ abstract class _PaymentRequest implements PaymentRequest {
   @JsonKey(name: 'city_fias')
   String? get cityFias;
   @override
-  List<CartProductRequest>? get products;
+  List<CartProductWithCount>? get products;
   @override
   @JsonKey(name: 'delivery_id')
   String? get deliveryId;

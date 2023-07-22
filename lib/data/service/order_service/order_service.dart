@@ -13,17 +13,17 @@ abstract class OrderService {
 
   //todo тут мб List<Order>
   @GET(OrderUrl.orderList)
-  Future<Order> paymentsCallback({
+  Future<Order> getOrderList({
     @Query('brand') int? brand,
   });
 
   @POST(OrderUrl.orderOrder)
-  Future<Order> payments({
+  Future<Order> postOrder({
     @Body() required OrderRequest request,
   });
 
   @PATCH(OrderUrl.orderOrder)
-  Future<Order> paymentsPay({
+  Future<Order> patchOrder({
     @Body() required OrderRequest request,
   });
 }

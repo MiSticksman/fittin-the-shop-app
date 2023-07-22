@@ -47,7 +47,7 @@ mixin _$CatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(CatalogProductsLoadingState value) load,
     required TResult Function(CatalogProductsState value) products,
-    required TResult Function(CatalogProductsErrorState value) error,
+    required TResult Function(ErrorCatalogProductsState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +55,7 @@ mixin _$CatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(CatalogProductsLoadingState value)? load,
     TResult? Function(CatalogProductsState value)? products,
-    TResult? Function(CatalogProductsErrorState value)? error,
+    TResult? Function(ErrorCatalogProductsState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +63,7 @@ mixin _$CatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(CatalogProductsLoadingState value)? load,
     TResult Function(CatalogProductsState value)? products,
-    TResult Function(CatalogProductsErrorState value)? error,
+    TResult Function(ErrorCatalogProductsState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -219,7 +219,7 @@ class _$InitCatalogState implements InitCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(CatalogProductsLoadingState value) load,
     required TResult Function(CatalogProductsState value) products,
-    required TResult Function(CatalogProductsErrorState value) error,
+    required TResult Function(ErrorCatalogProductsState value) error,
   }) {
     return init(this);
   }
@@ -230,7 +230,7 @@ class _$InitCatalogState implements InitCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(CatalogProductsLoadingState value)? load,
     TResult? Function(CatalogProductsState value)? products,
-    TResult? Function(CatalogProductsErrorState value)? error,
+    TResult? Function(ErrorCatalogProductsState value)? error,
   }) {
     return init?.call(this);
   }
@@ -241,7 +241,7 @@ class _$InitCatalogState implements InitCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(CatalogProductsLoadingState value)? load,
     TResult Function(CatalogProductsState value)? products,
-    TResult Function(CatalogProductsErrorState value)? error,
+    TResult Function(ErrorCatalogProductsState value)? error,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -379,7 +379,7 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(CatalogProductsLoadingState value) load,
     required TResult Function(CatalogProductsState value) products,
-    required TResult Function(CatalogProductsErrorState value) error,
+    required TResult Function(ErrorCatalogProductsState value) error,
   }) {
     return load(this);
   }
@@ -390,7 +390,7 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(CatalogProductsLoadingState value)? load,
     TResult? Function(CatalogProductsState value)? products,
-    TResult? Function(CatalogProductsErrorState value)? error,
+    TResult? Function(ErrorCatalogProductsState value)? error,
   }) {
     return load?.call(this);
   }
@@ -401,7 +401,7 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(CatalogProductsLoadingState value)? load,
     TResult Function(CatalogProductsState value)? products,
-    TResult Function(CatalogProductsErrorState value)? error,
+    TResult Function(ErrorCatalogProductsState value)? error,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -537,7 +537,7 @@ class _$CatalogProductsState implements CatalogProductsState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(CatalogProductsLoadingState value) load,
     required TResult Function(CatalogProductsState value) products,
-    required TResult Function(CatalogProductsErrorState value) error,
+    required TResult Function(ErrorCatalogProductsState value) error,
   }) {
     return products(this);
   }
@@ -548,7 +548,7 @@ class _$CatalogProductsState implements CatalogProductsState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(CatalogProductsLoadingState value)? load,
     TResult? Function(CatalogProductsState value)? products,
-    TResult? Function(CatalogProductsErrorState value)? error,
+    TResult? Function(ErrorCatalogProductsState value)? error,
   }) {
     return products?.call(this);
   }
@@ -559,7 +559,7 @@ class _$CatalogProductsState implements CatalogProductsState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(CatalogProductsLoadingState value)? load,
     TResult Function(CatalogProductsState value)? products,
-    TResult Function(CatalogProductsErrorState value)? error,
+    TResult Function(ErrorCatalogProductsState value)? error,
     required TResult orElse(),
   }) {
     if (products != null) {
@@ -582,23 +582,23 @@ abstract class CatalogProductsState implements CatalogState {
 }
 
 /// @nodoc
-abstract class _$$CatalogProductsErrorStateCopyWith<$Res>
+abstract class _$$ErrorCatalogProductsStateCopyWith<$Res>
     implements $CatalogStateCopyWith<$Res> {
-  factory _$$CatalogProductsErrorStateCopyWith(
-          _$CatalogProductsErrorState value,
-          $Res Function(_$CatalogProductsErrorState) then) =
-      __$$CatalogProductsErrorStateCopyWithImpl<$Res>;
+  factory _$$ErrorCatalogProductsStateCopyWith(
+          _$ErrorCatalogProductsState value,
+          $Res Function(_$ErrorCatalogProductsState) then) =
+      __$$ErrorCatalogProductsStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Product> products, String message});
 }
 
 /// @nodoc
-class __$$CatalogProductsErrorStateCopyWithImpl<$Res>
-    extends _$CatalogStateCopyWithImpl<$Res, _$CatalogProductsErrorState>
-    implements _$$CatalogProductsErrorStateCopyWith<$Res> {
-  __$$CatalogProductsErrorStateCopyWithImpl(_$CatalogProductsErrorState _value,
-      $Res Function(_$CatalogProductsErrorState) _then)
+class __$$ErrorCatalogProductsStateCopyWithImpl<$Res>
+    extends _$CatalogStateCopyWithImpl<$Res, _$ErrorCatalogProductsState>
+    implements _$$ErrorCatalogProductsStateCopyWith<$Res> {
+  __$$ErrorCatalogProductsStateCopyWithImpl(_$ErrorCatalogProductsState _value,
+      $Res Function(_$ErrorCatalogProductsState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -607,7 +607,7 @@ class __$$CatalogProductsErrorStateCopyWithImpl<$Res>
     Object? products = null,
     Object? message = null,
   }) {
-    return _then(_$CatalogProductsErrorState(
+    return _then(_$ErrorCatalogProductsState(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -622,8 +622,8 @@ class __$$CatalogProductsErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CatalogProductsErrorState implements CatalogProductsErrorState {
-  const _$CatalogProductsErrorState(
+class _$ErrorCatalogProductsState implements ErrorCatalogProductsState {
+  const _$ErrorCatalogProductsState(
       {required final List<Product> products, this.message = 'Ошибка'})
       : _products = products;
 
@@ -648,7 +648,7 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CatalogProductsErrorState &&
+            other is _$ErrorCatalogProductsState &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -660,9 +660,9 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CatalogProductsErrorStateCopyWith<_$CatalogProductsErrorState>
-      get copyWith => __$$CatalogProductsErrorStateCopyWithImpl<
-          _$CatalogProductsErrorState>(this, _$identity);
+  _$$ErrorCatalogProductsStateCopyWith<_$ErrorCatalogProductsState>
+      get copyWith => __$$ErrorCatalogProductsStateCopyWithImpl<
+          _$ErrorCatalogProductsState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -707,7 +707,7 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(CatalogProductsLoadingState value) load,
     required TResult Function(CatalogProductsState value) products,
-    required TResult Function(CatalogProductsErrorState value) error,
+    required TResult Function(ErrorCatalogProductsState value) error,
   }) {
     return error(this);
   }
@@ -718,7 +718,7 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(CatalogProductsLoadingState value)? load,
     TResult? Function(CatalogProductsState value)? products,
-    TResult? Function(CatalogProductsErrorState value)? error,
+    TResult? Function(ErrorCatalogProductsState value)? error,
   }) {
     return error?.call(this);
   }
@@ -729,7 +729,7 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(CatalogProductsLoadingState value)? load,
     TResult Function(CatalogProductsState value)? products,
-    TResult Function(CatalogProductsErrorState value)? error,
+    TResult Function(ErrorCatalogProductsState value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -739,17 +739,17 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   }
 }
 
-abstract class CatalogProductsErrorState implements CatalogState {
-  const factory CatalogProductsErrorState(
+abstract class ErrorCatalogProductsState implements CatalogState {
+  const factory ErrorCatalogProductsState(
       {required final List<Product> products,
-      final String message}) = _$CatalogProductsErrorState;
+      final String message}) = _$ErrorCatalogProductsState;
 
   @override
   List<Product> get products;
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$CatalogProductsErrorStateCopyWith<_$CatalogProductsErrorState>
+  _$$ErrorCatalogProductsStateCopyWith<_$ErrorCatalogProductsState>
       get copyWith => throw _privateConstructorUsedError;
 }
 

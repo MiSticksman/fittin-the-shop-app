@@ -11,7 +11,7 @@ _$_CalculatedCartRequest _$$_CalculatedCartRequestFromJson(
     _$_CalculatedCartRequest(
       promocode: json['promocode'] as String?,
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) => CartProductRequest.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CartProductWithCount.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

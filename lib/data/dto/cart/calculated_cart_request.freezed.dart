@@ -22,7 +22,8 @@ CalculatedCartRequest _$CalculatedCartRequestFromJson(
 /// @nodoc
 mixin _$CalculatedCartRequest {
   String? get promocode => throw _privateConstructorUsedError;
-  List<CartProductRequest>? get products => throw _privateConstructorUsedError;
+  List<CartProductWithCount>? get products =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $CalculatedCartRequestCopyWith<$Res> {
           $Res Function(CalculatedCartRequest) then) =
       _$CalculatedCartRequestCopyWithImpl<$Res, CalculatedCartRequest>;
   @useResult
-  $Res call({String? promocode, List<CartProductRequest>? products});
+  $Res call({String? promocode, List<CartProductWithCount>? products});
 }
 
 /// @nodoc
@@ -64,7 +65,7 @@ class _$CalculatedCartRequestCopyWithImpl<$Res,
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
     ) as $Val);
   }
 }
@@ -77,7 +78,7 @@ abstract class _$$_CalculatedCartRequestCopyWith<$Res>
       __$$_CalculatedCartRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? promocode, List<CartProductRequest>? products});
+  $Res call({String? promocode, List<CartProductWithCount>? products});
 }
 
 /// @nodoc
@@ -102,7 +103,7 @@ class __$$_CalculatedCartRequestCopyWithImpl<$Res>
       products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
     ));
   }
 }
@@ -111,7 +112,7 @@ class __$$_CalculatedCartRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CalculatedCartRequest implements _CalculatedCartRequest {
   const _$_CalculatedCartRequest(
-      {this.promocode, final List<CartProductRequest>? products})
+      {this.promocode, final List<CartProductWithCount>? products})
       : _products = products;
 
   factory _$_CalculatedCartRequest.fromJson(Map<String, dynamic> json) =>
@@ -119,9 +120,9 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
 
   @override
   final String? promocode;
-  final List<CartProductRequest>? _products;
+  final List<CartProductWithCount>? _products;
   @override
-  List<CartProductRequest>? get products {
+  List<CartProductWithCount>? get products {
     final value = _products;
     if (value == null) return null;
     if (_products is EqualUnmodifiableListView) return _products;
@@ -167,7 +168,7 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
 abstract class _CalculatedCartRequest implements CalculatedCartRequest {
   const factory _CalculatedCartRequest(
       {final String? promocode,
-      final List<CartProductRequest>? products}) = _$_CalculatedCartRequest;
+      final List<CartProductWithCount>? products}) = _$_CalculatedCartRequest;
 
   factory _CalculatedCartRequest.fromJson(Map<String, dynamic> json) =
       _$_CalculatedCartRequest.fromJson;
@@ -175,7 +176,7 @@ abstract class _CalculatedCartRequest implements CalculatedCartRequest {
   @override
   String? get promocode;
   @override
-  List<CartProductRequest>? get products;
+  List<CartProductWithCount>? get products;
   @override
   @JsonKey(ignore: true)
   _$$_CalculatedCartRequestCopyWith<_$_CalculatedCartRequest> get copyWith =>

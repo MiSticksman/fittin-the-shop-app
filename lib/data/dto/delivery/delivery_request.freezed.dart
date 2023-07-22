@@ -22,7 +22,8 @@ DeliveryRequest _$DeliveryRequestFromJson(Map<String, dynamic> json) {
 mixin _$DeliveryRequest {
   @JsonKey(name: 'city_fias')
   String? get cityFias => throw _privateConstructorUsedError;
-  List<CartProductRequest>? get products => throw _privateConstructorUsedError;
+  List<CartProductWithCount>? get products =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +39,7 @@ abstract class $DeliveryRequestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'city_fias') String? cityFias,
-      List<CartProductRequest>? products});
+      List<CartProductWithCount>? products});
 }
 
 /// @nodoc
@@ -65,7 +66,7 @@ class _$DeliveryRequestCopyWithImpl<$Res, $Val extends DeliveryRequest>
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
     ) as $Val);
   }
 }
@@ -80,7 +81,7 @@ abstract class _$$_DeliveryRequestCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'city_fias') String? cityFias,
-      List<CartProductRequest>? products});
+      List<CartProductWithCount>? products});
 }
 
 /// @nodoc
@@ -105,7 +106,7 @@ class __$$_DeliveryRequestCopyWithImpl<$Res>
       products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
     ));
   }
 }
@@ -115,7 +116,7 @@ class __$$_DeliveryRequestCopyWithImpl<$Res>
 class _$_DeliveryRequest implements _DeliveryRequest {
   const _$_DeliveryRequest(
       {@JsonKey(name: 'city_fias') this.cityFias,
-      final List<CartProductRequest>? products})
+      final List<CartProductWithCount>? products})
       : _products = products;
 
   factory _$_DeliveryRequest.fromJson(Map<String, dynamic> json) =>
@@ -124,9 +125,9 @@ class _$_DeliveryRequest implements _DeliveryRequest {
   @override
   @JsonKey(name: 'city_fias')
   final String? cityFias;
-  final List<CartProductRequest>? _products;
+  final List<CartProductWithCount>? _products;
   @override
-  List<CartProductRequest>? get products {
+  List<CartProductWithCount>? get products {
     final value = _products;
     if (value == null) return null;
     if (_products is EqualUnmodifiableListView) return _products;
@@ -171,7 +172,7 @@ class _$_DeliveryRequest implements _DeliveryRequest {
 abstract class _DeliveryRequest implements DeliveryRequest {
   const factory _DeliveryRequest(
       {@JsonKey(name: 'city_fias') final String? cityFias,
-      final List<CartProductRequest>? products}) = _$_DeliveryRequest;
+      final List<CartProductWithCount>? products}) = _$_DeliveryRequest;
 
   factory _DeliveryRequest.fromJson(Map<String, dynamic> json) =
       _$_DeliveryRequest.fromJson;
@@ -180,7 +181,7 @@ abstract class _DeliveryRequest implements DeliveryRequest {
   @JsonKey(name: 'city_fias')
   String? get cityFias;
   @override
-  List<CartProductRequest>? get products;
+  List<CartProductWithCount>? get products;
   @override
   @JsonKey(ignore: true)
   _$$_DeliveryRequestCopyWith<_$_DeliveryRequest> get copyWith =>

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:the_shop/data/dto/cart/cart_product_request.dart';
+import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
 
 part 'patch_order.freezed.dart';
 

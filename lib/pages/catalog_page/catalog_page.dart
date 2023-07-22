@@ -33,7 +33,7 @@ class _CatalogPageState extends State<CatalogPage> {
         ),
         body: BlocBuilder<CatalogBloc, CatalogState>(
           builder: (context, state) {
-            if (state is CatalogProductsErrorState) {
+            if (state is ErrorCatalogProductsState) {
               return const Center(
                 child: Text('Что-то пошло не так'),
               );

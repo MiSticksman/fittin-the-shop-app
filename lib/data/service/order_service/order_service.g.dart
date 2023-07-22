@@ -19,7 +19,7 @@ class _OrderService implements OrderService {
   String? baseUrl;
 
   @override
-  Future<Order> paymentsCallback({brand}) async {
+  Future<Order> getOrderList({brand}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'brand': brand};
     queryParameters.removeWhere((k, v) => v == null);
@@ -43,7 +43,7 @@ class _OrderService implements OrderService {
   }
 
   @override
-  Future<Order> payments({required request}) async {
+  Future<Order> postOrder({required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -66,7 +66,7 @@ class _OrderService implements OrderService {
   }
 
   @override
-  Future<Order> paymentsPay({required request}) async {
+  Future<Order> patchOrder({required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

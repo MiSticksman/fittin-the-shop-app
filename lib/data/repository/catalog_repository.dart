@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:the_shop/data/dto/catalog/catalog_products_response.dart';
 import 'package:the_shop/data/service/catalog_service/catalog_service.dart';
 import 'package:the_shop/domain/models/catalog/product.dart';
@@ -11,7 +12,7 @@ class CatalogRepository {
     try {
       return await _catalogService.getCatalogProduct(
           productId: productId);
-    } catch (e) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
@@ -20,7 +21,7 @@ class CatalogRepository {
     try {
       final res = await _catalogService.getCatalogProducts();
       return res;
-    } catch(e) {
+    } on DioException catch (_) {
       rethrow;
     }
 

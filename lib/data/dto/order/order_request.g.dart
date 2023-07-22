@@ -11,7 +11,7 @@ _$_OrderRequest _$$_OrderRequestFromJson(Map<String, dynamic> json) =>
       cityFias: json['city_fias'] as String?,
       promocode: json['promocode'] as String?,
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) => CartProductRequest.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CartProductWithCount.fromJson(e as Map<String, dynamic>))
           .toList(),
       userName: json['user_name'] as String,
       userPhone: json['user_phone'] as String,

@@ -47,7 +47,7 @@ mixin _$CartState {
     required TResult Function(InitCartState value) init,
     required TResult Function(CartLoadingState value) load,
     required TResult Function(CartLoadedState value) cart,
-    required TResult Function(CartErrorState value) error,
+    required TResult Function(ErrorCartState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +55,7 @@ mixin _$CartState {
     TResult? Function(InitCartState value)? init,
     TResult? Function(CartLoadingState value)? load,
     TResult? Function(CartLoadedState value)? cart,
-    TResult? Function(CartErrorState value)? error,
+    TResult? Function(ErrorCartState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +63,7 @@ mixin _$CartState {
     TResult Function(InitCartState value)? init,
     TResult Function(CartLoadingState value)? load,
     TResult Function(CartLoadedState value)? cart,
-    TResult Function(CartErrorState value)? error,
+    TResult Function(ErrorCartState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -224,7 +224,7 @@ class _$InitCartState implements InitCartState {
     required TResult Function(InitCartState value) init,
     required TResult Function(CartLoadingState value) load,
     required TResult Function(CartLoadedState value) cart,
-    required TResult Function(CartErrorState value) error,
+    required TResult Function(ErrorCartState value) error,
   }) {
     return init(this);
   }
@@ -235,7 +235,7 @@ class _$InitCartState implements InitCartState {
     TResult? Function(InitCartState value)? init,
     TResult? Function(CartLoadingState value)? load,
     TResult? Function(CartLoadedState value)? cart,
-    TResult? Function(CartErrorState value)? error,
+    TResult? Function(ErrorCartState value)? error,
   }) {
     return init?.call(this);
   }
@@ -246,7 +246,7 @@ class _$InitCartState implements InitCartState {
     TResult Function(InitCartState value)? init,
     TResult Function(CartLoadingState value)? load,
     TResult Function(CartLoadedState value)? cart,
-    TResult Function(CartErrorState value)? error,
+    TResult Function(ErrorCartState value)? error,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -377,7 +377,7 @@ class _$CartLoadingState implements CartLoadingState {
     required TResult Function(InitCartState value) init,
     required TResult Function(CartLoadingState value) load,
     required TResult Function(CartLoadedState value) cart,
-    required TResult Function(CartErrorState value) error,
+    required TResult Function(ErrorCartState value) error,
   }) {
     return load(this);
   }
@@ -388,7 +388,7 @@ class _$CartLoadingState implements CartLoadingState {
     TResult? Function(InitCartState value)? init,
     TResult? Function(CartLoadingState value)? load,
     TResult? Function(CartLoadedState value)? cart,
-    TResult? Function(CartErrorState value)? error,
+    TResult? Function(ErrorCartState value)? error,
   }) {
     return load?.call(this);
   }
@@ -399,7 +399,7 @@ class _$CartLoadingState implements CartLoadingState {
     TResult Function(InitCartState value)? init,
     TResult Function(CartLoadingState value)? load,
     TResult Function(CartLoadedState value)? cart,
-    TResult Function(CartErrorState value)? error,
+    TResult Function(ErrorCartState value)? error,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -530,7 +530,7 @@ class _$CartLoadedState implements CartLoadedState {
     required TResult Function(InitCartState value) init,
     required TResult Function(CartLoadingState value) load,
     required TResult Function(CartLoadedState value) cart,
-    required TResult Function(CartErrorState value) error,
+    required TResult Function(ErrorCartState value) error,
   }) {
     return cart(this);
   }
@@ -541,7 +541,7 @@ class _$CartLoadedState implements CartLoadedState {
     TResult? Function(InitCartState value)? init,
     TResult? Function(CartLoadingState value)? load,
     TResult? Function(CartLoadedState value)? cart,
-    TResult? Function(CartErrorState value)? error,
+    TResult? Function(ErrorCartState value)? error,
   }) {
     return cart?.call(this);
   }
@@ -552,7 +552,7 @@ class _$CartLoadedState implements CartLoadedState {
     TResult Function(InitCartState value)? init,
     TResult Function(CartLoadingState value)? load,
     TResult Function(CartLoadedState value)? cart,
-    TResult Function(CartErrorState value)? error,
+    TResult Function(ErrorCartState value)? error,
     required TResult orElse(),
   }) {
     if (cart != null) {
@@ -575,11 +575,11 @@ abstract class CartLoadedState implements CartState {
 }
 
 /// @nodoc
-abstract class _$$CartErrorStateCopyWith<$Res>
+abstract class _$$ErrorCartStateCopyWith<$Res>
     implements $CartStateCopyWith<$Res> {
-  factory _$$CartErrorStateCopyWith(
-          _$CartErrorState value, $Res Function(_$CartErrorState) then) =
-      __$$CartErrorStateCopyWithImpl<$Res>;
+  factory _$$ErrorCartStateCopyWith(
+          _$ErrorCartState value, $Res Function(_$ErrorCartState) then) =
+      __$$ErrorCartStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CalculatedCart cart, String message});
@@ -589,11 +589,11 @@ abstract class _$$CartErrorStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CartErrorStateCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$CartErrorState>
-    implements _$$CartErrorStateCopyWith<$Res> {
-  __$$CartErrorStateCopyWithImpl(
-      _$CartErrorState _value, $Res Function(_$CartErrorState) _then)
+class __$$ErrorCartStateCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$ErrorCartState>
+    implements _$$ErrorCartStateCopyWith<$Res> {
+  __$$ErrorCartStateCopyWithImpl(
+      _$ErrorCartState _value, $Res Function(_$ErrorCartState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -602,7 +602,7 @@ class __$$CartErrorStateCopyWithImpl<$Res>
     Object? cart = null,
     Object? message = null,
   }) {
-    return _then(_$CartErrorState(
+    return _then(_$ErrorCartState(
       cart: null == cart
           ? _value.cart
           : cart // ignore: cast_nullable_to_non_nullable
@@ -617,8 +617,8 @@ class __$$CartErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CartErrorState implements CartErrorState {
-  const _$CartErrorState({required this.cart, this.message = 'Ошибка'});
+class _$ErrorCartState implements ErrorCartState {
+  const _$ErrorCartState({required this.cart, this.message = 'Ошибка'});
 
   @override
   final CalculatedCart cart;
@@ -635,7 +635,7 @@ class _$CartErrorState implements CartErrorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CartErrorState &&
+            other is _$ErrorCartState &&
             (identical(other.cart, cart) || other.cart == cart) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -646,8 +646,8 @@ class _$CartErrorState implements CartErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CartErrorStateCopyWith<_$CartErrorState> get copyWith =>
-      __$$CartErrorStateCopyWithImpl<_$CartErrorState>(this, _$identity);
+  _$$ErrorCartStateCopyWith<_$ErrorCartState> get copyWith =>
+      __$$ErrorCartStateCopyWithImpl<_$ErrorCartState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -692,7 +692,7 @@ class _$CartErrorState implements CartErrorState {
     required TResult Function(InitCartState value) init,
     required TResult Function(CartLoadingState value) load,
     required TResult Function(CartLoadedState value) cart,
-    required TResult Function(CartErrorState value) error,
+    required TResult Function(ErrorCartState value) error,
   }) {
     return error(this);
   }
@@ -703,7 +703,7 @@ class _$CartErrorState implements CartErrorState {
     TResult? Function(InitCartState value)? init,
     TResult? Function(CartLoadingState value)? load,
     TResult? Function(CartLoadedState value)? cart,
-    TResult? Function(CartErrorState value)? error,
+    TResult? Function(ErrorCartState value)? error,
   }) {
     return error?.call(this);
   }
@@ -714,7 +714,7 @@ class _$CartErrorState implements CartErrorState {
     TResult Function(InitCartState value)? init,
     TResult Function(CartLoadingState value)? load,
     TResult Function(CartLoadedState value)? cart,
-    TResult Function(CartErrorState value)? error,
+    TResult Function(ErrorCartState value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -724,17 +724,17 @@ class _$CartErrorState implements CartErrorState {
   }
 }
 
-abstract class CartErrorState implements CartState {
-  const factory CartErrorState(
+abstract class ErrorCartState implements CartState {
+  const factory ErrorCartState(
       {required final CalculatedCart cart,
-      final String message}) = _$CartErrorState;
+      final String message}) = _$ErrorCartState;
 
   @override
   CalculatedCart get cart;
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$CartErrorStateCopyWith<_$CartErrorState> get copyWith =>
+  _$$ErrorCartStateCopyWith<_$ErrorCartState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

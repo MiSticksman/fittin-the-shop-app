@@ -24,7 +24,7 @@ class CartState with _$CartState {
   const factory CartState.error({
     required CalculatedCart cart,
     @Default('Ошибка') String message,
-  }) = CartErrorState;
+  }) = ErrorCartState;
 }
 
 @freezed
@@ -51,19 +51,22 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             cart: cart,
           ),
         ) {
-    on<CartEvent>((event, emit) async {
-      switch (event) {
-        case LoadCartEvent():
-          await _loadCart(event, emit);
-          break;
-        case AddProductToCartEvent():
-          await _addProductToCart(event, emit);
-          break;
-        case AddProductCountEvent():
-          await _addProductCount(event, emit);
-          break;
-      }
-    }, transformer: bloc_concurrency.sequential());
+    on<CartEvent>(
+      (event, emit) async {
+        switch (event) {
+          case LoadCartEvent():
+            await _loadCart(event, emit);
+            break;
+          case AddProductToCartEvent():
+            await _addProductToCart(event, emit);
+            break;
+          case AddProductCountEvent():
+            await _addProductCount(event, emit);
+            break;
+        }
+      },
+      transformer: bloc_concurrency.sequential(),
+    );
   }
 
   Future<void> _loadCart(
@@ -81,7 +84,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ),
       );
     } catch (e) {
-      emit(CartErrorState(cart: state.cart, message: e.toString()));
+      emit(ErrorCartState(cart: state.cart, message: e.toString()));
     }
   }
 
@@ -98,7 +101,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ),
       );
     } catch (e) {
-      emit(CartErrorState(cart: state.cart, message: e.toString()));
+      emit(ErrorCartState(cart: state.cart, message: e.toString()));
     }
   }
 
@@ -112,7 +115,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ),
       );
     } catch (e) {
-      emit(CartErrorState(cart: state.cart, message: e.toString()));
+      emit(ErrorCartState(cart: state.cart, message: e.toString()));
     }
   }
 }

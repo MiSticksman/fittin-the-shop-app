@@ -8,8 +8,8 @@ part of 'payment_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _DeliveryService implements DeliveryService {
-  _DeliveryService(
+class _PaymentService implements PaymentService {
+  _PaymentService(
     this._dio, {
     this.baseUrl,
   });

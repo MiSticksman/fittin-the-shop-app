@@ -10,7 +10,7 @@ _$_DeliveryRequest _$$_DeliveryRequestFromJson(Map<String, dynamic> json) =>
     _$_DeliveryRequest(
       cityFias: json['city_fias'] as String?,
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) => CartProductRequest.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CartProductWithCount.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

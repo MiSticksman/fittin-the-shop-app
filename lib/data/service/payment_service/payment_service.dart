@@ -8,8 +8,8 @@ import 'package:the_shop/domain/models/payment/payment.dart';
 part 'payment_service.g.dart';
 
 @RestApi()
-abstract class DeliveryService {
-  factory DeliveryService(Dio dio, {String baseUrl}) = _DeliveryService;
+abstract class PaymentService {
+  factory PaymentService(Dio dio, {String baseUrl}) = _PaymentService;
 
   @POST(PaymentUrl.payments)
   Future<List<Payment>> payments({

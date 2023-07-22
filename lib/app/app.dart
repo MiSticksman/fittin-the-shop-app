@@ -6,6 +6,7 @@ import 'package:the_shop/data/dto/cart/calculated_cart.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/cart_page/cart_page.dart';
 import 'package:the_shop/pages/catalog_page/catalog_page.dart';
+import 'package:the_shop/pages/order_page/order_page.dart';
 
 final class AppText {
   static final TextStyle title = GoogleFonts.montserrat(
@@ -64,7 +65,7 @@ class ShopApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: const CartPage(),
+        home: const OrderPage(),
       ),
     );
   }

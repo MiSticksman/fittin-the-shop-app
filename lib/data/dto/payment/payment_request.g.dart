@@ -10,7 +10,7 @@ _$_PaymentRequest _$$_PaymentRequestFromJson(Map<String, dynamic> json) =>
     _$_PaymentRequest(
       cityFias: json['city_fias'] as String?,
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) => CartProductRequest.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CartProductWithCount.fromJson(e as Map<String, dynamic>))
           .toList(),
       deliveryId: json['delivery_id'] as String?,
     );

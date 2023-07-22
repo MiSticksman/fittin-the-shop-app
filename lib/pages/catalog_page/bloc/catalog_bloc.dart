@@ -23,7 +23,7 @@ class CatalogState with _$CatalogState {
   const factory CatalogState.error({
     required List<Product> products,
     @Default('Ошибка') String message,
-  }) = CatalogProductsErrorState;
+  }) = ErrorCatalogProductsState;
 }
 
 @freezed
@@ -66,7 +66,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         ),
       );
     } catch (e) {
-      emit(CatalogProductsErrorState(
+      emit(ErrorCatalogProductsState(
           products: state.products, message: e.toString()));
     }
   }

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:the_shop/data/dto/cart/calculated_cart.dart';
 import 'package:the_shop/data/dto/cart/calculated_cart_request.dart';
 import 'package:the_shop/data/dto/cart/cart_update.dart';
@@ -11,7 +12,7 @@ class CartRepository {
   Future<CalculatedCart> calculateCart({CalculatedCartRequest? request}) async {
     try {
       return await _cartService.calculateCart(request: request);
-    } catch (e) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
@@ -19,7 +20,7 @@ class CartRepository {
   Future<CalculatedCart> postCart({required CartUpdate request}) async {
     try {
       return await _cartService.postCart(request: request);
-    } catch (e) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
@@ -27,7 +28,7 @@ class CartRepository {
   Future<CalculatedCart> updateCart({required CartUpdate request}) async {
     try {
       return await _cartService.updateCart(request: request);
-    } catch (e) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
@@ -35,7 +36,7 @@ class CartRepository {
   Future<CalculatedCart> deleteCart({required CartUpdate request}) async {
     try {
       return await _cartService.deleteCart(request: request);
-    } catch (e) {
+    } on DioException catch (_) {
       rethrow;
     }
   }

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:the_shop/data/dto/cart/cart_product_request.dart';
+import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
 
 part 'order_request.freezed.dart';
 
@@ -10,7 +10,7 @@ abstract class OrderRequest with _$OrderRequest {
   const factory OrderRequest({
     @JsonKey(name: 'city_fias') String? cityFias,
     String? promocode,
-    List<CartProductRequest>? products,
+    List<CartProductWithCount>? products,
     @JsonKey(name: 'user_name') required String userName,
     @JsonKey(name: 'user_phone') required String userPhone,
     @JsonKey(name: 'user_email') String? userEmail,

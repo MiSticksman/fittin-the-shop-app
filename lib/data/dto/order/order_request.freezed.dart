@@ -23,7 +23,8 @@ mixin _$OrderRequest {
   @JsonKey(name: 'city_fias')
   String? get cityFias => throw _privateConstructorUsedError;
   String? get promocode => throw _privateConstructorUsedError;
-  List<CartProductRequest>? get products => throw _privateConstructorUsedError;
+  List<CartProductWithCount>? get products =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'user_name')
   String get userName => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_phone')
@@ -67,7 +68,7 @@ abstract class $OrderRequestCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'city_fias') String? cityFias,
       String? promocode,
-      List<CartProductRequest>? products,
+      List<CartProductWithCount>? products,
       @JsonKey(name: 'user_name') String userName,
       @JsonKey(name: 'user_phone') String userPhone,
       @JsonKey(name: 'user_email') String? userEmail,
@@ -129,7 +130,7 @@ class _$OrderRequestCopyWithImpl<$Res, $Val extends OrderRequest>
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -205,7 +206,7 @@ abstract class _$$_OrderRequestCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'city_fias') String? cityFias,
       String? promocode,
-      List<CartProductRequest>? products,
+      List<CartProductWithCount>? products,
       @JsonKey(name: 'user_name') String userName,
       @JsonKey(name: 'user_phone') String userPhone,
       @JsonKey(name: 'user_email') String? userEmail,
@@ -265,7 +266,7 @@ class __$$_OrderRequestCopyWithImpl<$Res>
       products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CartProductRequest>?,
+              as List<CartProductWithCount>?,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -336,7 +337,7 @@ class _$_OrderRequest implements _OrderRequest {
   const _$_OrderRequest(
       {@JsonKey(name: 'city_fias') this.cityFias,
       this.promocode,
-      final List<CartProductRequest>? products,
+      final List<CartProductWithCount>? products,
       @JsonKey(name: 'user_name') required this.userName,
       @JsonKey(name: 'user_phone') required this.userPhone,
       @JsonKey(name: 'user_email') this.userEmail,
@@ -362,9 +363,9 @@ class _$_OrderRequest implements _OrderRequest {
   final String? cityFias;
   @override
   final String? promocode;
-  final List<CartProductRequest>? _products;
+  final List<CartProductWithCount>? _products;
   @override
-  List<CartProductRequest>? get products {
+  List<CartProductWithCount>? get products {
     final value = _products;
     if (value == null) return null;
     if (_products is EqualUnmodifiableListView) return _products;
@@ -501,7 +502,7 @@ abstract class _OrderRequest implements OrderRequest {
   const factory _OrderRequest(
           {@JsonKey(name: 'city_fias') final String? cityFias,
           final String? promocode,
-          final List<CartProductRequest>? products,
+          final List<CartProductWithCount>? products,
           @JsonKey(name: 'user_name') required final String userName,
           @JsonKey(name: 'user_phone') required final String userPhone,
           @JsonKey(name: 'user_email') final String? userEmail,
@@ -528,7 +529,7 @@ abstract class _OrderRequest implements OrderRequest {
   @override
   String? get promocode;
   @override
-  List<CartProductRequest>? get products;
+  List<CartProductWithCount>? get products;
   @override
   @JsonKey(name: 'user_name')
   String get userName;
