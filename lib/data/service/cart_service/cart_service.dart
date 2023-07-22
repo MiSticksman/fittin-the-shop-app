@@ -13,11 +13,11 @@ abstract class CartService {
 
   @POST(CartUrl.cartCalculate)
   Future<CalculatedCart> calculateCart({
-    @Body() required CalculatedCartRequest request,
+    @Body() CalculatedCartRequest? request,
   });
 
   @POST(CartUrl.cartCart)
-  Future<CalculatedCart> postsCart({
+  Future<CalculatedCart> postCart({
     @Body() required CartUpdate request,
   });
 

@@ -19,9 +19,10 @@ class _CartService implements CartService {
   String? baseUrl;
 
   @override
-  Future<CalculatedCart> calculateCart({required request}) async {
+  Future<CalculatedCart> calculateCart({request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = request;
     final _result = await _dio
@@ -42,7 +43,7 @@ class _CartService implements CartService {
   }
 
   @override
-  Future<CalculatedCart> postsCart({required request}) async {
+  Future<CalculatedCart> postCart({required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

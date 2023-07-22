@@ -8,7 +8,7 @@ part 'calculated_cart.g.dart';
 @freezed
 abstract class CalculatedCart with _$CalculatedCart {
   const factory CalculatedCart({
-    required int price,
+    required String price,
     @JsonKey(name: 'old_price') String? oldPrice,
     required int count,
     required List<CartProduct> products,

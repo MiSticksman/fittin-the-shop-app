@@ -20,7 +20,7 @@ CalculatedCart _$CalculatedCartFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CalculatedCart {
-  int get price => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'old_price')
   String? get oldPrice => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $CalculatedCartCopyWith<$Res> {
       _$CalculatedCartCopyWithImpl<$Res, CalculatedCart>;
   @useResult
   $Res call(
-      {int price,
+      {String price,
       @JsonKey(name: 'old_price') String? oldPrice,
       int count,
       List<CartProduct> products,
@@ -70,7 +70,7 @@ class _$CalculatedCartCopyWithImpl<$Res, $Val extends CalculatedCart>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
@@ -100,7 +100,7 @@ abstract class _$$_CalculatedCartCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int price,
+      {String price,
       @JsonKey(name: 'old_price') String? oldPrice,
       int count,
       List<CartProduct> products,
@@ -128,7 +128,7 @@ class __$$_CalculatedCartCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ class _$_CalculatedCart implements _CalculatedCart {
       _$$_CalculatedCartFromJson(json);
 
   @override
-  final int price;
+  final String price;
   @override
   @JsonKey(name: 'old_price')
   final String? oldPrice;
@@ -220,7 +220,7 @@ class _$_CalculatedCart implements _CalculatedCart {
 
 abstract class _CalculatedCart implements CalculatedCart {
   const factory _CalculatedCart(
-      {required final int price,
+      {required final String price,
       @JsonKey(name: 'old_price') final String? oldPrice,
       required final int count,
       required final List<CartProduct> products,
@@ -230,7 +230,7 @@ abstract class _CalculatedCart implements CalculatedCart {
       _$_CalculatedCart.fromJson;
 
   @override
-  int get price;
+  String get price;
   @override
   @JsonKey(name: 'old_price')
   String? get oldPrice;

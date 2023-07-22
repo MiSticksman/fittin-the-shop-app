@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_shop/app/app_components.dart';
-import 'package:the_shop/pages/catalog_page/bloc/catalog_bloc.dart';
+import 'package:the_shop/data/dto/cart/calculated_cart.dart';
+import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
+import 'package:the_shop/pages/cart_page/cart_page.dart';
 import 'package:the_shop/pages/catalog_page/catalog_page.dart';
 
 final class AppText {
@@ -21,11 +23,16 @@ class ShopApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => CatalogBloc(
-                  products: [], catalogRepository: AppComponents().catalogRepository)
-              ..add(
-            const LoadCatalogProductsEvent(),
-          ),
+          create: (context) => CartBloc(
+              cart: const CalculatedCart(
+                price: '',
+                count: 0,
+                products: [],
+              ),
+              cartRepository: AppComponents().cartRepository)
+            ..add(
+              const LoadCartEvent(),
+            ),
         ),
       ],
       child: MaterialApp(
@@ -57,7 +64,7 @@ class ShopApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: const CatalogPage(),
+        home: const CartPage(),
       ),
     );
   }

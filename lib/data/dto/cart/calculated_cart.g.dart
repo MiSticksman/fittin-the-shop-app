@@ -8,7 +8,7 @@ part of 'calculated_cart.dart';
 
 _$_CalculatedCart _$$_CalculatedCartFromJson(Map<String, dynamic> json) =>
     _$_CalculatedCart(
-      price: json['price'] as int,
+      price: json['price'] as String,
       oldPrice: json['old_price'] as String?,
       count: json['count'] as int,
       products: (json['products'] as List<dynamic>)

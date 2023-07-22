@@ -1,13 +1,13 @@
 import 'package:the_shop/data/dto/catalog/catalog_products_response.dart';
 import 'package:the_shop/data/service/catalog_service/catalog_service.dart';
-import 'package:the_shop/domain/models/catalog_product.dart';
+import 'package:the_shop/domain/models/catalog/product.dart';
 
 class CatalogRepository {
   CatalogRepository(this._catalogService);
 
   final CatalogService _catalogService;
 
-  Future<CatalogProduct> getCatalogProduct({int? productId}) async {
+  Future<Product> getCatalogProduct({int? productId}) async {
     try {
       return await _catalogService.getCatalogProduct(
           productId: productId);

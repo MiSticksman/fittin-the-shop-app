@@ -13,7 +13,7 @@ _$_CatalogProductsResponse _$$_CatalogProductsResponseFromJson(
       next: json['next'] as String?,
       previous: json['previous'] as String?,
       results: (json['results'] as List<dynamic>)
-          .map((e) => CatalogProduct.fromJson(e as Map<String, dynamic>))
+          .map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

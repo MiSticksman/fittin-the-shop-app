@@ -2,7 +2,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:the_shop/data/dto/catalog/catalog_products_response.dart';
 import 'package:the_shop/data/url/catalog_url.dart';
-import 'package:the_shop/domain/models/catalog_product.dart';
+import 'package:the_shop/domain/models/catalog/product.dart';
 
 part 'catalog_service.g.dart';
 
@@ -12,7 +12,7 @@ abstract class CatalogService {
 
 
   @GET(CatalogUrl.catalogProduct)
-  Future<CatalogProduct> getCatalogProduct({
+  Future<Product> getCatalogProduct({
     @Query('product_id') int? productId,
   });
 

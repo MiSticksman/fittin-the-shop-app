@@ -1,6 +1,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:the_shop/domain/models/catalog_product.dart';
+import 'package:the_shop/domain/models/catalog/product.dart';
 
 part 'catalog_products_response.freezed.dart';
 part 'catalog_products_response.g.dart';
@@ -11,7 +11,7 @@ abstract class CatalogProductsResponse with _$CatalogProductsResponse {
       required int count,
      String? next,
      String? previous,
-    required List<CatalogProduct> results,
+    required List<Product> results,
       
   }) = _CatalogProductsResponse;
   

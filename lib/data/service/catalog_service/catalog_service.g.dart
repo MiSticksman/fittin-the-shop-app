@@ -19,14 +19,14 @@ class _CatalogService implements CatalogService {
   String? baseUrl;
 
   @override
-  Future<CatalogProduct> getCatalogProduct({productId}) async {
+  Future<Product> getCatalogProduct({productId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'product_id': productId};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CatalogProduct>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Product>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -38,7 +38,7 @@ class _CatalogService implements CatalogService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CatalogProduct.fromJson(_result.data!);
+    final value = Product.fromJson(_result.data!);
     return value;
   }
 

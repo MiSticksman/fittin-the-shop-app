@@ -16,30 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CatalogState {
-  List<CatalogProduct> get products => throw _privateConstructorUsedError;
+  List<Product> get products => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CatalogProduct> products) init,
-    required TResult Function(List<CatalogProduct> products) load,
-    required TResult Function(List<CatalogProduct> products) products,
-    required TResult Function(List<CatalogProduct> products, String message)
-        error,
+    required TResult Function(List<Product> products) init,
+    required TResult Function(List<Product> products) load,
+    required TResult Function(List<Product> products) products,
+    required TResult Function(List<Product> products, String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CatalogProduct> products)? init,
-    TResult? Function(List<CatalogProduct> products)? load,
-    TResult? Function(List<CatalogProduct> products)? products,
-    TResult? Function(List<CatalogProduct> products, String message)? error,
+    TResult? Function(List<Product> products)? init,
+    TResult? Function(List<Product> products)? load,
+    TResult? Function(List<Product> products)? products,
+    TResult? Function(List<Product> products, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CatalogProduct> products)? init,
-    TResult Function(List<CatalogProduct> products)? load,
-    TResult Function(List<CatalogProduct> products)? products,
-    TResult Function(List<CatalogProduct> products, String message)? error,
+    TResult Function(List<Product> products)? init,
+    TResult Function(List<Product> products)? load,
+    TResult Function(List<Product> products)? products,
+    TResult Function(List<Product> products, String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,7 +79,7 @@ abstract class $CatalogStateCopyWith<$Res> {
           CatalogState value, $Res Function(CatalogState) then) =
       _$CatalogStateCopyWithImpl<$Res, CatalogState>;
   @useResult
-  $Res call({List<CatalogProduct> products});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
@@ -102,7 +101,7 @@ class _$CatalogStateCopyWithImpl<$Res, $Val extends CatalogState>
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
     ) as $Val);
   }
 }
@@ -115,7 +114,7 @@ abstract class _$$InitCatalogStateCopyWith<$Res>
       __$$InitCatalogStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CatalogProduct> products});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
@@ -135,7 +134,7 @@ class __$$InitCatalogStateCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
     ));
   }
 }
@@ -143,12 +142,12 @@ class __$$InitCatalogStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitCatalogState implements InitCatalogState {
-  const _$InitCatalogState({required final List<CatalogProduct> products})
+  const _$InitCatalogState({required final List<Product> products})
       : _products = products;
 
-  final List<CatalogProduct> _products;
+  final List<Product> _products;
   @override
-  List<CatalogProduct> get products {
+  List<Product> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -180,11 +179,10 @@ class _$InitCatalogState implements InitCatalogState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CatalogProduct> products) init,
-    required TResult Function(List<CatalogProduct> products) load,
-    required TResult Function(List<CatalogProduct> products) products,
-    required TResult Function(List<CatalogProduct> products, String message)
-        error,
+    required TResult Function(List<Product> products) init,
+    required TResult Function(List<Product> products) load,
+    required TResult Function(List<Product> products) products,
+    required TResult Function(List<Product> products, String message) error,
   }) {
     return init(this.products);
   }
@@ -192,10 +190,10 @@ class _$InitCatalogState implements InitCatalogState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CatalogProduct> products)? init,
-    TResult? Function(List<CatalogProduct> products)? load,
-    TResult? Function(List<CatalogProduct> products)? products,
-    TResult? Function(List<CatalogProduct> products, String message)? error,
+    TResult? Function(List<Product> products)? init,
+    TResult? Function(List<Product> products)? load,
+    TResult? Function(List<Product> products)? products,
+    TResult? Function(List<Product> products, String message)? error,
   }) {
     return init?.call(this.products);
   }
@@ -203,10 +201,10 @@ class _$InitCatalogState implements InitCatalogState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CatalogProduct> products)? init,
-    TResult Function(List<CatalogProduct> products)? load,
-    TResult Function(List<CatalogProduct> products)? products,
-    TResult Function(List<CatalogProduct> products, String message)? error,
+    TResult Function(List<Product> products)? init,
+    TResult Function(List<Product> products)? load,
+    TResult Function(List<Product> products)? products,
+    TResult Function(List<Product> products, String message)? error,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -254,11 +252,11 @@ class _$InitCatalogState implements InitCatalogState {
 }
 
 abstract class InitCatalogState implements CatalogState {
-  const factory InitCatalogState(
-      {required final List<CatalogProduct> products}) = _$InitCatalogState;
+  const factory InitCatalogState({required final List<Product> products}) =
+      _$InitCatalogState;
 
   @override
-  List<CatalogProduct> get products;
+  List<Product> get products;
   @override
   @JsonKey(ignore: true)
   _$$InitCatalogStateCopyWith<_$InitCatalogState> get copyWith =>
@@ -274,7 +272,7 @@ abstract class _$$CatalogProductsLoadingStateCopyWith<$Res>
       __$$CatalogProductsLoadingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CatalogProduct> products});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
@@ -295,7 +293,7 @@ class __$$CatalogProductsLoadingStateCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
     ));
   }
 }
@@ -303,13 +301,12 @@ class __$$CatalogProductsLoadingStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
-  const _$CatalogProductsLoadingState(
-      {required final List<CatalogProduct> products})
+  const _$CatalogProductsLoadingState({required final List<Product> products})
       : _products = products;
 
-  final List<CatalogProduct> _products;
+  final List<Product> _products;
   @override
-  List<CatalogProduct> get products {
+  List<Product> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -342,11 +339,10 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CatalogProduct> products) init,
-    required TResult Function(List<CatalogProduct> products) load,
-    required TResult Function(List<CatalogProduct> products) products,
-    required TResult Function(List<CatalogProduct> products, String message)
-        error,
+    required TResult Function(List<Product> products) init,
+    required TResult Function(List<Product> products) load,
+    required TResult Function(List<Product> products) products,
+    required TResult Function(List<Product> products, String message) error,
   }) {
     return load(this.products);
   }
@@ -354,10 +350,10 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CatalogProduct> products)? init,
-    TResult? Function(List<CatalogProduct> products)? load,
-    TResult? Function(List<CatalogProduct> products)? products,
-    TResult? Function(List<CatalogProduct> products, String message)? error,
+    TResult? Function(List<Product> products)? init,
+    TResult? Function(List<Product> products)? load,
+    TResult? Function(List<Product> products)? products,
+    TResult? Function(List<Product> products, String message)? error,
   }) {
     return load?.call(this.products);
   }
@@ -365,10 +361,10 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CatalogProduct> products)? init,
-    TResult Function(List<CatalogProduct> products)? load,
-    TResult Function(List<CatalogProduct> products)? products,
-    TResult Function(List<CatalogProduct> products, String message)? error,
+    TResult Function(List<Product> products)? init,
+    TResult Function(List<Product> products)? load,
+    TResult Function(List<Product> products)? products,
+    TResult Function(List<Product> products, String message)? error,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -417,11 +413,10 @@ class _$CatalogProductsLoadingState implements CatalogProductsLoadingState {
 
 abstract class CatalogProductsLoadingState implements CatalogState {
   const factory CatalogProductsLoadingState(
-          {required final List<CatalogProduct> products}) =
-      _$CatalogProductsLoadingState;
+      {required final List<Product> products}) = _$CatalogProductsLoadingState;
 
   @override
-  List<CatalogProduct> get products;
+  List<Product> get products;
   @override
   @JsonKey(ignore: true)
   _$$CatalogProductsLoadingStateCopyWith<_$CatalogProductsLoadingState>
@@ -436,7 +431,7 @@ abstract class _$$CatalogProductsStateCopyWith<$Res>
       __$$CatalogProductsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CatalogProduct> products});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
@@ -456,7 +451,7 @@ class __$$CatalogProductsStateCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
     ));
   }
 }
@@ -464,12 +459,12 @@ class __$$CatalogProductsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CatalogProductsState implements CatalogProductsState {
-  const _$CatalogProductsState({required final List<CatalogProduct> products})
+  const _$CatalogProductsState({required final List<Product> products})
       : _products = products;
 
-  final List<CatalogProduct> _products;
+  final List<Product> _products;
   @override
-  List<CatalogProduct> get products {
+  List<Product> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -502,11 +497,10 @@ class _$CatalogProductsState implements CatalogProductsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CatalogProduct> products) init,
-    required TResult Function(List<CatalogProduct> products) load,
-    required TResult Function(List<CatalogProduct> products) products,
-    required TResult Function(List<CatalogProduct> products, String message)
-        error,
+    required TResult Function(List<Product> products) init,
+    required TResult Function(List<Product> products) load,
+    required TResult Function(List<Product> products) products,
+    required TResult Function(List<Product> products, String message) error,
   }) {
     return products(this.products);
   }
@@ -514,10 +508,10 @@ class _$CatalogProductsState implements CatalogProductsState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CatalogProduct> products)? init,
-    TResult? Function(List<CatalogProduct> products)? load,
-    TResult? Function(List<CatalogProduct> products)? products,
-    TResult? Function(List<CatalogProduct> products, String message)? error,
+    TResult? Function(List<Product> products)? init,
+    TResult? Function(List<Product> products)? load,
+    TResult? Function(List<Product> products)? products,
+    TResult? Function(List<Product> products, String message)? error,
   }) {
     return products?.call(this.products);
   }
@@ -525,10 +519,10 @@ class _$CatalogProductsState implements CatalogProductsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CatalogProduct> products)? init,
-    TResult Function(List<CatalogProduct> products)? load,
-    TResult Function(List<CatalogProduct> products)? products,
-    TResult Function(List<CatalogProduct> products, String message)? error,
+    TResult Function(List<Product> products)? init,
+    TResult Function(List<Product> products)? load,
+    TResult Function(List<Product> products)? products,
+    TResult Function(List<Product> products, String message)? error,
     required TResult orElse(),
   }) {
     if (products != null) {
@@ -576,11 +570,11 @@ class _$CatalogProductsState implements CatalogProductsState {
 }
 
 abstract class CatalogProductsState implements CatalogState {
-  const factory CatalogProductsState(
-      {required final List<CatalogProduct> products}) = _$CatalogProductsState;
+  const factory CatalogProductsState({required final List<Product> products}) =
+      _$CatalogProductsState;
 
   @override
-  List<CatalogProduct> get products;
+  List<Product> get products;
   @override
   @JsonKey(ignore: true)
   _$$CatalogProductsStateCopyWith<_$CatalogProductsState> get copyWith =>
@@ -596,7 +590,7 @@ abstract class _$$CatalogProductsErrorStateCopyWith<$Res>
       __$$CatalogProductsErrorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CatalogProduct> products, String message});
+  $Res call({List<Product> products, String message});
 }
 
 /// @nodoc
@@ -617,7 +611,7 @@ class __$$CatalogProductsErrorStateCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -630,12 +624,12 @@ class __$$CatalogProductsErrorStateCopyWithImpl<$Res>
 
 class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   const _$CatalogProductsErrorState(
-      {required final List<CatalogProduct> products, this.message = 'Ошибка'})
+      {required final List<Product> products, this.message = 'Ошибка'})
       : _products = products;
 
-  final List<CatalogProduct> _products;
+  final List<Product> _products;
   @override
-  List<CatalogProduct> get products {
+  List<Product> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -673,11 +667,10 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CatalogProduct> products) init,
-    required TResult Function(List<CatalogProduct> products) load,
-    required TResult Function(List<CatalogProduct> products) products,
-    required TResult Function(List<CatalogProduct> products, String message)
-        error,
+    required TResult Function(List<Product> products) init,
+    required TResult Function(List<Product> products) load,
+    required TResult Function(List<Product> products) products,
+    required TResult Function(List<Product> products, String message) error,
   }) {
     return error(this.products, message);
   }
@@ -685,10 +678,10 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CatalogProduct> products)? init,
-    TResult? Function(List<CatalogProduct> products)? load,
-    TResult? Function(List<CatalogProduct> products)? products,
-    TResult? Function(List<CatalogProduct> products, String message)? error,
+    TResult? Function(List<Product> products)? init,
+    TResult? Function(List<Product> products)? load,
+    TResult? Function(List<Product> products)? products,
+    TResult? Function(List<Product> products, String message)? error,
   }) {
     return error?.call(this.products, message);
   }
@@ -696,10 +689,10 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CatalogProduct> products)? init,
-    TResult Function(List<CatalogProduct> products)? load,
-    TResult Function(List<CatalogProduct> products)? products,
-    TResult Function(List<CatalogProduct> products, String message)? error,
+    TResult Function(List<Product> products)? init,
+    TResult Function(List<Product> products)? load,
+    TResult Function(List<Product> products)? products,
+    TResult Function(List<Product> products, String message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -748,11 +741,11 @@ class _$CatalogProductsErrorState implements CatalogProductsErrorState {
 
 abstract class CatalogProductsErrorState implements CatalogState {
   const factory CatalogProductsErrorState(
-      {required final List<CatalogProduct> products,
+      {required final List<Product> products,
       final String message}) = _$CatalogProductsErrorState;
 
   @override
-  List<CatalogProduct> get products;
+  List<Product> get products;
   String get message;
   @override
   @JsonKey(ignore: true)

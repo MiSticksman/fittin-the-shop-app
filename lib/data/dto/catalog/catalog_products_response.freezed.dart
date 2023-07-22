@@ -24,7 +24,7 @@ mixin _$CatalogProductsResponse {
   int get count => throw _privateConstructorUsedError;
   String? get next => throw _privateConstructorUsedError;
   String? get previous => throw _privateConstructorUsedError;
-  List<CatalogProduct> get results => throw _privateConstructorUsedError;
+  List<Product> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,11 +38,7 @@ abstract class $CatalogProductsResponseCopyWith<$Res> {
           $Res Function(CatalogProductsResponse) then) =
       _$CatalogProductsResponseCopyWithImpl<$Res, CatalogProductsResponse>;
   @useResult
-  $Res call(
-      {int count,
-      String? next,
-      String? previous,
-      List<CatalogProduct> results});
+  $Res call({int count, String? next, String? previous, List<Product> results});
 }
 
 /// @nodoc
@@ -80,7 +76,7 @@ class _$CatalogProductsResponseCopyWithImpl<$Res,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
     ) as $Val);
   }
 }
@@ -93,11 +89,7 @@ abstract class _$$_CatalogProductsResponseCopyWith<$Res>
       __$$_CatalogProductsResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int count,
-      String? next,
-      String? previous,
-      List<CatalogProduct> results});
+  $Res call({int count, String? next, String? previous, List<Product> results});
 }
 
 /// @nodoc
@@ -133,7 +125,7 @@ class __$$_CatalogProductsResponseCopyWithImpl<$Res>
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<CatalogProduct>,
+              as List<Product>,
     ));
   }
 }
@@ -145,7 +137,7 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
       {required this.count,
       this.next,
       this.previous,
-      required final List<CatalogProduct> results})
+      required final List<Product> results})
       : _results = results;
 
   factory _$_CatalogProductsResponse.fromJson(Map<String, dynamic> json) =>
@@ -157,9 +149,9 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
   final String? next;
   @override
   final String? previous;
-  final List<CatalogProduct> _results;
+  final List<Product> _results;
   @override
-  List<CatalogProduct> get results {
+  List<Product> get results {
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
@@ -205,11 +197,10 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
 
 abstract class _CatalogProductsResponse implements CatalogProductsResponse {
   const factory _CatalogProductsResponse(
-          {required final int count,
-          final String? next,
-          final String? previous,
-          required final List<CatalogProduct> results}) =
-      _$_CatalogProductsResponse;
+      {required final int count,
+      final String? next,
+      final String? previous,
+      required final List<Product> results}) = _$_CatalogProductsResponse;
 
   factory _CatalogProductsResponse.fromJson(Map<String, dynamic> json) =
       _$_CatalogProductsResponse.fromJson;
@@ -221,7 +212,7 @@ abstract class _CatalogProductsResponse implements CatalogProductsResponse {
   @override
   String? get previous;
   @override
-  List<CatalogProduct> get results;
+  List<Product> get results;
   @override
   @JsonKey(ignore: true)
   _$$_CatalogProductsResponseCopyWith<_$_CatalogProductsResponse>
