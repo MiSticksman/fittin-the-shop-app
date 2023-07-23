@@ -23,6 +23,9 @@ mixin _$OrderState {
             String? userEmail, List<CartProductWithCount> products)
         init,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -30,12 +33,22 @@ mixin _$OrderState {
             String? deliveryName)
         deliveries,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)
         payments,
+    required TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        order,
     required TResult Function(
             List<CartProductWithCount> products, String message)
         error,
@@ -47,6 +60,9 @@ mixin _$OrderState {
             List<CartProductWithCount> products)?
         init,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -54,12 +70,22 @@ mixin _$OrderState {
             String? deliveryName)?
         deliveries,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult? Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult? Function(List<CartProductWithCount> products, String message)?
         error,
   }) =>
@@ -70,6 +96,9 @@ mixin _$OrderState {
             List<CartProductWithCount> products)?
         init,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -77,12 +106,22 @@ mixin _$OrderState {
             String? deliveryName)?
         deliveries,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult Function(List<CartProductWithCount> products, String message)?
         error,
     required TResult orElse(),
@@ -93,6 +132,7 @@ mixin _$OrderState {
     required TResult Function(InitOrderState value) init,
     required TResult Function(DeliveriesOrderState value) deliveries,
     required TResult Function(PaymentsOrderState value) payments,
+    required TResult Function(CreateOrderState value) order,
     required TResult Function(ErrorOrderState value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -101,6 +141,7 @@ mixin _$OrderState {
     TResult? Function(InitOrderState value)? init,
     TResult? Function(DeliveriesOrderState value)? deliveries,
     TResult? Function(PaymentsOrderState value)? payments,
+    TResult? Function(CreateOrderState value)? order,
     TResult? Function(ErrorOrderState value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +150,7 @@ mixin _$OrderState {
     TResult Function(InitOrderState value)? init,
     TResult Function(DeliveriesOrderState value)? deliveries,
     TResult Function(PaymentsOrderState value)? payments,
+    TResult Function(CreateOrderState value)? order,
     TResult Function(ErrorOrderState value)? error,
     required TResult orElse(),
   }) =>
@@ -206,13 +248,14 @@ class __$$InitOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitOrderState implements InitOrderState {
+class _$InitOrderState extends InitOrderState {
   const _$InitOrderState(
       {required this.userName,
       required this.userPhone,
       this.userEmail,
       required final List<CartProductWithCount> products})
-      : _products = products;
+      : _products = products,
+        super._();
 
   @override
   final String userName;
@@ -264,6 +307,9 @@ class _$InitOrderState implements InitOrderState {
             String? userEmail, List<CartProductWithCount> products)
         init,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -271,12 +317,22 @@ class _$InitOrderState implements InitOrderState {
             String? deliveryName)
         deliveries,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)
         payments,
+    required TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        order,
     required TResult Function(
             List<CartProductWithCount> products, String message)
         error,
@@ -291,6 +347,9 @@ class _$InitOrderState implements InitOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -298,12 +357,22 @@ class _$InitOrderState implements InitOrderState {
             String? deliveryName)?
         deliveries,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult? Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult? Function(List<CartProductWithCount> products, String message)?
         error,
   }) {
@@ -317,6 +386,9 @@ class _$InitOrderState implements InitOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -324,12 +396,22 @@ class _$InitOrderState implements InitOrderState {
             String? deliveryName)?
         deliveries,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult Function(List<CartProductWithCount> products, String message)?
         error,
     required TResult orElse(),
@@ -346,6 +428,7 @@ class _$InitOrderState implements InitOrderState {
     required TResult Function(InitOrderState value) init,
     required TResult Function(DeliveriesOrderState value) deliveries,
     required TResult Function(PaymentsOrderState value) payments,
+    required TResult Function(CreateOrderState value) order,
     required TResult Function(ErrorOrderState value) error,
   }) {
     return init(this);
@@ -357,6 +440,7 @@ class _$InitOrderState implements InitOrderState {
     TResult? Function(InitOrderState value)? init,
     TResult? Function(DeliveriesOrderState value)? deliveries,
     TResult? Function(PaymentsOrderState value)? payments,
+    TResult? Function(CreateOrderState value)? order,
     TResult? Function(ErrorOrderState value)? error,
   }) {
     return init?.call(this);
@@ -368,6 +452,7 @@ class _$InitOrderState implements InitOrderState {
     TResult Function(InitOrderState value)? init,
     TResult Function(DeliveriesOrderState value)? deliveries,
     TResult Function(PaymentsOrderState value)? payments,
+    TResult Function(CreateOrderState value)? order,
     TResult Function(ErrorOrderState value)? error,
     required TResult orElse(),
   }) {
@@ -378,12 +463,13 @@ class _$InitOrderState implements InitOrderState {
   }
 }
 
-abstract class InitOrderState implements OrderState {
+abstract class InitOrderState extends OrderState {
   const factory InitOrderState(
       {required final String userName,
       required final String userPhone,
       final String? userEmail,
       required final List<CartProductWithCount> products}) = _$InitOrderState;
+  const InitOrderState._() : super._();
 
   String get userName;
   String get userPhone;
@@ -405,7 +491,10 @@ abstract class _$$DeliveriesOrderStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<CartProductWithCount> products,
+      {String? userName,
+      String? userPhone,
+      String? userEmail,
+      List<CartProductWithCount> products,
       List<Delivery> deliveries,
       Delivery delivery,
       DateTime deliveryDate,
@@ -425,6 +514,9 @@ class __$$DeliveriesOrderStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userName = freezed,
+    Object? userPhone = freezed,
+    Object? userEmail = freezed,
     Object? products = null,
     Object? deliveries = null,
     Object? delivery = null,
@@ -432,6 +524,18 @@ class __$$DeliveriesOrderStateCopyWithImpl<$Res>
     Object? deliveryName = freezed,
   }) {
     return _then(_$DeliveriesOrderState(
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -466,16 +570,26 @@ class __$$DeliveriesOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeliveriesOrderState implements DeliveriesOrderState {
+class _$DeliveriesOrderState extends DeliveriesOrderState {
   const _$DeliveriesOrderState(
-      {required final List<CartProductWithCount> products,
+      {this.userName,
+      this.userPhone,
+      this.userEmail,
+      required final List<CartProductWithCount> products,
       required final List<Delivery> deliveries,
       required this.delivery,
       required this.deliveryDate,
       this.deliveryName})
       : _products = products,
-        _deliveries = deliveries;
+        _deliveries = deliveries,
+        super._();
 
+  @override
+  final String? userName;
+  @override
+  final String? userPhone;
+  @override
+  final String? userEmail;
   final List<CartProductWithCount> _products;
   @override
   List<CartProductWithCount> get products {
@@ -501,7 +615,7 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
 
   @override
   String toString() {
-    return 'OrderState.deliveries(products: $products, deliveries: $deliveries, delivery: $delivery, deliveryDate: $deliveryDate, deliveryName: $deliveryName)';
+    return 'OrderState.deliveries(userName: $userName, userPhone: $userPhone, userEmail: $userEmail, products: $products, deliveries: $deliveries, delivery: $delivery, deliveryDate: $deliveryDate, deliveryName: $deliveryName)';
   }
 
   @override
@@ -509,6 +623,12 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeliveriesOrderState &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.userPhone, userPhone) ||
+                other.userPhone == userPhone) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._deliveries, _deliveries) &&
@@ -523,6 +643,9 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      userName,
+      userPhone,
+      userEmail,
       const DeepCollectionEquality().hash(_products),
       const DeepCollectionEquality().hash(_deliveries),
       delivery,
@@ -543,6 +666,9 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             String? userEmail, List<CartProductWithCount> products)
         init,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -550,6 +676,9 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             String? deliveryName)
         deliveries,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -557,11 +686,18 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             Payment payment)
         payments,
     required TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        order,
+    required TResult Function(
             List<CartProductWithCount> products, String message)
         error,
   }) {
-    return deliveries(
-        products, this.deliveries, delivery, deliveryDate, deliveryName);
+    return deliveries(userName, userPhone, userEmail, products, this.deliveries,
+        delivery, deliveryDate, deliveryName);
   }
 
   @override
@@ -571,6 +707,9 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -578,17 +717,27 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             String? deliveryName)?
         deliveries,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult? Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult? Function(List<CartProductWithCount> products, String message)?
         error,
   }) {
-    return deliveries?.call(
-        products, this.deliveries, delivery, deliveryDate, deliveryName);
+    return deliveries?.call(userName, userPhone, userEmail, products,
+        this.deliveries, delivery, deliveryDate, deliveryName);
   }
 
   @override
@@ -598,6 +747,9 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -605,19 +757,29 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
             String? deliveryName)?
         deliveries,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult Function(List<CartProductWithCount> products, String message)?
         error,
     required TResult orElse(),
   }) {
     if (deliveries != null) {
-      return deliveries(
-          products, this.deliveries, delivery, deliveryDate, deliveryName);
+      return deliveries(userName, userPhone, userEmail, products,
+          this.deliveries, delivery, deliveryDate, deliveryName);
     }
     return orElse();
   }
@@ -628,6 +790,7 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
     required TResult Function(InitOrderState value) init,
     required TResult Function(DeliveriesOrderState value) deliveries,
     required TResult Function(PaymentsOrderState value) payments,
+    required TResult Function(CreateOrderState value) order,
     required TResult Function(ErrorOrderState value) error,
   }) {
     return deliveries(this);
@@ -639,6 +802,7 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
     TResult? Function(InitOrderState value)? init,
     TResult? Function(DeliveriesOrderState value)? deliveries,
     TResult? Function(PaymentsOrderState value)? payments,
+    TResult? Function(CreateOrderState value)? order,
     TResult? Function(ErrorOrderState value)? error,
   }) {
     return deliveries?.call(this);
@@ -650,6 +814,7 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
     TResult Function(InitOrderState value)? init,
     TResult Function(DeliveriesOrderState value)? deliveries,
     TResult Function(PaymentsOrderState value)? payments,
+    TResult Function(CreateOrderState value)? order,
     TResult Function(ErrorOrderState value)? error,
     required TResult orElse(),
   }) {
@@ -660,14 +825,21 @@ class _$DeliveriesOrderState implements DeliveriesOrderState {
   }
 }
 
-abstract class DeliveriesOrderState implements OrderState {
+abstract class DeliveriesOrderState extends OrderState {
   const factory DeliveriesOrderState(
-      {required final List<CartProductWithCount> products,
+      {final String? userName,
+      final String? userPhone,
+      final String? userEmail,
+      required final List<CartProductWithCount> products,
       required final List<Delivery> deliveries,
       required final Delivery delivery,
       required final DateTime deliveryDate,
       final String? deliveryName}) = _$DeliveriesOrderState;
+  const DeliveriesOrderState._() : super._();
 
+  String? get userName;
+  String? get userPhone;
+  String? get userEmail;
   @override
   List<CartProductWithCount> get products;
   List<Delivery> get deliveries;
@@ -689,7 +861,10 @@ abstract class _$$PaymentsOrderStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<CartProductWithCount> products,
+      {String? userName,
+      String? userPhone,
+      String? userEmail,
+      List<CartProductWithCount> products,
       List<Delivery> deliveries,
       Delivery delivery,
       List<Payment> payments,
@@ -710,6 +885,9 @@ class __$$PaymentsOrderStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userName = freezed,
+    Object? userPhone = freezed,
+    Object? userEmail = freezed,
     Object? products = null,
     Object? deliveries = null,
     Object? delivery = null,
@@ -717,6 +895,18 @@ class __$$PaymentsOrderStateCopyWithImpl<$Res>
     Object? payment = null,
   }) {
     return _then(_$PaymentsOrderState(
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -759,8 +949,374 @@ class __$$PaymentsOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PaymentsOrderState implements PaymentsOrderState {
+class _$PaymentsOrderState extends PaymentsOrderState {
   const _$PaymentsOrderState(
+      {this.userName,
+      this.userPhone,
+      this.userEmail,
+      required final List<CartProductWithCount> products,
+      required final List<Delivery> deliveries,
+      required this.delivery,
+      required final List<Payment> payments,
+      required this.payment})
+      : _products = products,
+        _deliveries = deliveries,
+        _payments = payments,
+        super._();
+
+  @override
+  final String? userName;
+  @override
+  final String? userPhone;
+  @override
+  final String? userEmail;
+  final List<CartProductWithCount> _products;
+  @override
+  List<CartProductWithCount> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  final List<Delivery> _deliveries;
+  @override
+  List<Delivery> get deliveries {
+    if (_deliveries is EqualUnmodifiableListView) return _deliveries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deliveries);
+  }
+
+  @override
+  final Delivery delivery;
+  final List<Payment> _payments;
+  @override
+  List<Payment> get payments {
+    if (_payments is EqualUnmodifiableListView) return _payments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_payments);
+  }
+
+  @override
+  final Payment payment;
+
+  @override
+  String toString() {
+    return 'OrderState.payments(userName: $userName, userPhone: $userPhone, userEmail: $userEmail, products: $products, deliveries: $deliveries, delivery: $delivery, payments: $payments, payment: $payment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentsOrderState &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.userPhone, userPhone) ||
+                other.userPhone == userPhone) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._deliveries, _deliveries) &&
+            (identical(other.delivery, delivery) ||
+                other.delivery == delivery) &&
+            const DeepCollectionEquality().equals(other._payments, _payments) &&
+            (identical(other.payment, payment) || other.payment == payment));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      userName,
+      userPhone,
+      userEmail,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_deliveries),
+      delivery,
+      const DeepCollectionEquality().hash(_payments),
+      payment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentsOrderStateCopyWith<_$PaymentsOrderState> get copyWith =>
+      __$$PaymentsOrderStateCopyWithImpl<_$PaymentsOrderState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userName, String userPhone,
+            String? userEmail, List<CartProductWithCount> products)
+        init,
+    required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            DateTime deliveryDate,
+            String? deliveryName)
+        deliveries,
+    required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        payments,
+    required TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        order,
+    required TResult Function(
+            List<CartProductWithCount> products, String message)
+        error,
+  }) {
+    return payments(userName, userPhone, userEmail, products, this.deliveries,
+        delivery, this.payments, payment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userName, String userPhone, String? userEmail,
+            List<CartProductWithCount> products)?
+        init,
+    TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            DateTime deliveryDate,
+            String? deliveryName)?
+        deliveries,
+    TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        payments,
+    TResult? Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
+    TResult? Function(List<CartProductWithCount> products, String message)?
+        error,
+  }) {
+    return payments?.call(userName, userPhone, userEmail, products,
+        this.deliveries, delivery, this.payments, payment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userName, String userPhone, String? userEmail,
+            List<CartProductWithCount> products)?
+        init,
+    TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            DateTime deliveryDate,
+            String? deliveryName)?
+        deliveries,
+    TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        payments,
+    TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
+    TResult Function(List<CartProductWithCount> products, String message)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (payments != null) {
+      return payments(userName, userPhone, userEmail, products, this.deliveries,
+          delivery, this.payments, payment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitOrderState value) init,
+    required TResult Function(DeliveriesOrderState value) deliveries,
+    required TResult Function(PaymentsOrderState value) payments,
+    required TResult Function(CreateOrderState value) order,
+    required TResult Function(ErrorOrderState value) error,
+  }) {
+    return payments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitOrderState value)? init,
+    TResult? Function(DeliveriesOrderState value)? deliveries,
+    TResult? Function(PaymentsOrderState value)? payments,
+    TResult? Function(CreateOrderState value)? order,
+    TResult? Function(ErrorOrderState value)? error,
+  }) {
+    return payments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitOrderState value)? init,
+    TResult Function(DeliveriesOrderState value)? deliveries,
+    TResult Function(PaymentsOrderState value)? payments,
+    TResult Function(CreateOrderState value)? order,
+    TResult Function(ErrorOrderState value)? error,
+    required TResult orElse(),
+  }) {
+    if (payments != null) {
+      return payments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaymentsOrderState extends OrderState {
+  const factory PaymentsOrderState(
+      {final String? userName,
+      final String? userPhone,
+      final String? userEmail,
+      required final List<CartProductWithCount> products,
+      required final List<Delivery> deliveries,
+      required final Delivery delivery,
+      required final List<Payment> payments,
+      required final Payment payment}) = _$PaymentsOrderState;
+  const PaymentsOrderState._() : super._();
+
+  String? get userName;
+  String? get userPhone;
+  String? get userEmail;
+  @override
+  List<CartProductWithCount> get products;
+  List<Delivery> get deliveries;
+  Delivery get delivery;
+  List<Payment> get payments;
+  Payment get payment;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentsOrderStateCopyWith<_$PaymentsOrderState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateOrderStateCopyWith<$Res>
+    implements $OrderStateCopyWith<$Res> {
+  factory _$$CreateOrderStateCopyWith(
+          _$CreateOrderState value, $Res Function(_$CreateOrderState) then) =
+      __$$CreateOrderStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<CartProductWithCount> products,
+      List<Delivery> deliveries,
+      Delivery delivery,
+      List<Payment> payments,
+      Payment payment});
+
+  $DeliveryCopyWith<$Res> get delivery;
+  $PaymentCopyWith<$Res> get payment;
+}
+
+/// @nodoc
+class __$$CreateOrderStateCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$CreateOrderState>
+    implements _$$CreateOrderStateCopyWith<$Res> {
+  __$$CreateOrderStateCopyWithImpl(
+      _$CreateOrderState _value, $Res Function(_$CreateOrderState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+    Object? deliveries = null,
+    Object? delivery = null,
+    Object? payments = null,
+    Object? payment = null,
+  }) {
+    return _then(_$CreateOrderState(
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<CartProductWithCount>,
+      deliveries: null == deliveries
+          ? _value._deliveries
+          : deliveries // ignore: cast_nullable_to_non_nullable
+              as List<Delivery>,
+      delivery: null == delivery
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
+              as Delivery,
+      payments: null == payments
+          ? _value._payments
+          : payments // ignore: cast_nullable_to_non_nullable
+              as List<Payment>,
+      payment: null == payment
+          ? _value.payment
+          : payment // ignore: cast_nullable_to_non_nullable
+              as Payment,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DeliveryCopyWith<$Res> get delivery {
+    return $DeliveryCopyWith<$Res>(_value.delivery, (value) {
+      return _then(_value.copyWith(delivery: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentCopyWith<$Res> get payment {
+    return $PaymentCopyWith<$Res>(_value.payment, (value) {
+      return _then(_value.copyWith(payment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateOrderState extends CreateOrderState {
+  const _$CreateOrderState(
       {required final List<CartProductWithCount> products,
       required final List<Delivery> deliveries,
       required this.delivery,
@@ -768,7 +1324,8 @@ class _$PaymentsOrderState implements PaymentsOrderState {
       required this.payment})
       : _products = products,
         _deliveries = deliveries,
-        _payments = payments;
+        _payments = payments,
+        super._();
 
   final List<CartProductWithCount> _products;
   @override
@@ -801,14 +1358,14 @@ class _$PaymentsOrderState implements PaymentsOrderState {
 
   @override
   String toString() {
-    return 'OrderState.payments(products: $products, deliveries: $deliveries, delivery: $delivery, payments: $payments, payment: $payment)';
+    return 'OrderState.order(products: $products, deliveries: $deliveries, delivery: $delivery, payments: $payments, payment: $payment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaymentsOrderState &&
+            other is _$CreateOrderState &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._deliveries, _deliveries) &&
@@ -830,9 +1387,8 @@ class _$PaymentsOrderState implements PaymentsOrderState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaymentsOrderStateCopyWith<_$PaymentsOrderState> get copyWith =>
-      __$$PaymentsOrderStateCopyWithImpl<_$PaymentsOrderState>(
-          this, _$identity);
+  _$$CreateOrderStateCopyWith<_$CreateOrderState> get copyWith =>
+      __$$CreateOrderStateCopyWithImpl<_$CreateOrderState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -841,6 +1397,9 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             String? userEmail, List<CartProductWithCount> products)
         init,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -848,6 +1407,9 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             String? deliveryName)
         deliveries,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -855,11 +1417,17 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             Payment payment)
         payments,
     required TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        order,
+    required TResult Function(
             List<CartProductWithCount> products, String message)
         error,
   }) {
-    return payments(
-        products, this.deliveries, delivery, this.payments, payment);
+    return order(products, this.deliveries, delivery, this.payments, payment);
   }
 
   @override
@@ -869,6 +1437,9 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -876,16 +1447,26 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             String? deliveryName)?
         deliveries,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult? Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult? Function(List<CartProductWithCount> products, String message)?
         error,
   }) {
-    return payments?.call(
+    return order?.call(
         products, this.deliveries, delivery, this.payments, payment);
   }
 
@@ -896,6 +1477,9 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -903,19 +1487,28 @@ class _$PaymentsOrderState implements PaymentsOrderState {
             String? deliveryName)?
         deliveries,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult Function(List<CartProductWithCount> products, String message)?
         error,
     required TResult orElse(),
   }) {
-    if (payments != null) {
-      return payments(
-          products, this.deliveries, delivery, this.payments, payment);
+    if (order != null) {
+      return order(products, this.deliveries, delivery, this.payments, payment);
     }
     return orElse();
   }
@@ -926,9 +1519,10 @@ class _$PaymentsOrderState implements PaymentsOrderState {
     required TResult Function(InitOrderState value) init,
     required TResult Function(DeliveriesOrderState value) deliveries,
     required TResult Function(PaymentsOrderState value) payments,
+    required TResult Function(CreateOrderState value) order,
     required TResult Function(ErrorOrderState value) error,
   }) {
-    return payments(this);
+    return order(this);
   }
 
   @override
@@ -937,9 +1531,10 @@ class _$PaymentsOrderState implements PaymentsOrderState {
     TResult? Function(InitOrderState value)? init,
     TResult? Function(DeliveriesOrderState value)? deliveries,
     TResult? Function(PaymentsOrderState value)? payments,
+    TResult? Function(CreateOrderState value)? order,
     TResult? Function(ErrorOrderState value)? error,
   }) {
-    return payments?.call(this);
+    return order?.call(this);
   }
 
   @override
@@ -948,23 +1543,25 @@ class _$PaymentsOrderState implements PaymentsOrderState {
     TResult Function(InitOrderState value)? init,
     TResult Function(DeliveriesOrderState value)? deliveries,
     TResult Function(PaymentsOrderState value)? payments,
+    TResult Function(CreateOrderState value)? order,
     TResult Function(ErrorOrderState value)? error,
     required TResult orElse(),
   }) {
-    if (payments != null) {
-      return payments(this);
+    if (order != null) {
+      return order(this);
     }
     return orElse();
   }
 }
 
-abstract class PaymentsOrderState implements OrderState {
-  const factory PaymentsOrderState(
+abstract class CreateOrderState extends OrderState {
+  const factory CreateOrderState(
       {required final List<CartProductWithCount> products,
       required final List<Delivery> deliveries,
       required final Delivery delivery,
       required final List<Payment> payments,
-      required final Payment payment}) = _$PaymentsOrderState;
+      required final Payment payment}) = _$CreateOrderState;
+  const CreateOrderState._() : super._();
 
   @override
   List<CartProductWithCount> get products;
@@ -974,7 +1571,7 @@ abstract class PaymentsOrderState implements OrderState {
   Payment get payment;
   @override
   @JsonKey(ignore: true)
-  _$$PaymentsOrderStateCopyWith<_$PaymentsOrderState> get copyWith =>
+  _$$CreateOrderStateCopyWith<_$CreateOrderState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1018,11 +1615,12 @@ class __$$ErrorOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorOrderState implements ErrorOrderState {
+class _$ErrorOrderState extends ErrorOrderState {
   const _$ErrorOrderState(
       {required final List<CartProductWithCount> products,
       this.message = 'Ошибка'})
-      : _products = products;
+      : _products = products,
+        super._();
 
   final List<CartProductWithCount> _products;
   @override
@@ -1067,6 +1665,9 @@ class _$ErrorOrderState implements ErrorOrderState {
             String? userEmail, List<CartProductWithCount> products)
         init,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -1074,12 +1675,22 @@ class _$ErrorOrderState implements ErrorOrderState {
             String? deliveryName)
         deliveries,
     required TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)
         payments,
+    required TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)
+        order,
     required TResult Function(
             List<CartProductWithCount> products, String message)
         error,
@@ -1094,6 +1705,9 @@ class _$ErrorOrderState implements ErrorOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -1101,12 +1715,22 @@ class _$ErrorOrderState implements ErrorOrderState {
             String? deliveryName)?
         deliveries,
     TResult? Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult? Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult? Function(List<CartProductWithCount> products, String message)?
         error,
   }) {
@@ -1120,6 +1744,9 @@ class _$ErrorOrderState implements ErrorOrderState {
             List<CartProductWithCount> products)?
         init,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
@@ -1127,12 +1754,22 @@ class _$ErrorOrderState implements ErrorOrderState {
             String? deliveryName)?
         deliveries,
     TResult Function(
+            String? userName,
+            String? userPhone,
+            String? userEmail,
             List<CartProductWithCount> products,
             List<Delivery> deliveries,
             Delivery delivery,
             List<Payment> payments,
             Payment payment)?
         payments,
+    TResult Function(
+            List<CartProductWithCount> products,
+            List<Delivery> deliveries,
+            Delivery delivery,
+            List<Payment> payments,
+            Payment payment)?
+        order,
     TResult Function(List<CartProductWithCount> products, String message)?
         error,
     required TResult orElse(),
@@ -1149,6 +1786,7 @@ class _$ErrorOrderState implements ErrorOrderState {
     required TResult Function(InitOrderState value) init,
     required TResult Function(DeliveriesOrderState value) deliveries,
     required TResult Function(PaymentsOrderState value) payments,
+    required TResult Function(CreateOrderState value) order,
     required TResult Function(ErrorOrderState value) error,
   }) {
     return error(this);
@@ -1160,6 +1798,7 @@ class _$ErrorOrderState implements ErrorOrderState {
     TResult? Function(InitOrderState value)? init,
     TResult? Function(DeliveriesOrderState value)? deliveries,
     TResult? Function(PaymentsOrderState value)? payments,
+    TResult? Function(CreateOrderState value)? order,
     TResult? Function(ErrorOrderState value)? error,
   }) {
     return error?.call(this);
@@ -1171,6 +1810,7 @@ class _$ErrorOrderState implements ErrorOrderState {
     TResult Function(InitOrderState value)? init,
     TResult Function(DeliveriesOrderState value)? deliveries,
     TResult Function(PaymentsOrderState value)? payments,
+    TResult Function(CreateOrderState value)? order,
     TResult Function(ErrorOrderState value)? error,
     required TResult orElse(),
   }) {
@@ -1181,10 +1821,11 @@ class _$ErrorOrderState implements ErrorOrderState {
   }
 }
 
-abstract class ErrorOrderState implements OrderState {
+abstract class ErrorOrderState extends OrderState {
   const factory ErrorOrderState(
       {required final List<CartProductWithCount> products,
       final String message}) = _$ErrorOrderState;
+  const ErrorOrderState._() : super._();
 
   @override
   List<CartProductWithCount> get products;
@@ -1197,32 +1838,51 @@ abstract class ErrorOrderState implements OrderState {
 
 /// @nodoc
 mixin _$OrderEvent {
+  String? get userName => throw _privateConstructorUsedError;
+  String? get userPhone => throw _privateConstructorUsedError;
+  String? get userEmail => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
-    required TResult Function(Payment payment) selectPayment,
+    required TResult Function(
+            String? userName, String? userPhone, String? userEmail)
+        loadDeliveries,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery delivery)
+        selectDelivery,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery? delivery, Payment payment)
+        selectPayment,
     required TResult Function(String userName, String userPhone,
-            String? userEmail, String? comment)
+            String userEmail, String? comment)
         orderCreate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
-    TResult? Function(Payment payment)? selectPayment,
-    TResult? Function(String userName, String userPhone, String? userEmail,
+    TResult? Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult? Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
-    TResult Function(Payment payment)? selectPayment,
-    TResult Function(String userName, String userPhone, String? userEmail,
+    TResult Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
     required TResult orElse(),
@@ -1253,6 +1913,10 @@ mixin _$OrderEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $OrderEventCopyWith<OrderEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1260,6 +1924,8 @@ abstract class $OrderEventCopyWith<$Res> {
   factory $OrderEventCopyWith(
           OrderEvent value, $Res Function(OrderEvent) then) =
       _$OrderEventCopyWithImpl<$Res, OrderEvent>;
+  @useResult
+  $Res call({String userName, String userPhone, String userEmail});
 }
 
 /// @nodoc
@@ -1271,13 +1937,40 @@ class _$OrderEventCopyWithImpl<$Res, $Val extends OrderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userName = null,
+    Object? userPhone = null,
+    Object? userEmail = null,
+  }) {
+    return _then(_value.copyWith(
+      userName: null == userName
+          ? _value.userName!
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userPhone: null == userPhone
+          ? _value.userPhone!
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as String,
+      userEmail: null == userEmail
+          ? _value.userEmail!
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$LoadDeliveriesOrderEventCopyWith<$Res> {
+abstract class _$$LoadDeliveriesOrderEventCopyWith<$Res>
+    implements $OrderEventCopyWith<$Res> {
   factory _$$LoadDeliveriesOrderEventCopyWith(_$LoadDeliveriesOrderEvent value,
           $Res Function(_$LoadDeliveriesOrderEvent) then) =
       __$$LoadDeliveriesOrderEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? userName, String? userPhone, String? userEmail});
 }
 
 /// @nodoc
@@ -1287,67 +1980,128 @@ class __$$LoadDeliveriesOrderEventCopyWithImpl<$Res>
   __$$LoadDeliveriesOrderEventCopyWithImpl(_$LoadDeliveriesOrderEvent _value,
       $Res Function(_$LoadDeliveriesOrderEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userName = freezed,
+    Object? userPhone = freezed,
+    Object? userEmail = freezed,
+  }) {
+    return _then(_$LoadDeliveriesOrderEvent(
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
-  const _$LoadDeliveriesOrderEvent();
+  const _$LoadDeliveriesOrderEvent(
+      {this.userName, this.userPhone, this.userEmail});
+
+  @override
+  final String? userName;
+  @override
+  final String? userPhone;
+  @override
+  final String? userEmail;
 
   @override
   String toString() {
-    return 'OrderEvent.loadDeliveries()';
+    return 'OrderEvent.loadDeliveries(userName: $userName, userPhone: $userPhone, userEmail: $userEmail)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadDeliveriesOrderEvent);
+            other is _$LoadDeliveriesOrderEvent &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.userPhone, userPhone) ||
+                other.userPhone == userPhone) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, userName, userPhone, userEmail);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadDeliveriesOrderEventCopyWith<_$LoadDeliveriesOrderEvent>
+      get copyWith =>
+          __$$LoadDeliveriesOrderEventCopyWithImpl<_$LoadDeliveriesOrderEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
-    required TResult Function(Payment payment) selectPayment,
+    required TResult Function(
+            String? userName, String? userPhone, String? userEmail)
+        loadDeliveries,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery delivery)
+        selectDelivery,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery? delivery, Payment payment)
+        selectPayment,
     required TResult Function(String userName, String userPhone,
-            String? userEmail, String? comment)
+            String userEmail, String? comment)
         orderCreate,
   }) {
-    return loadDeliveries();
+    return loadDeliveries(userName, userPhone, userEmail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
-    TResult? Function(Payment payment)? selectPayment,
-    TResult? Function(String userName, String userPhone, String? userEmail,
+    TResult? Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult? Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
   }) {
-    return loadDeliveries?.call();
+    return loadDeliveries?.call(userName, userPhone, userEmail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
-    TResult Function(Payment payment)? selectPayment,
-    TResult Function(String userName, String userPhone, String? userEmail,
+    TResult Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
     if (loadDeliveries != null) {
-      return loadDeliveries();
+      return loadDeliveries(userName, userPhone, userEmail);
     }
     return orElse();
   }
@@ -1391,16 +2145,36 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
 }
 
 abstract class LoadDeliveriesOrderEvent implements OrderEvent {
-  const factory LoadDeliveriesOrderEvent() = _$LoadDeliveriesOrderEvent;
+  const factory LoadDeliveriesOrderEvent(
+      {final String? userName,
+      final String? userPhone,
+      final String? userEmail}) = _$LoadDeliveriesOrderEvent;
+
+  @override
+  String? get userName;
+  @override
+  String? get userPhone;
+  @override
+  String? get userEmail;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadDeliveriesOrderEventCopyWith<_$LoadDeliveriesOrderEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SelectDeliveryOrderEventCopyWith<$Res> {
+abstract class _$$SelectDeliveryOrderEventCopyWith<$Res>
+    implements $OrderEventCopyWith<$Res> {
   factory _$$SelectDeliveryOrderEventCopyWith(_$SelectDeliveryOrderEvent value,
           $Res Function(_$SelectDeliveryOrderEvent) then) =
       __$$SelectDeliveryOrderEventCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({Delivery delivery});
+  $Res call(
+      {String? userName,
+      String? userPhone,
+      String? userEmail,
+      Delivery delivery});
 
   $DeliveryCopyWith<$Res> get delivery;
 }
@@ -1416,9 +2190,24 @@ class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userName = freezed,
+    Object? userPhone = freezed,
+    Object? userEmail = freezed,
     Object? delivery = null,
   }) {
     return _then(_$SelectDeliveryOrderEvent(
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
       delivery: null == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
@@ -1438,14 +2227,21 @@ class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
-  const _$SelectDeliveryOrderEvent({required this.delivery});
+  const _$SelectDeliveryOrderEvent(
+      {this.userName, this.userPhone, this.userEmail, required this.delivery});
 
+  @override
+  final String? userName;
+  @override
+  final String? userPhone;
+  @override
+  final String? userEmail;
   @override
   final Delivery delivery;
 
   @override
   String toString() {
-    return 'OrderEvent.selectDelivery(delivery: $delivery)';
+    return 'OrderEvent.selectDelivery(userName: $userName, userPhone: $userPhone, userEmail: $userEmail, delivery: $delivery)';
   }
 
   @override
@@ -1453,12 +2249,19 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectDeliveryOrderEvent &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.userPhone, userPhone) ||
+                other.userPhone == userPhone) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail) &&
             (identical(other.delivery, delivery) ||
                 other.delivery == delivery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, delivery);
+  int get hashCode =>
+      Object.hash(runtimeType, userName, userPhone, userEmail, delivery);
 
   @JsonKey(ignore: true)
   @override
@@ -1471,42 +2274,58 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
-    required TResult Function(Payment payment) selectPayment,
+    required TResult Function(
+            String? userName, String? userPhone, String? userEmail)
+        loadDeliveries,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery delivery)
+        selectDelivery,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery? delivery, Payment payment)
+        selectPayment,
     required TResult Function(String userName, String userPhone,
-            String? userEmail, String? comment)
+            String userEmail, String? comment)
         orderCreate,
   }) {
-    return selectDelivery(delivery);
+    return selectDelivery(userName, userPhone, userEmail, delivery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
-    TResult? Function(Payment payment)? selectPayment,
-    TResult? Function(String userName, String userPhone, String? userEmail,
+    TResult? Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult? Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
   }) {
-    return selectDelivery?.call(delivery);
+    return selectDelivery?.call(userName, userPhone, userEmail, delivery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
-    TResult Function(Payment payment)? selectPayment,
-    TResult Function(String userName, String userPhone, String? userEmail,
+    TResult Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
     if (selectDelivery != null) {
-      return selectDelivery(delivery);
+      return selectDelivery(userName, userPhone, userEmail, delivery);
     }
     return orElse();
   }
@@ -1550,23 +2369,41 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
 }
 
 abstract class SelectDeliveryOrderEvent implements OrderEvent {
-  const factory SelectDeliveryOrderEvent({required final Delivery delivery}) =
-      _$SelectDeliveryOrderEvent;
+  const factory SelectDeliveryOrderEvent(
+      {final String? userName,
+      final String? userPhone,
+      final String? userEmail,
+      required final Delivery delivery}) = _$SelectDeliveryOrderEvent;
 
+  @override
+  String? get userName;
+  @override
+  String? get userPhone;
+  @override
+  String? get userEmail;
   Delivery get delivery;
+  @override
   @JsonKey(ignore: true)
   _$$SelectDeliveryOrderEventCopyWith<_$SelectDeliveryOrderEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SelectPaymentOrderEventCopyWith<$Res> {
+abstract class _$$SelectPaymentOrderEventCopyWith<$Res>
+    implements $OrderEventCopyWith<$Res> {
   factory _$$SelectPaymentOrderEventCopyWith(_$SelectPaymentOrderEvent value,
           $Res Function(_$SelectPaymentOrderEvent) then) =
       __$$SelectPaymentOrderEventCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({Payment payment});
+  $Res call(
+      {String? userName,
+      String? userPhone,
+      String? userEmail,
+      Delivery? delivery,
+      Payment payment});
 
+  $DeliveryCopyWith<$Res>? get delivery;
   $PaymentCopyWith<$Res> get payment;
 }
 
@@ -1581,14 +2418,46 @@ class __$$SelectPaymentOrderEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userName = freezed,
+    Object? userPhone = freezed,
+    Object? userEmail = freezed,
+    Object? delivery = freezed,
     Object? payment = null,
   }) {
     return _then(_$SelectPaymentOrderEvent(
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      delivery: freezed == delivery
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
+              as Delivery?,
       payment: null == payment
           ? _value.payment
           : payment // ignore: cast_nullable_to_non_nullable
               as Payment,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DeliveryCopyWith<$Res>? get delivery {
+    if (_value.delivery == null) {
+      return null;
+    }
+
+    return $DeliveryCopyWith<$Res>(_value.delivery!, (value) {
+      return _then(_value.copyWith(delivery: value));
+    });
   }
 
   @override
@@ -1603,14 +2472,27 @@ class __$$SelectPaymentOrderEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
-  const _$SelectPaymentOrderEvent({required this.payment});
+  const _$SelectPaymentOrderEvent(
+      {this.userName,
+      this.userPhone,
+      this.userEmail,
+      this.delivery,
+      required this.payment});
 
+  @override
+  final String? userName;
+  @override
+  final String? userPhone;
+  @override
+  final String? userEmail;
+  @override
+  final Delivery? delivery;
   @override
   final Payment payment;
 
   @override
   String toString() {
-    return 'OrderEvent.selectPayment(payment: $payment)';
+    return 'OrderEvent.selectPayment(userName: $userName, userPhone: $userPhone, userEmail: $userEmail, delivery: $delivery, payment: $payment)';
   }
 
   @override
@@ -1618,11 +2500,20 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectPaymentOrderEvent &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.userPhone, userPhone) ||
+                other.userPhone == userPhone) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail) &&
+            (identical(other.delivery, delivery) ||
+                other.delivery == delivery) &&
             (identical(other.payment, payment) || other.payment == payment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, payment);
+  int get hashCode => Object.hash(
+      runtimeType, userName, userPhone, userEmail, delivery, payment);
 
   @JsonKey(ignore: true)
   @override
@@ -1634,42 +2525,59 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
-    required TResult Function(Payment payment) selectPayment,
+    required TResult Function(
+            String? userName, String? userPhone, String? userEmail)
+        loadDeliveries,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery delivery)
+        selectDelivery,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery? delivery, Payment payment)
+        selectPayment,
     required TResult Function(String userName, String userPhone,
-            String? userEmail, String? comment)
+            String userEmail, String? comment)
         orderCreate,
   }) {
-    return selectPayment(payment);
+    return selectPayment(userName, userPhone, userEmail, delivery, payment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
-    TResult? Function(Payment payment)? selectPayment,
-    TResult? Function(String userName, String userPhone, String? userEmail,
+    TResult? Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult? Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
   }) {
-    return selectPayment?.call(payment);
+    return selectPayment?.call(
+        userName, userPhone, userEmail, delivery, payment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
-    TResult Function(Payment payment)? selectPayment,
-    TResult Function(String userName, String userPhone, String? userEmail,
+    TResult Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
     if (selectPayment != null) {
-      return selectPayment(payment);
+      return selectPayment(userName, userPhone, userEmail, delivery, payment);
     }
     return orElse();
   }
@@ -1713,23 +2621,37 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
 }
 
 abstract class SelectPaymentOrderEvent implements OrderEvent {
-  const factory SelectPaymentOrderEvent({required final Payment payment}) =
-      _$SelectPaymentOrderEvent;
+  const factory SelectPaymentOrderEvent(
+      {final String? userName,
+      final String? userPhone,
+      final String? userEmail,
+      final Delivery? delivery,
+      required final Payment payment}) = _$SelectPaymentOrderEvent;
 
+  @override
+  String? get userName;
+  @override
+  String? get userPhone;
+  @override
+  String? get userEmail;
+  Delivery? get delivery;
   Payment get payment;
+  @override
   @JsonKey(ignore: true)
   _$$SelectPaymentOrderEventCopyWith<_$SelectPaymentOrderEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OrderCreateOrderEventCopyWith<$Res> {
+abstract class _$$OrderCreateOrderEventCopyWith<$Res>
+    implements $OrderEventCopyWith<$Res> {
   factory _$$OrderCreateOrderEventCopyWith(_$OrderCreateOrderEvent value,
           $Res Function(_$OrderCreateOrderEvent) then) =
       __$$OrderCreateOrderEventCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
-      {String userName, String userPhone, String? userEmail, String? comment});
+      {String userName, String userPhone, String userEmail, String? comment});
 }
 
 /// @nodoc
@@ -1745,7 +2667,7 @@ class __$$OrderCreateOrderEventCopyWithImpl<$Res>
   $Res call({
     Object? userName = null,
     Object? userPhone = null,
-    Object? userEmail = freezed,
+    Object? userEmail = null,
     Object? comment = freezed,
   }) {
     return _then(_$OrderCreateOrderEvent(
@@ -1757,10 +2679,10 @@ class __$$OrderCreateOrderEventCopyWithImpl<$Res>
           ? _value.userPhone
           : userPhone // ignore: cast_nullable_to_non_nullable
               as String,
-      userEmail: freezed == userEmail
+      userEmail: null == userEmail
           ? _value.userEmail
           : userEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -1775,7 +2697,7 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   const _$OrderCreateOrderEvent(
       {required this.userName,
       required this.userPhone,
-      this.userEmail,
+      required this.userEmail,
       this.comment});
 
   @override
@@ -1783,7 +2705,7 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @override
   final String userPhone;
   @override
-  final String? userEmail;
+  final String userEmail;
   @override
   final String? comment;
 
@@ -1820,11 +2742,17 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
-    required TResult Function(Payment payment) selectPayment,
+    required TResult Function(
+            String? userName, String? userPhone, String? userEmail)
+        loadDeliveries,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery delivery)
+        selectDelivery,
+    required TResult Function(String? userName, String? userPhone,
+            String? userEmail, Delivery? delivery, Payment payment)
+        selectPayment,
     required TResult Function(String userName, String userPhone,
-            String? userEmail, String? comment)
+            String userEmail, String? comment)
         orderCreate,
   }) {
     return orderCreate(userName, userPhone, userEmail, comment);
@@ -1833,10 +2761,15 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
-    TResult? Function(Payment payment)? selectPayment,
-    TResult? Function(String userName, String userPhone, String? userEmail,
+    TResult? Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult? Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult? Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
   }) {
@@ -1846,10 +2779,15 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
-    TResult Function(Payment payment)? selectPayment,
-    TResult Function(String userName, String userPhone, String? userEmail,
+    TResult Function(String? userName, String? userPhone, String? userEmail)?
+        loadDeliveries,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery delivery)?
+        selectDelivery,
+    TResult Function(String? userName, String? userPhone, String? userEmail,
+            Delivery? delivery, Payment payment)?
+        selectPayment,
+    TResult Function(String userName, String userPhone, String userEmail,
             String? comment)?
         orderCreate,
     required TResult orElse(),
@@ -1902,13 +2840,17 @@ abstract class OrderCreateOrderEvent implements OrderEvent {
   const factory OrderCreateOrderEvent(
       {required final String userName,
       required final String userPhone,
-      final String? userEmail,
+      required final String userEmail,
       final String? comment}) = _$OrderCreateOrderEvent;
 
+  @override
   String get userName;
+  @override
   String get userPhone;
-  String? get userEmail;
+  @override
+  String get userEmail;
   String? get comment;
+  @override
   @JsonKey(ignore: true)
   _$$OrderCreateOrderEventCopyWith<_$OrderCreateOrderEvent> get copyWith =>
       throw _privateConstructorUsedError;

@@ -1,9 +1,12 @@
+import 'package:auto_route/annotations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/data/dto/cart/cart_update.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 
+
+@RoutePage()
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 

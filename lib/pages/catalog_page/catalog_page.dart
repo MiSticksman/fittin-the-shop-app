@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,8 @@ import 'package:the_shop/data/repository/catalog_repository.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/catalog_page/bloc/catalog_bloc.dart';
 
+
+@RoutePage()
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
 
@@ -39,7 +42,7 @@ class _CatalogPageState extends State<CatalogPage> {
               );
             }
             if (state is CatalogProductsLoadingState) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             }
 
             final products = state.products;

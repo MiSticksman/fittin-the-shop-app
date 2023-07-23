@@ -1,8 +1,10 @@
+import 'package:auto_route/annotations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/app/app_components.dart';
 import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
+import 'package:the_shop/data/service/cart_service/cart_service.dart';
 import 'package:the_shop/domain/models/payment/payment.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/components/constants.dart';
@@ -12,6 +14,8 @@ import 'package:the_shop/pages/order_page/bloc/order_bloc.dart';
 import 'package:the_shop/pages/order_page/widgets/sliver_deliveries_widgets.dart';
 import 'package:the_shop/pages/order_page/widgets/sliver_order_user_data.dart';
 
+
+@RoutePage()
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
 
@@ -25,20 +29,44 @@ class _OrderPageState extends State<OrderPage> {
   late final TextEditingController emailTextController;
   late final TextEditingController commentTextController;
 
+  final CartService _cartService = AppComponents().cartService;
+
+  // late final List<CartProductWithCount> products;
+
   @override
   void initState() {
     super.initState();
     init();
   }
 
-  void init() {
+  void init() async {
     nameTextController = TextEditingController();
     phoneTextController = TextEditingController();
     emailTextController = TextEditingController();
+    commentTextController = TextEditingController();
+    nameTextController.text = 'Vadim';
+    phoneTextController.text = '9290091219';
+    emailTextController.text = 'vadim02101@gmail.com';
+    // products = await getCartItems();
+    // await getCartItems();
+
   }
+
+  // Future<List<CartProductWithCount>> getCartItems() async {
+  //
+  //
+  //   final res = await _cartService.calculateCart();
+  //   return res.products
+  //       .map(
+  //         (p) => CartProductWithCount(productId: p.product.id, count: p.count),
+  //   )
+  //       .toList();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    // context.read<CartBloc>().add(const LoadCartEvent());
+    // final c = context.read<CartBloc>().state.cart;
     final theme = Theme.of(context);
     final border = OutlineInputBorder(
       borderSide: BorderSide(
@@ -48,27 +76,36 @@ class _OrderPageState extends State<OrderPage> {
       borderRadius: const BorderRadius.all(Radius.circular(10)),
     );
 
-    return BlocProvider(
-      create: (context) => OrderBloc(
-        cartService: AppComponents().cartService,
-        catalogService: AppComponents().catalogService,
-        deliveryService: AppComponents().deliveryService,
-        paymentService: AppComponents().paymentService,
-        orderService: AppComponents().orderService,
-        products: context
-            .read<CartBloc>()
-            .state
-            .cart
-            .products
-            .map(
-              (p) =>
-                  CartProductWithCount(productId: p.product.id, count: p.count),
-            )
-            .toList(),
-        userName: 'aaaaaaaa aldwld',
-        userPhone: '800',
-        userEmail: '@',
-      )..add(const LoadDeliveriesOrderEvent()),
+    return BlocProvider<OrderBloc>(
+      create: (context) {
+        final OrderBloc bloc = OrderBloc(
+          catalogService: AppComponents().catalogService,
+          deliveryService: AppComponents().deliveryService,
+          paymentService: AppComponents().paymentService,
+          orderService: AppComponents().orderService,
+          products: context
+              .read<CartBloc>()
+              .state
+              .cart
+              .products
+              .map(
+                (p) =>
+                CartProductWithCount(productId: p.product.id, count: p.count),
+          )
+              .toList(),
+          userName: nameTextController.text,
+          userPhone: phoneTextController.text,
+          userEmail: emailTextController.text,
+        );
+        bloc.add(
+          LoadDeliveriesOrderEvent(
+            userName: nameTextController.text,
+            userPhone: phoneTextController.text,
+            userEmail: emailTextController.text,
+          ),
+        );
+        return bloc;
+      },
       child: Scaffold(
         appBar: AppBar(
           title: const Text(''),
@@ -82,7 +119,6 @@ class _OrderPageState extends State<OrderPage> {
               ),
               body:
                   BlocBuilder<OrderBloc, OrderState>(builder: (context, state) {
-                nameTextController.text = 'vadim';
                 if (state is InitOrderState) {
                   nameTextController.text = state.userName;
                   phoneTextController.text = state.userPhone;
@@ -119,9 +155,17 @@ class _OrderPageState extends State<OrderPage> {
                           phoneTextController: phoneTextController,
                           emailTextController: emailTextController,
                         ),
-                        SliverBar(theme: theme, title: 'Доставки'),
+                        SliverBar(
+                          theme: theme,
+                          title: 'Доставки',
+                        ),
                         SliverDeliveriesWidget(
-                            deliveries: state.deliveries, theme: theme),
+                          deliveries: state.deliveries,
+                          theme: theme,
+                          nameTextController: nameTextController,
+                          phoneTextController: phoneTextController,
+                          emailTextController: emailTextController,
+                        ),
                         SliverDeliveriesInfoWidget(
                           delivery: state.delivery,
                           theme: theme,
@@ -133,7 +177,6 @@ class _OrderPageState extends State<OrderPage> {
                   );
                 }
                 if (state is PaymentsOrderState) {
-                  commentTextController = TextEditingController();
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
@@ -147,14 +190,26 @@ class _OrderPageState extends State<OrderPage> {
                           phoneTextController: phoneTextController,
                           emailTextController: emailTextController,
                         ),
-                        SliverBar(theme: theme, title: 'Способы оплаты'),
+                        SliverBar(
+                          theme: theme,
+                          title: 'Доставки',
+                        ),
                         SliverDeliveriesWidget(
-                            deliveries: state.deliveries, theme: theme),
+                          deliveries: state.deliveries,
+                          theme: theme,
+                          nameTextController: nameTextController,
+                          phoneTextController: phoneTextController,
+                          emailTextController: emailTextController,
+                        ),
                         SliverDeliveriesInfoWidget(
                           delivery: state.delivery,
                           theme: theme,
                           border: border,
                           emailTextController: emailTextController,
+                        ),
+                        SliverBar(
+                          theme: theme,
+                          title: 'Способы оплаты',
                         ),
                         SliverList(
                           delegate: SliverChildBuilderDelegate(
@@ -167,7 +222,11 @@ class _OrderPageState extends State<OrderPage> {
                                 onTap: () {
                                   context.read<OrderBloc>().add(
                                         SelectPaymentOrderEvent(
-                                            payment: payment),
+                                          payment: payment,
+                                          userName: nameTextController.text,
+                                          userPhone: phoneTextController.text,
+                                          userEmail: emailTextController.text,
+                                        ),
                                       );
                                 },
                               );
@@ -178,6 +237,9 @@ class _OrderPageState extends State<OrderPage> {
                         SliverList(
                           delegate: SliverChildListDelegate(
                             [
+                              const SizedBox(
+                                height: 20,
+                              ),
                               TextField(
                                 controller: commentTextController,
                                 style: theme.textTheme.bodyMedium?.copyWith(

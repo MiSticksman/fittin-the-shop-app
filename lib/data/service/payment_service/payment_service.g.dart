@@ -19,9 +19,10 @@ class _PaymentService implements PaymentService {
   String? baseUrl;
 
   @override
-  Future<List<Payment>> payments({required request}) async {
+  Future<List<Payment>> payments({request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = request;
     final _result =

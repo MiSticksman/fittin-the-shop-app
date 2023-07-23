@@ -9,25 +9,33 @@ class SliverDeliveriesWidget extends StatelessWidget {
   const SliverDeliveriesWidget({
     super.key,
     required this.deliveries,
-    required this.theme,
+    required this.theme, required this.nameTextController, required this.phoneTextController, required this.emailTextController,
   });
 
   final List<Delivery> deliveries;
   final ThemeData theme;
+  final TextEditingController nameTextController;
+  final TextEditingController phoneTextController;
+  final TextEditingController emailTextController;
 
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
+        (context, index) {
           final delivery = deliveries[index];
           return _Delivery(
             delivery: delivery,
             theme: theme,
             selected: delivery,
             onTap: () => context.read<OrderBloc>().add(
-              SelectDeliveryOrderEvent(delivery: delivery),
-            ),
+                  SelectDeliveryOrderEvent(
+                    delivery: delivery,
+                    userName: nameTextController.text,
+                    userPhone: phoneTextController.text,
+                    userEmail: emailTextController.text,
+                  ),
+                ),
           );
         },
         childCount: deliveries.length,

@@ -13,7 +13,7 @@ abstract class PaymentService {
 
   @POST(PaymentUrl.payments)
   Future<List<Payment>> payments({
-    @Body() required PaymentRequest request,
+    @Body() PaymentRequest? request,
   });
 
   @GET(PaymentUrl.paymentsCallback)

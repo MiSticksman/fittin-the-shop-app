@@ -4,9 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:the_shop/app/app_components.dart';
 import 'package:the_shop/data/dto/cart/calculated_cart.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
-import 'package:the_shop/pages/cart_page/cart_page.dart';
-import 'package:the_shop/pages/catalog_page/catalog_page.dart';
 import 'package:the_shop/pages/order_page/order_page.dart';
+import 'package:the_shop/router/app_router.dart';
 
 final class AppText {
   static final TextStyle title = GoogleFonts.montserrat(
@@ -17,13 +16,15 @@ final class AppText {
 }
 
 class ShopApp extends StatelessWidget {
-  const ShopApp({super.key});
+  ShopApp({super.key});
+
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        BlocProvider<CartBloc>(
           create: (context) => CartBloc(
               cart: const CalculatedCart(
                 price: '',
@@ -36,7 +37,8 @@ class ShopApp extends StatelessWidget {
             ),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: _appRouter.config(),
         theme: ThemeData(
           textTheme: GoogleFonts.montserratTextTheme(
             TextTheme(
@@ -65,7 +67,6 @@ class ShopApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: const OrderPage(),
       ),
     );
   }

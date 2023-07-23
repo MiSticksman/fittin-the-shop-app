@@ -16,6 +16,8 @@ part 'order_bloc.freezed.dart';
 
 @freezed
 class OrderState with _$OrderState {
+  const OrderState._();
+
   const factory OrderState.init({
     required String userName,
     required String userPhone,
@@ -24,6 +26,9 @@ class OrderState with _$OrderState {
   }) = InitOrderState;
 
   const factory OrderState.deliveries({
+    String? userName,
+    String? userPhone,
+    String? userEmail,
     required List<CartProductWithCount> products,
     required List<Delivery> deliveries,
     required Delivery delivery,
@@ -32,12 +37,23 @@ class OrderState with _$OrderState {
   }) = DeliveriesOrderState;
 
   const factory OrderState.payments({
+    String? userName,
+    String? userPhone,
+    String? userEmail,
     required List<CartProductWithCount> products,
     required List<Delivery> deliveries,
     required Delivery delivery,
     required List<Payment> payments,
     required Payment payment,
   }) = PaymentsOrderState;
+
+  const factory OrderState.order({
+    required List<CartProductWithCount> products,
+    required List<Delivery> deliveries,
+    required Delivery delivery,
+    required List<Payment> payments,
+    required Payment payment,
+  }) = CreateOrderState;
 
   const factory OrderState.error({
     required List<CartProductWithCount> products,
@@ -47,35 +63,42 @@ class OrderState with _$OrderState {
 
 @freezed
 class OrderEvent with _$OrderEvent {
-  const factory OrderEvent.loadDeliveries() = LoadDeliveriesOrderEvent;
+  const factory OrderEvent.loadDeliveries({
+    String? userName,
+    String? userPhone,
+    String? userEmail,
+  }) = LoadDeliveriesOrderEvent;
 
   const factory OrderEvent.selectDelivery({
+    String? userName,
+    String? userPhone,
+    String? userEmail,
     required Delivery delivery,
   }) = SelectDeliveryOrderEvent;
 
-  // const factory OrderEvent.loadPayments() = LoadPaymentsOrderEvent;
-
   const factory OrderEvent.selectPayment({
+    String? userName,
+    String? userPhone,
+    String? userEmail,
+    Delivery? delivery,
     required Payment payment,
   }) = SelectPaymentOrderEvent;
 
   const factory OrderEvent.orderCreate({
     required String userName,
     required String userPhone,
-    String? userEmail,
+    required String userEmail,
     String? comment,
   }) = OrderCreateOrderEvent;
 }
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final CatalogService catalogService;
-  final CartService cartService;
   final DeliveryService deliveryService;
   final PaymentService paymentService;
   final OrderService orderService;
 
   OrderBloc({
-    required this.cartService,
     required this.catalogService,
     required this.deliveryService,
     required this.paymentService,
@@ -101,9 +124,6 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           case SelectDeliveryOrderEvent():
             await _selectDeliveryAndLoadPayments(event, emit);
             break;
-          // case LoadPaymentsOrderEvent():
-          //   await _loadDeliveries(event, emit);
-          //   break;
           case SelectPaymentOrderEvent():
             await _selectPayment(event, emit);
             break;
@@ -123,6 +143,9 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     final deliveries = await deliveryService.deliveries();
     emit(
       DeliveriesOrderState(
+        userName: event.userName,
+        userPhone: event.userPhone,
+        userEmail: event.userEmail,
         products: state.products,
         deliveries: deliveries,
         delivery: deliveries.first,
@@ -135,46 +158,57 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     SelectDeliveryOrderEvent event,
     Emitter<OrderState> emit,
   ) async {
-    final delivery = event.delivery;
-    emit(
-      DeliveriesOrderState(
-        products: state.products,
-        deliveries: (state as DeliveriesOrderState).deliveries,
-        delivery: delivery,
-        deliveryDate: DateTime.now(),
-      ),
-    );
-    final payments = await paymentService.payments(
-      request: PaymentRequest(
-        products: state.products,
-        deliveryId: (state as DeliveriesOrderState).delivery.id,
-      ),
-    );
-    emit(
-      PaymentsOrderState(
-        products: state.products,
-        deliveries: (state as DeliveriesOrderState).deliveries,
-        delivery: delivery,
-        payments: payments,
-        payment: payments.first,
-      ),
-    );
+    if (state is DeliveriesOrderState) {
+      final delivery = event.delivery;
+      emit(
+        DeliveriesOrderState(
+          userName: event.userName,
+          userPhone: event.userPhone,
+          userEmail: event.userEmail,
+          products: state.products,
+          deliveries: (state as DeliveriesOrderState).deliveries,
+          delivery: delivery,
+          deliveryDate: DateTime.now(),
+        ),
+      );
+      final payments = await paymentService.payments(
+        request: PaymentRequest(
+          products: (state as DeliveriesOrderState).products,
+          deliveryId: (state as DeliveriesOrderState).delivery.id,
+        ),
+      );
+      emit(
+        PaymentsOrderState(
+          products: state.products,
+          deliveries: (state as DeliveriesOrderState).deliveries,
+          delivery: delivery,
+          payments: payments,
+          payment: payments.first,
+        ),
+      );
+    }
+
   }
 
   Future<void> _selectPayment(
     SelectPaymentOrderEvent event,
     Emitter<OrderState> emit,
   ) async {
-    final payment = event.payment;
-    emit(
-      PaymentsOrderState(
-        products: state.products,
-        deliveries: (state as PaymentsOrderState).deliveries,
-        delivery: (state as PaymentsOrderState).delivery,
-        payments: (state as PaymentsOrderState).payments,
-        payment: payment,
-      ),
-    );
+    if (state is PaymentsOrderState) {
+      final payment = event.payment;
+      emit(
+        PaymentsOrderState(
+          userName: event.userName,
+          userPhone: event.userPhone,
+          userEmail: event.userEmail,
+          products: (state as PaymentsOrderState).products,
+          deliveries: (state as PaymentsOrderState).deliveries,
+          delivery: event.delivery ?? (state as PaymentsOrderState).delivery,
+          payments: (state as PaymentsOrderState).payments,
+          payment: payment,
+        ),
+      );
+    }
   }
 
   Future<void> _createOrder(
@@ -182,8 +216,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     Emitter<OrderState> emit,
   ) async {
     try {
-      await orderService.postOrder(
-        request: OrderRequest(
+      if (state is PaymentsOrderState) {
+        final request = OrderRequest(
           userName: event.userName,
           userPhone: event.userPhone,
           userEmail: event.userEmail,
@@ -191,12 +225,20 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           deliveryType: (state as PaymentsOrderState).delivery.type,
           paymentId: (state as PaymentsOrderState).payment.id,
           paymentType: (state as PaymentsOrderState).payment.type,
-        ),
-      );
+        );
+        await orderService.postOrder(
+          request: request
+        );
+        emit(
+          InitOrderState(
+              userName: event.userName,
+              userPhone: event.userPhone,
+              userEmail: event.userEmail,
+              products: state.products),
+        );
+      }
     } catch (e, s) {
-      emit(
-        ErrorOrderState(products: state.products,  message: e.toString())
-      );
+      emit(ErrorOrderState(products: state.products, message: e.toString()));
     }
   }
 }
