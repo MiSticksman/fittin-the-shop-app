@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/data/dto/cart/cart_update.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 
-
 @RoutePage()
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -20,7 +19,10 @@ class _CartPageState extends State<CartPage> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Корзина'), centerTitle: true,),
+      appBar: AppBar(
+        title: const Text('Корзина'),
+        centerTitle: true,
+      ),
       body: Material(
         child: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {

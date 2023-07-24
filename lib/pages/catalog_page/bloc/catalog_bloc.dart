@@ -45,13 +45,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     on<CatalogEvent>((event, emit) async {
       switch (event) {
         case LoadCatalogProductsEvent():
-          await _loadDeliveries(event, emit);
+          await _loadProducts(event, emit);
           break;
       }
     }, transformer: bloc_concurrency.sequential());
   }
 
-  Future<void> _loadDeliveries(
+  Future<void> _loadProducts(
     LoadCatalogProductsEvent event,
     Emitter<CatalogState> emit,
   ) async {

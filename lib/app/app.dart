@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:the_shop/app/app_components.dart';
 import 'package:the_shop/data/dto/cart/calculated_cart.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
-import 'package:the_shop/pages/order_page/order_page.dart';
 import 'package:the_shop/router/app_router.dart';
 
 final class AppText {
@@ -13,6 +12,33 @@ final class AppText {
     height: 1.32,
     fontWeight: FontWeight.w500,
   );
+
+  static final TextStyle bodySmall = GoogleFonts.montserrat(
+    fontSize: 12,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+  );
+
+  static final TextStyle mediumBodySmall16pt = GoogleFonts.montserrat(
+    fontSize: 16,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w500,
+  );
+}
+
+final class AppColor {
+  AppColor._();
+
+  static const Color black = Color(0xFF1F1F1F);
+  static const Color black50 = Color(0xFFF5F5F5);
+  static const Color border = Color(0xFFD2D1D1);
+  static const Color white = Colors.white;
+  static const Color gray = Color(0xFFF9F9F9);
+  static const Color darkGray = Color(0xFF7D7D7D);
+  static const Color darkerGray = Color(0xFF595959);
+  static const Color red = Colors.red;
+  static const Color grayTextField = Color(0xFFF0F0F0);
 }
 
 class ShopApp extends StatelessWidget {
@@ -47,23 +73,25 @@ class ShopApp extends StatelessWidget {
           ),
           colorScheme: const ColorScheme(
             brightness: Brightness.light,
-            primary: Colors.black,
-            onPrimary: Colors.white,
-            secondary: Color(0xFFF5F5F5),
-            secondaryContainer: Color(0xFF595959),
-            onSecondary: Colors.black,
-            error: Colors.red,
-            onError: Colors.white,
-            background: Colors.white,
-            onBackground: Colors.black,
-            surface: Colors.white,
-            onSurface: Colors.black,
+            primary: AppColor.black,
+            onPrimary: AppColor.white,
+            secondary: AppColor.black50,
+            secondaryContainer: AppColor.darkerGray,
+            //for darker text
+            onSecondary: AppColor.black,
+            error: AppColor.red,
+            onError: AppColor.white,
+            background: AppColor.white,
+            onBackground: AppColor.black,
+            surface: AppColor.white,
+            onSurface: AppColor.black,
+            surfaceVariant: AppColor.grayTextField,
           ),
           appBarTheme: AppBarTheme(
             titleTextStyle: AppText.title.copyWith(
-              color: Colors.black,
+              color: AppColor.black,
             ),
-            color: Colors.white,
+            color: AppColor.white,
             elevation: 0,
           ),
         ),

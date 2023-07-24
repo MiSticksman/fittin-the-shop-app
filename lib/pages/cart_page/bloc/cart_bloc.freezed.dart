@@ -745,6 +745,7 @@ mixin _$CartEvent {
     required TResult Function() loadCart,
     required TResult Function(CartUpdate request) addProductToCart,
     required TResult Function(CartUpdate request) addProductCountEvent,
+    required TResult Function(CartUpdate request) deleteProductFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -752,6 +753,7 @@ mixin _$CartEvent {
     TResult? Function()? loadCart,
     TResult? Function(CartUpdate request)? addProductToCart,
     TResult? Function(CartUpdate request)? addProductCountEvent,
+    TResult? Function(CartUpdate request)? deleteProductFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -759,6 +761,7 @@ mixin _$CartEvent {
     TResult Function()? loadCart,
     TResult Function(CartUpdate request)? addProductToCart,
     TResult Function(CartUpdate request)? addProductCountEvent,
+    TResult Function(CartUpdate request)? deleteProductFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -767,6 +770,8 @@ mixin _$CartEvent {
     required TResult Function(LoadCartEvent value) loadCart,
     required TResult Function(AddProductToCartEvent value) addProductToCart,
     required TResult Function(AddProductCountEvent value) addProductCountEvent,
+    required TResult Function(DeleteProductFromCartEvent value)
+        deleteProductFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -774,6 +779,7 @@ mixin _$CartEvent {
     TResult? Function(LoadCartEvent value)? loadCart,
     TResult? Function(AddProductToCartEvent value)? addProductToCart,
     TResult? Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult? Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -781,6 +787,7 @@ mixin _$CartEvent {
     TResult Function(LoadCartEvent value)? loadCart,
     TResult Function(AddProductToCartEvent value)? addProductToCart,
     TResult Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -844,6 +851,7 @@ class _$LoadCartEvent implements LoadCartEvent {
     required TResult Function() loadCart,
     required TResult Function(CartUpdate request) addProductToCart,
     required TResult Function(CartUpdate request) addProductCountEvent,
+    required TResult Function(CartUpdate request) deleteProductFromCart,
   }) {
     return loadCart();
   }
@@ -854,6 +862,7 @@ class _$LoadCartEvent implements LoadCartEvent {
     TResult? Function()? loadCart,
     TResult? Function(CartUpdate request)? addProductToCart,
     TResult? Function(CartUpdate request)? addProductCountEvent,
+    TResult? Function(CartUpdate request)? deleteProductFromCart,
   }) {
     return loadCart?.call();
   }
@@ -864,6 +873,7 @@ class _$LoadCartEvent implements LoadCartEvent {
     TResult Function()? loadCart,
     TResult Function(CartUpdate request)? addProductToCart,
     TResult Function(CartUpdate request)? addProductCountEvent,
+    TResult Function(CartUpdate request)? deleteProductFromCart,
     required TResult orElse(),
   }) {
     if (loadCart != null) {
@@ -878,6 +888,8 @@ class _$LoadCartEvent implements LoadCartEvent {
     required TResult Function(LoadCartEvent value) loadCart,
     required TResult Function(AddProductToCartEvent value) addProductToCart,
     required TResult Function(AddProductCountEvent value) addProductCountEvent,
+    required TResult Function(DeleteProductFromCartEvent value)
+        deleteProductFromCart,
   }) {
     return loadCart(this);
   }
@@ -888,6 +900,7 @@ class _$LoadCartEvent implements LoadCartEvent {
     TResult? Function(LoadCartEvent value)? loadCart,
     TResult? Function(AddProductToCartEvent value)? addProductToCart,
     TResult? Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult? Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
   }) {
     return loadCart?.call(this);
   }
@@ -898,6 +911,7 @@ class _$LoadCartEvent implements LoadCartEvent {
     TResult Function(LoadCartEvent value)? loadCart,
     TResult Function(AddProductToCartEvent value)? addProductToCart,
     TResult Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
     required TResult orElse(),
   }) {
     if (loadCart != null) {
@@ -989,6 +1003,7 @@ class _$AddProductToCartEvent implements AddProductToCartEvent {
     required TResult Function() loadCart,
     required TResult Function(CartUpdate request) addProductToCart,
     required TResult Function(CartUpdate request) addProductCountEvent,
+    required TResult Function(CartUpdate request) deleteProductFromCart,
   }) {
     return addProductToCart(request);
   }
@@ -999,6 +1014,7 @@ class _$AddProductToCartEvent implements AddProductToCartEvent {
     TResult? Function()? loadCart,
     TResult? Function(CartUpdate request)? addProductToCart,
     TResult? Function(CartUpdate request)? addProductCountEvent,
+    TResult? Function(CartUpdate request)? deleteProductFromCart,
   }) {
     return addProductToCart?.call(request);
   }
@@ -1009,6 +1025,7 @@ class _$AddProductToCartEvent implements AddProductToCartEvent {
     TResult Function()? loadCart,
     TResult Function(CartUpdate request)? addProductToCart,
     TResult Function(CartUpdate request)? addProductCountEvent,
+    TResult Function(CartUpdate request)? deleteProductFromCart,
     required TResult orElse(),
   }) {
     if (addProductToCart != null) {
@@ -1023,6 +1040,8 @@ class _$AddProductToCartEvent implements AddProductToCartEvent {
     required TResult Function(LoadCartEvent value) loadCart,
     required TResult Function(AddProductToCartEvent value) addProductToCart,
     required TResult Function(AddProductCountEvent value) addProductCountEvent,
+    required TResult Function(DeleteProductFromCartEvent value)
+        deleteProductFromCart,
   }) {
     return addProductToCart(this);
   }
@@ -1033,6 +1052,7 @@ class _$AddProductToCartEvent implements AddProductToCartEvent {
     TResult? Function(LoadCartEvent value)? loadCart,
     TResult? Function(AddProductToCartEvent value)? addProductToCart,
     TResult? Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult? Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
   }) {
     return addProductToCart?.call(this);
   }
@@ -1043,6 +1063,7 @@ class _$AddProductToCartEvent implements AddProductToCartEvent {
     TResult Function(LoadCartEvent value)? loadCart,
     TResult Function(AddProductToCartEvent value)? addProductToCart,
     TResult Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
     required TResult orElse(),
   }) {
     if (addProductToCart != null) {
@@ -1140,6 +1161,7 @@ class _$AddProductCountEvent implements AddProductCountEvent {
     required TResult Function() loadCart,
     required TResult Function(CartUpdate request) addProductToCart,
     required TResult Function(CartUpdate request) addProductCountEvent,
+    required TResult Function(CartUpdate request) deleteProductFromCart,
   }) {
     return addProductCountEvent(request);
   }
@@ -1150,6 +1172,7 @@ class _$AddProductCountEvent implements AddProductCountEvent {
     TResult? Function()? loadCart,
     TResult? Function(CartUpdate request)? addProductToCart,
     TResult? Function(CartUpdate request)? addProductCountEvent,
+    TResult? Function(CartUpdate request)? deleteProductFromCart,
   }) {
     return addProductCountEvent?.call(request);
   }
@@ -1160,6 +1183,7 @@ class _$AddProductCountEvent implements AddProductCountEvent {
     TResult Function()? loadCart,
     TResult Function(CartUpdate request)? addProductToCart,
     TResult Function(CartUpdate request)? addProductCountEvent,
+    TResult Function(CartUpdate request)? deleteProductFromCart,
     required TResult orElse(),
   }) {
     if (addProductCountEvent != null) {
@@ -1174,6 +1198,8 @@ class _$AddProductCountEvent implements AddProductCountEvent {
     required TResult Function(LoadCartEvent value) loadCart,
     required TResult Function(AddProductToCartEvent value) addProductToCart,
     required TResult Function(AddProductCountEvent value) addProductCountEvent,
+    required TResult Function(DeleteProductFromCartEvent value)
+        deleteProductFromCart,
   }) {
     return addProductCountEvent(this);
   }
@@ -1184,6 +1210,7 @@ class _$AddProductCountEvent implements AddProductCountEvent {
     TResult? Function(LoadCartEvent value)? loadCart,
     TResult? Function(AddProductToCartEvent value)? addProductToCart,
     TResult? Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult? Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
   }) {
     return addProductCountEvent?.call(this);
   }
@@ -1194,6 +1221,7 @@ class _$AddProductCountEvent implements AddProductCountEvent {
     TResult Function(LoadCartEvent value)? loadCart,
     TResult Function(AddProductToCartEvent value)? addProductToCart,
     TResult Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
     required TResult orElse(),
   }) {
     if (addProductCountEvent != null) {
@@ -1211,4 +1239,164 @@ abstract class AddProductCountEvent implements CartEvent {
   @JsonKey(ignore: true)
   _$$AddProductCountEventCopyWith<_$AddProductCountEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteProductFromCartEventCopyWith<$Res> {
+  factory _$$DeleteProductFromCartEventCopyWith(
+          _$DeleteProductFromCartEvent value,
+          $Res Function(_$DeleteProductFromCartEvent) then) =
+      __$$DeleteProductFromCartEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CartUpdate request});
+
+  $CartUpdateCopyWith<$Res> get request;
+}
+
+/// @nodoc
+class __$$DeleteProductFromCartEventCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$DeleteProductFromCartEvent>
+    implements _$$DeleteProductFromCartEventCopyWith<$Res> {
+  __$$DeleteProductFromCartEventCopyWithImpl(
+      _$DeleteProductFromCartEvent _value,
+      $Res Function(_$DeleteProductFromCartEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? request = null,
+  }) {
+    return _then(_$DeleteProductFromCartEvent(
+      request: null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as CartUpdate,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CartUpdateCopyWith<$Res> get request {
+    return $CartUpdateCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteProductFromCartEvent implements DeleteProductFromCartEvent {
+  const _$DeleteProductFromCartEvent({required this.request});
+
+  @override
+  final CartUpdate request;
+
+  @override
+  String toString() {
+    return 'CartEvent.deleteProductFromCart(request: $request)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductFromCartEvent &&
+            (identical(other.request, request) || other.request == request));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, request);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProductFromCartEventCopyWith<_$DeleteProductFromCartEvent>
+      get copyWith => __$$DeleteProductFromCartEventCopyWithImpl<
+          _$DeleteProductFromCartEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadCart,
+    required TResult Function(CartUpdate request) addProductToCart,
+    required TResult Function(CartUpdate request) addProductCountEvent,
+    required TResult Function(CartUpdate request) deleteProductFromCart,
+  }) {
+    return deleteProductFromCart(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadCart,
+    TResult? Function(CartUpdate request)? addProductToCart,
+    TResult? Function(CartUpdate request)? addProductCountEvent,
+    TResult? Function(CartUpdate request)? deleteProductFromCart,
+  }) {
+    return deleteProductFromCart?.call(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadCart,
+    TResult Function(CartUpdate request)? addProductToCart,
+    TResult Function(CartUpdate request)? addProductCountEvent,
+    TResult Function(CartUpdate request)? deleteProductFromCart,
+    required TResult orElse(),
+  }) {
+    if (deleteProductFromCart != null) {
+      return deleteProductFromCart(request);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadCartEvent value) loadCart,
+    required TResult Function(AddProductToCartEvent value) addProductToCart,
+    required TResult Function(AddProductCountEvent value) addProductCountEvent,
+    required TResult Function(DeleteProductFromCartEvent value)
+        deleteProductFromCart,
+  }) {
+    return deleteProductFromCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadCartEvent value)? loadCart,
+    TResult? Function(AddProductToCartEvent value)? addProductToCart,
+    TResult? Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult? Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
+  }) {
+    return deleteProductFromCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadCartEvent value)? loadCart,
+    TResult Function(AddProductToCartEvent value)? addProductToCart,
+    TResult Function(AddProductCountEvent value)? addProductCountEvent,
+    TResult Function(DeleteProductFromCartEvent value)? deleteProductFromCart,
+    required TResult orElse(),
+  }) {
+    if (deleteProductFromCart != null) {
+      return deleteProductFromCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteProductFromCartEvent implements CartEvent {
+  const factory DeleteProductFromCartEvent(
+      {required final CartUpdate request}) = _$DeleteProductFromCartEvent;
+
+  CartUpdate get request;
+  @JsonKey(ignore: true)
+  _$$DeleteProductFromCartEventCopyWith<_$DeleteProductFromCartEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }

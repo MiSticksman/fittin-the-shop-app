@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:the_shop/data/dto/catalog/catalog_products_response.dart';
 import 'package:the_shop/data/url/catalog_url.dart';
 import 'package:the_shop/domain/models/catalog/product.dart';
+import 'package:the_shop/domain/models/catalog/product_detail/product_detail.dart';
 
 part 'catalog_service.g.dart';
 
@@ -12,8 +13,8 @@ abstract class CatalogService {
 
 
   @GET(CatalogUrl.catalogProduct)
-  Future<Product> getCatalogProduct({
-    @Query('product_id') int? productId,
+  Future<ProductDetail> getCatalogProduct({
+    @Query('product_id') required int productId,
   });
 
   @POST(CatalogUrl.catalogProducts)

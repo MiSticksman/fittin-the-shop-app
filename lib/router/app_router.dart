@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:the_shop/domain/models/catalog/product.dart';
 import 'package:the_shop/pages/cart_page/cart_page.dart';
 import 'package:the_shop/pages/catalog_page/catalog_page.dart';
 import 'package:the_shop/pages/home_page/home_page.dart';
 import 'package:the_shop/pages/order_page/order_page.dart';
+import 'package:the_shop/pages/product_page/product_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -21,6 +24,10 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   initial: true,
                   page: CatalogRoute.page,
+                ),
+                AutoRoute(
+                  path: 'product/:productId',
+                  page: ProductRoute.page,
                 ),
               ],
             ),

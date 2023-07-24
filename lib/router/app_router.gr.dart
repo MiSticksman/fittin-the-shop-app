@@ -15,6 +15,17 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    ProductRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductPage(
+          key: args.key,
+          productId: args.productId,
+          productPreview: args.productPreview,
+        ),
+      );
+    },
     OrderRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -52,6 +63,49 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [ProductPage]
+class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({
+    Key? key,
+    required int productId,
+    required Product productPreview,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductRoute.name,
+          args: ProductRouteArgs(
+            key: key,
+            productId: productId,
+            productPreview: productPreview,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductRoute';
+
+  static const PageInfo<ProductRouteArgs> page =
+      PageInfo<ProductRouteArgs>(name);
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({
+    this.key,
+    required this.productId,
+    required this.productPreview,
+  });
+
+  final Key? key;
+
+  final int productId;
+
+  final Product productPreview;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, productId: $productId, productPreview: $productPreview}';
+  }
 }
 
 /// generated route for

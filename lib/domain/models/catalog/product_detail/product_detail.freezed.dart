@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'product.dart';
+part of 'product_detail.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,52 +14,56 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Product _$ProductFromJson(Map<String, dynamic> json) {
-  return _ProductCard.fromJson(json);
+ProductDetail _$ProductDetailFromJson(Map<String, dynamic> json) {
+  return _ProductDetail.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Product {
+mixin _$ProductDetail {
   int get id => throw _privateConstructorUsedError;
   Decimal get price => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
+  String? get picture => throw _privateConstructorUsedError;
+  String? get article => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  bool? get available => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'old_price')
   Decimal? get oldPrice => throw _privateConstructorUsedError;
-  double? get discount => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
-  String get picture => throw _privateConstructorUsedError;
-  String? get article => throw _privateConstructorUsedError;
-  double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews_count')
   int? get reviewsCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
+  $ProductDetailCopyWith<ProductDetail> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res, Product>;
+abstract class $ProductDetailCopyWith<$Res> {
+  factory $ProductDetailCopyWith(
+          ProductDetail value, $Res Function(ProductDetail) then) =
+      _$ProductDetailCopyWithImpl<$Res, ProductDetail>;
   @useResult
   $Res call(
       {int id,
       Decimal price,
-      @JsonKey(name: 'old_price') Decimal? oldPrice,
-      double? discount,
-      String? name,
-      String brand,
-      String picture,
+      String name,
+      String? brand,
+      String? picture,
       String? article,
+      String? description,
+      bool? available,
       double? rating,
+      @JsonKey(name: 'old_price') Decimal? oldPrice,
       @JsonKey(name: 'reviews_count') int? reviewsCount});
 }
 
 /// @nodoc
-class _$ProductCopyWithImpl<$Res, $Val extends Product>
-    implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
+class _$ProductDetailCopyWithImpl<$Res, $Val extends ProductDetail>
+    implements $ProductDetailCopyWith<$Res> {
+  _$ProductDetailCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -71,13 +75,14 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   $Res call({
     Object? id = null,
     Object? price = null,
-    Object? oldPrice = freezed,
-    Object? discount = freezed,
-    Object? name = freezed,
-    Object? brand = null,
-    Object? picture = null,
+    Object? name = null,
+    Object? brand = freezed,
+    Object? picture = freezed,
     Object? article = freezed,
+    Object? description = freezed,
+    Object? available = freezed,
     Object? rating = freezed,
+    Object? oldPrice = freezed,
     Object? reviewsCount = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,34 +94,38 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Decimal,
-      oldPrice: freezed == oldPrice
-          ? _value.oldPrice
-          : oldPrice // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
-      discount: freezed == discount
-          ? _value.discount
-          : discount // ignore: cast_nullable_to_non_nullable
-              as double?,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      brand: null == brand
+              as String,
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      picture: null == picture
+              as String?,
+      picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      available: freezed == available
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as bool?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double?,
+      oldPrice: freezed == oldPrice
+          ? _value.oldPrice
+          : oldPrice // ignore: cast_nullable_to_non_nullable
+              as Decimal?,
       reviewsCount: freezed == reviewsCount
           ? _value.reviewsCount
           : reviewsCount // ignore: cast_nullable_to_non_nullable
@@ -126,31 +135,33 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 }
 
 /// @nodoc
-abstract class _$$_ProductCardCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$$_ProductCardCopyWith(
-          _$_ProductCard value, $Res Function(_$_ProductCard) then) =
-      __$$_ProductCardCopyWithImpl<$Res>;
+abstract class _$$_ProductDetailCopyWith<$Res>
+    implements $ProductDetailCopyWith<$Res> {
+  factory _$$_ProductDetailCopyWith(
+          _$_ProductDetail value, $Res Function(_$_ProductDetail) then) =
+      __$$_ProductDetailCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
       Decimal price,
-      @JsonKey(name: 'old_price') Decimal? oldPrice,
-      double? discount,
-      String? name,
-      String brand,
-      String picture,
+      String name,
+      String? brand,
+      String? picture,
       String? article,
+      String? description,
+      bool? available,
       double? rating,
+      @JsonKey(name: 'old_price') Decimal? oldPrice,
       @JsonKey(name: 'reviews_count') int? reviewsCount});
 }
 
 /// @nodoc
-class __$$_ProductCardCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$_ProductCard>
-    implements _$$_ProductCardCopyWith<$Res> {
-  __$$_ProductCardCopyWithImpl(
-      _$_ProductCard _value, $Res Function(_$_ProductCard) _then)
+class __$$_ProductDetailCopyWithImpl<$Res>
+    extends _$ProductDetailCopyWithImpl<$Res, _$_ProductDetail>
+    implements _$$_ProductDetailCopyWith<$Res> {
+  __$$_ProductDetailCopyWithImpl(
+      _$_ProductDetail _value, $Res Function(_$_ProductDetail) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,16 +169,17 @@ class __$$_ProductCardCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? price = null,
-    Object? oldPrice = freezed,
-    Object? discount = freezed,
-    Object? name = freezed,
-    Object? brand = null,
-    Object? picture = null,
+    Object? name = null,
+    Object? brand = freezed,
+    Object? picture = freezed,
     Object? article = freezed,
+    Object? description = freezed,
+    Object? available = freezed,
     Object? rating = freezed,
+    Object? oldPrice = freezed,
     Object? reviewsCount = freezed,
   }) {
-    return _then(_$_ProductCard(
+    return _then(_$_ProductDetail(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -176,34 +188,38 @@ class __$$_ProductCardCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Decimal,
-      oldPrice: freezed == oldPrice
-          ? _value.oldPrice
-          : oldPrice // ignore: cast_nullable_to_non_nullable
-              as Decimal?,
-      discount: freezed == discount
-          ? _value.discount
-          : discount // ignore: cast_nullable_to_non_nullable
-              as double?,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      brand: null == brand
+              as String,
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      picture: null == picture
+              as String?,
+      picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      available: freezed == available
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as bool?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double?,
+      oldPrice: freezed == oldPrice
+          ? _value.oldPrice
+          : oldPrice // ignore: cast_nullable_to_non_nullable
+              as Decimal?,
       reviewsCount: freezed == reviewsCount
           ? _value.reviewsCount
           : reviewsCount // ignore: cast_nullable_to_non_nullable
@@ -213,131 +229,140 @@ class __$$_ProductCardCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_ProductCard implements _ProductCard {
-  const _$_ProductCard(
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class _$_ProductDetail implements _ProductDetail {
+  const _$_ProductDetail(
       {required this.id,
       required this.price,
-      @JsonKey(name: 'old_price') this.oldPrice,
-      this.discount,
-      this.name,
-      required this.brand,
-      required this.picture,
+      required this.name,
+      this.brand,
+      this.picture,
       this.article,
+      this.description,
+      this.available,
       this.rating,
+      @JsonKey(name: 'old_price') this.oldPrice,
       @JsonKey(name: 'reviews_count') this.reviewsCount});
 
-  factory _$_ProductCard.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductCardFromJson(json);
+  factory _$_ProductDetail.fromJson(Map<String, dynamic> json) =>
+      _$$_ProductDetailFromJson(json);
 
   @override
   final int id;
   @override
   final Decimal price;
   @override
-  @JsonKey(name: 'old_price')
-  final Decimal? oldPrice;
+  final String name;
   @override
-  final double? discount;
+  final String? brand;
   @override
-  final String? name;
-  @override
-  final String brand;
-  @override
-  final String picture;
+  final String? picture;
   @override
   final String? article;
   @override
+  final String? description;
+  @override
+  final bool? available;
+  @override
   final double? rating;
+  @override
+  @JsonKey(name: 'old_price')
+  final Decimal? oldPrice;
   @override
   @JsonKey(name: 'reviews_count')
   final int? reviewsCount;
 
   @override
   String toString() {
-    return 'Product(id: $id, price: $price, oldPrice: $oldPrice, discount: $discount, name: $name, brand: $brand, picture: $picture, article: $article, rating: $rating, reviewsCount: $reviewsCount)';
+    return 'ProductDetail(id: $id, price: $price, name: $name, brand: $brand, picture: $picture, article: $article, description: $description, available: $available, rating: $rating, oldPrice: $oldPrice, reviewsCount: $reviewsCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductCard &&
+            other is _$_ProductDetail &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.oldPrice, oldPrice) ||
-                other.oldPrice == oldPrice) &&
-            (identical(other.discount, discount) ||
-                other.discount == discount) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.picture, picture) || other.picture == picture) &&
             (identical(other.article, article) || other.article == article) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.available, available) ||
+                other.available == available) &&
             (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.oldPrice, oldPrice) ||
+                other.oldPrice == oldPrice) &&
             (identical(other.reviewsCount, reviewsCount) ||
                 other.reviewsCount == reviewsCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, price, oldPrice, discount,
-      name, brand, picture, article, rating, reviewsCount);
+  int get hashCode => Object.hash(runtimeType, id, price, name, brand, picture,
+      article, description, available, rating, oldPrice, reviewsCount);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductCardCopyWith<_$_ProductCard> get copyWith =>
-      __$$_ProductCardCopyWithImpl<_$_ProductCard>(this, _$identity);
+  _$$_ProductDetailCopyWith<_$_ProductDetail> get copyWith =>
+      __$$_ProductDetailCopyWithImpl<_$_ProductDetail>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductCardToJson(
+    return _$$_ProductDetailToJson(
       this,
     );
   }
 }
 
-abstract class _ProductCard implements Product {
-  const factory _ProductCard(
+abstract class _ProductDetail implements ProductDetail {
+  const factory _ProductDetail(
           {required final int id,
           required final Decimal price,
-          @JsonKey(name: 'old_price') final Decimal? oldPrice,
-          final double? discount,
-          final String? name,
-          required final String brand,
-          required final String picture,
+          required final String name,
+          final String? brand,
+          final String? picture,
           final String? article,
+          final String? description,
+          final bool? available,
           final double? rating,
+          @JsonKey(name: 'old_price') final Decimal? oldPrice,
           @JsonKey(name: 'reviews_count') final int? reviewsCount}) =
-      _$_ProductCard;
+      _$_ProductDetail;
 
-  factory _ProductCard.fromJson(Map<String, dynamic> json) =
-      _$_ProductCard.fromJson;
+  factory _ProductDetail.fromJson(Map<String, dynamic> json) =
+      _$_ProductDetail.fromJson;
 
   @override
   int get id;
   @override
   Decimal get price;
   @override
-  @JsonKey(name: 'old_price')
-  Decimal? get oldPrice;
+  String get name;
   @override
-  double? get discount;
+  String? get brand;
   @override
-  String? get name;
-  @override
-  String get brand;
-  @override
-  String get picture;
+  String? get picture;
   @override
   String? get article;
   @override
+  String? get description;
+  @override
+  bool? get available;
+  @override
   double? get rating;
+  @override
+  @JsonKey(name: 'old_price')
+  Decimal? get oldPrice;
   @override
   @JsonKey(name: 'reviews_count')
   int? get reviewsCount;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductCardCopyWith<_$_ProductCard> get copyWith =>
+  _$$_ProductDetailCopyWith<_$_ProductDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -38,6 +38,10 @@ class CartEvent with _$CartEvent {
   const factory CartEvent.addProductCountEvent({
     required CartUpdate request,
   }) = AddProductCountEvent;
+
+  const factory CartEvent.deleteProductFromCart({
+    required CartUpdate request,
+  }) = DeleteProductFromCartEvent;
 }
 
 class CartBloc extends Bloc<CartEvent, CartState> {
@@ -62,6 +66,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             break;
           case AddProductCountEvent():
             await _addProductCount(event, emit);
+            break;
+          case DeleteProductFromCartEvent():
+            await _deleteProductFromCart(event, emit);
             break;
         }
       },
@@ -118,4 +125,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(ErrorCartState(cart: state.cart, message: e.toString()));
     }
   }
+
+  Future<void> _deleteProductFromCart(
+      DeleteProductFromCartEvent event, Emitter<CartState> emit) async {
+    try {
+      final cart = await cartRepository.deleteCart(request: event.request);
+      emit(
+        CartLoadedState(
+          cart: cart,
+        ),
+      );
+    } catch (e) {
+      emit(ErrorCartState(cart: state.cart, message: e.toString()));
+    }
+  }
+
 }

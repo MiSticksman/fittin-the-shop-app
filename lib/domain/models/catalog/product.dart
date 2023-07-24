@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:decimal/decimal.dart';
 
 part 'product.freezed.dart';
 
@@ -8,8 +9,8 @@ part 'product.g.dart';
 abstract class Product with _$Product {
   const factory Product({
     required int id,
-    required String price,
-    @JsonKey(name: 'old_price') String? oldPrice,
+    required Decimal price,
+    @JsonKey(name: 'old_price') Decimal? oldPrice,
     double? discount,
     String? name,
     required String brand,
