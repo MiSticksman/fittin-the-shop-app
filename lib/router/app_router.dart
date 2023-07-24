@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
 import 'package:the_shop/domain/models/catalog/product.dart';
 import 'package:the_shop/pages/cart_page/cart_page.dart';
 import 'package:the_shop/pages/catalog_page/catalog_page.dart';

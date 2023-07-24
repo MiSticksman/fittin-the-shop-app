@@ -9,7 +9,10 @@ class SliverDeliveriesWidget extends StatelessWidget {
   const SliverDeliveriesWidget({
     super.key,
     required this.deliveries,
-    required this.theme, required this.nameTextController, required this.phoneTextController, required this.emailTextController,
+    required this.theme,
+    required this.nameTextController,
+    required this.phoneTextController,
+    required this.emailTextController,
   });
 
   final List<Delivery> deliveries;

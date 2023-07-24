@@ -85,6 +85,7 @@ class OrderEvent with _$OrderEvent {
   }) = SelectPaymentOrderEvent;
 
   const factory OrderEvent.orderCreate({
+    required List<CartProductWithCount> products,
     required String userName,
     required String userPhone,
     required String userEmail,
@@ -173,7 +174,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       );
       final payments = await paymentService.payments(
         request: PaymentRequest(
-          products: (state as DeliveriesOrderState).products,
+          products: state.products,
           deliveryId: (state as DeliveriesOrderState).delivery.id,
         ),
       );
@@ -201,7 +202,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           userName: event.userName,
           userPhone: event.userPhone,
           userEmail: event.userEmail,
-          products: (state as PaymentsOrderState).products,
+          products: state.products,
           deliveries: (state as PaymentsOrderState).deliveries,
           delivery: event.delivery ?? (state as PaymentsOrderState).delivery,
           payments: (state as PaymentsOrderState).payments,
@@ -221,7 +222,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           userName: event.userName,
           userPhone: event.userPhone,
           userEmail: event.userEmail,
-          products: state.products,
+          products: event.products,
           deliveryId: (state as PaymentsOrderState).delivery.id,
           deliveryType: (state as PaymentsOrderState).delivery.type,
           paymentId: (state as PaymentsOrderState).payment.id,
@@ -235,7 +236,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               userName: event.userName,
               userPhone: event.userPhone,
               userEmail: event.userEmail,
-              products: state.products),
+              products: event.products),
         );
       }
     } catch (e, s) {

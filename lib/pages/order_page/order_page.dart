@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/app/app_components.dart';
 import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
-import 'package:the_shop/data/service/cart_service/cart_service.dart';
 import 'package:the_shop/domain/models/payment/payment.dart';
-import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/components/constants.dart';
 import 'package:the_shop/pages/components/loading.dart';
 import 'package:the_shop/pages/components/sliver_app_bar.dart';
@@ -17,7 +15,9 @@ import 'package:the_shop/pages/order_page/widgets/sliver_order_user_data.dart';
 
 @RoutePage()
 class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+  const OrderPage({super.key, required this.products});
+
+  final List<CartProductWithCount> products;
 
   @override
   State<OrderPage> createState() => _OrderPageState();
@@ -46,24 +46,10 @@ class _OrderPageState extends State<OrderPage> {
     phoneTextController.text = '9290091219';
     emailTextController.text = 'vadim02101@gmail.com';
 
-
   }
-
-  // Future<List<CartProductWithCount>> getCartItems() async {
-  //
-  //
-  //   final res = await _cartService.calculateCart();
-  //   return res.products
-  //       .map(
-  //         (p) => CartProductWithCount(productId: p.product.id, count: p.count),
-  //   )
-  //       .toList();
-  // }
 
   @override
   Widget build(BuildContext context) {
-    // context.read<CartBloc>().add(const LoadCartEvent());
-    // final c = context.read<CartBloc>().state.cart;
     final theme = Theme.of(context);
     final border = OutlineInputBorder(
       borderSide: BorderSide(
@@ -80,16 +66,7 @@ class _OrderPageState extends State<OrderPage> {
           deliveryService: AppComponents().deliveryService,
           paymentService: AppComponents().paymentService,
           orderService: AppComponents().orderService,
-          products: context
-              .read<CartBloc>()
-              .state
-              .cart
-              .products
-              .map(
-                (p) =>
-                CartProductWithCount(productId: p.product.id, count: p.count),
-          )
-              .toList(),
+          products: widget.products,
           userName: nameTextController.text,
           userPhone: phoneTextController.text,
           userEmail: emailTextController.text,
@@ -157,6 +134,7 @@ class _OrderPageState extends State<OrderPage> {
                           title: 'Доставки',
                         ),
                         SliverDeliveriesWidget(
+
                           deliveries: state.deliveries,
                           theme: theme,
                           nameTextController: nameTextController,
@@ -263,6 +241,7 @@ class _OrderPageState extends State<OrderPage> {
                                 onPressed: () {
                                   context.read<OrderBloc>().add(
                                         OrderCreateOrderEvent(
+                                          products: widget.products,
                                           userName: nameTextController.text,
                                           userPhone: phoneTextController.text,
                                           userEmail: emailTextController.text,

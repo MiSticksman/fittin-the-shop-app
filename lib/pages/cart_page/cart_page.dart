@@ -1,12 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:the_shop/data/dto/cart/cart_update.dart';
+import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
-import 'package:the_shop/pages/components/loading.dart';
+import 'package:the_shop/pages/cart_page/widgets/cart_page_widgets.dart';
 import 'package:the_shop/router/app_router.dart';
 
 @RoutePage()
@@ -53,105 +51,8 @@ class _CartPageState extends State<CartPage> {
                 ),
               );
             }
-            return ListView.builder(
-              itemCount: cart.products.length,
-              itemBuilder: (BuildContext context, int index) {
-                final cartItem = cart.products[index];
-                final oldPrice = cartItem.product.price;
-                return ListTile(
-                  onTap: () {},
-                  leading: AspectRatio(
-                    aspectRatio: 1.0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fill,
-                        imageUrl: cartItem.product.picture,
-                        progressIndicatorBuilder: (_, __, ___) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
-                        errorWidget: (_, __, ___) {
-                          return const Text('Ошибка при загрузке');
-                        },
-                      ),
-                    ),
-                  ),
-                  title: Text(
-                    '${cartItem.product.name} (${cartItem.count} ед.)',
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                    ),
-                  ),
-                  subtitle: RichText(
-                    text: TextSpan(
-                      text: cartItem.product.price,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.colorScheme.onBackground,
-                      ),
-                      children: [
-                        const TextSpan(
-                          text: ' ',
-                        ),
-                        if (oldPrice != null)
-                          TextSpan(
-                            text: oldPrice,
-                            style: theme.textTheme.bodyMedium?.copyWith(
-                              color: theme.colorScheme.onBackground,
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  trailing: SizedBox(
-                    width: 150,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: IconButton(
-                            onPressed: cartItem.count != 1
-                                ? () {
-                                    context.read<CartBloc>().add(
-                                          AddProductCountEvent(
-                                            request: CartUpdate(
-                                              productId: cartItem.product.id,
-                                              count: cartItem.count - 1,
-                                            ),
-                                          ),
-                                        );
-                                  }
-                                : null,
-                            icon: const Icon(
-                              Icons.remove,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                            child: Text(
-                          cartItem.count.toString(),
-                        )),
-                        Expanded(
-                          child: IconButton(
-                            onPressed: () {
-                              context.read<CartBloc>().add(
-                                    AddProductCountEvent(
-                                      request: CartUpdate(
-                                        productId: cartItem.product.id,
-                                        count: cartItem.count + 1,
-                                      ),
-                                    ),
-                                  );
-                            },
-                            icon: const Icon(Icons.add),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
+            return CartListWidget(
+              cart: state.cart,
             );
           },
         ),
@@ -211,7 +112,12 @@ class _CartPageState extends State<CartPage> {
                   ElevatedButton(
                     onPressed: () {
                       context.router.navigate(
-                        const OrderRoute(),
+                        OrderRoute(
+                          products: state.cart.products
+                              .map((p) => CartProductWithCount(
+                                  productId: p.product.id, count: p.count))
+                              .toList(),
+                        ),
                       );
                     },
                     child: const SizedBox(

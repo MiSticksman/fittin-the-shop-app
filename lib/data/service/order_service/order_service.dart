@@ -11,7 +11,6 @@ abstract class OrderService {
   factory OrderService(Dio dio, {String baseUrl}) = _OrderService;
 
 
-  //todo тут мб List<Order>
   @GET(OrderUrl.orderList)
   Future<Order> getOrderList({
     @Query('brand') int? brand,

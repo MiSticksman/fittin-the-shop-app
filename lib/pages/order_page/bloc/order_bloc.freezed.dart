@@ -1852,8 +1852,12 @@ mixin _$OrderEvent {
     required TResult Function(String? userName, String? userPhone,
             String? userEmail, Delivery? delivery, Payment payment)
         selectPayment,
-    required TResult Function(String userName, String userPhone,
-            String userEmail, String? comment)
+    required TResult Function(
+            List<CartProductWithCount> products,
+            String userName,
+            String userPhone,
+            String userEmail,
+            String? comment)
         orderCreate,
   }) =>
       throw _privateConstructorUsedError;
@@ -1867,8 +1871,8 @@ mixin _$OrderEvent {
     TResult? Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult? Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult? Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
   }) =>
       throw _privateConstructorUsedError;
@@ -1882,8 +1886,8 @@ mixin _$OrderEvent {
     TResult Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
     required TResult orElse(),
   }) =>
@@ -2059,8 +2063,12 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
     required TResult Function(String? userName, String? userPhone,
             String? userEmail, Delivery? delivery, Payment payment)
         selectPayment,
-    required TResult Function(String userName, String userPhone,
-            String userEmail, String? comment)
+    required TResult Function(
+            List<CartProductWithCount> products,
+            String userName,
+            String userPhone,
+            String userEmail,
+            String? comment)
         orderCreate,
   }) {
     return loadDeliveries(userName, userPhone, userEmail);
@@ -2077,8 +2085,8 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
     TResult? Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult? Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult? Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
   }) {
     return loadDeliveries?.call(userName, userPhone, userEmail);
@@ -2095,8 +2103,8 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
     TResult Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
@@ -2283,8 +2291,12 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
     required TResult Function(String? userName, String? userPhone,
             String? userEmail, Delivery? delivery, Payment payment)
         selectPayment,
-    required TResult Function(String userName, String userPhone,
-            String userEmail, String? comment)
+    required TResult Function(
+            List<CartProductWithCount> products,
+            String userName,
+            String userPhone,
+            String userEmail,
+            String? comment)
         orderCreate,
   }) {
     return selectDelivery(userName, userPhone, userEmail, delivery);
@@ -2301,8 +2313,8 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
     TResult? Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult? Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult? Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
   }) {
     return selectDelivery?.call(userName, userPhone, userEmail, delivery);
@@ -2319,8 +2331,8 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
     TResult Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
@@ -2534,8 +2546,12 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
     required TResult Function(String? userName, String? userPhone,
             String? userEmail, Delivery? delivery, Payment payment)
         selectPayment,
-    required TResult Function(String userName, String userPhone,
-            String userEmail, String? comment)
+    required TResult Function(
+            List<CartProductWithCount> products,
+            String userName,
+            String userPhone,
+            String userEmail,
+            String? comment)
         orderCreate,
   }) {
     return selectPayment(userName, userPhone, userEmail, delivery, payment);
@@ -2552,8 +2568,8 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
     TResult? Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult? Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult? Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
   }) {
     return selectPayment?.call(
@@ -2571,8 +2587,8 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
     TResult Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
@@ -2651,7 +2667,11 @@ abstract class _$$OrderCreateOrderEventCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userName, String userPhone, String userEmail, String? comment});
+      {List<CartProductWithCount> products,
+      String userName,
+      String userPhone,
+      String userEmail,
+      String? comment});
 }
 
 /// @nodoc
@@ -2665,12 +2685,17 @@ class __$$OrderCreateOrderEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? products = null,
     Object? userName = null,
     Object? userPhone = null,
     Object? userEmail = null,
     Object? comment = freezed,
   }) {
     return _then(_$OrderCreateOrderEvent(
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<CartProductWithCount>,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -2695,10 +2720,20 @@ class __$$OrderCreateOrderEventCopyWithImpl<$Res>
 
 class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   const _$OrderCreateOrderEvent(
-      {required this.userName,
+      {required final List<CartProductWithCount> products,
+      required this.userName,
       required this.userPhone,
       required this.userEmail,
-      this.comment});
+      this.comment})
+      : _products = products;
+
+  final List<CartProductWithCount> _products;
+  @override
+  List<CartProductWithCount> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
 
   @override
   final String userName;
@@ -2711,7 +2746,7 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
 
   @override
   String toString() {
-    return 'OrderEvent.orderCreate(userName: $userName, userPhone: $userPhone, userEmail: $userEmail, comment: $comment)';
+    return 'OrderEvent.orderCreate(products: $products, userName: $userName, userPhone: $userPhone, userEmail: $userEmail, comment: $comment)';
   }
 
   @override
@@ -2719,6 +2754,7 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderCreateOrderEvent &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.userPhone, userPhone) ||
@@ -2729,8 +2765,13 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userName, userPhone, userEmail, comment);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_products),
+      userName,
+      userPhone,
+      userEmail,
+      comment);
 
   @JsonKey(ignore: true)
   @override
@@ -2751,11 +2792,15 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
     required TResult Function(String? userName, String? userPhone,
             String? userEmail, Delivery? delivery, Payment payment)
         selectPayment,
-    required TResult Function(String userName, String userPhone,
-            String userEmail, String? comment)
+    required TResult Function(
+            List<CartProductWithCount> products,
+            String userName,
+            String userPhone,
+            String userEmail,
+            String? comment)
         orderCreate,
   }) {
-    return orderCreate(userName, userPhone, userEmail, comment);
+    return orderCreate(products, userName, userPhone, userEmail, comment);
   }
 
   @override
@@ -2769,11 +2814,11 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
     TResult? Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult? Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult? Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
   }) {
-    return orderCreate?.call(userName, userPhone, userEmail, comment);
+    return orderCreate?.call(products, userName, userPhone, userEmail, comment);
   }
 
   @override
@@ -2787,13 +2832,13 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
     TResult Function(String? userName, String? userPhone, String? userEmail,
             Delivery? delivery, Payment payment)?
         selectPayment,
-    TResult Function(String userName, String userPhone, String userEmail,
-            String? comment)?
+    TResult Function(List<CartProductWithCount> products, String userName,
+            String userPhone, String userEmail, String? comment)?
         orderCreate,
     required TResult orElse(),
   }) {
     if (orderCreate != null) {
-      return orderCreate(userName, userPhone, userEmail, comment);
+      return orderCreate(products, userName, userPhone, userEmail, comment);
     }
     return orElse();
   }
@@ -2838,11 +2883,13 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
 
 abstract class OrderCreateOrderEvent implements OrderEvent {
   const factory OrderCreateOrderEvent(
-      {required final String userName,
+      {required final List<CartProductWithCount> products,
+      required final String userName,
       required final String userPhone,
       required final String userEmail,
       final String? comment}) = _$OrderCreateOrderEvent;
 
+  List<CartProductWithCount> get products;
   @override
   String get userName;
   @override
