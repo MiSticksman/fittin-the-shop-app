@@ -29,9 +29,7 @@ class _OrderPageState extends State<OrderPage> {
   late final TextEditingController emailTextController;
   late final TextEditingController commentTextController;
 
-  final CartService _cartService = AppComponents().cartService;
 
-  // late final List<CartProductWithCount> products;
 
   @override
   void initState() {
@@ -47,8 +45,7 @@ class _OrderPageState extends State<OrderPage> {
     nameTextController.text = 'Vadim';
     phoneTextController.text = '9290091219';
     emailTextController.text = 'vadim02101@gmail.com';
-    // products = await getCartItems();
-    // await getCartItems();
+
 
   }
 
@@ -76,7 +73,7 @@ class _OrderPageState extends State<OrderPage> {
       borderRadius: const BorderRadius.all(Radius.circular(10)),
     );
 
-    return BlocProvider<OrderBloc>(
+    return BlocProvider(
       create: (context) {
         final OrderBloc bloc = OrderBloc(
           catalogService: AppComponents().catalogService,

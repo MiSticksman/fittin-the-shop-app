@@ -1,9 +1,13 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/data/dto/cart/cart_update.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
+import 'package:the_shop/pages/components/loading.dart';
+import 'package:the_shop/router/app_router.dart';
 
 @RoutePage()
 class CartPage extends StatefulWidget {
@@ -125,6 +129,10 @@ class _CartPageState extends State<CartPage> {
                           ),
                         ),
                         Expanded(
+                            child: Text(
+                          cartItem.count.toString(),
+                        )),
+                        Expanded(
                           child: IconButton(
                             onPressed: () {
                               context.read<CartBloc>().add(
@@ -147,6 +155,77 @@ class _CartPageState extends State<CartPage> {
             );
           },
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          return Visibility(
+            visible: state.cart.products.isNotEmpty,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Card(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 10,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'К оплате',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onBackground,
+                            ),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              text: (state.cart.price ?? '0'),
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onBackground,
+                              ),
+                              children: [
+                                const TextSpan(
+                                  text: ' ',
+                                ),
+                                if (state.cart.oldPrice != null)
+                                  TextSpan(
+                                    text: state.cart.oldPrice,
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: theme.colorScheme.onBackground,
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.router.navigate(
+                        const OrderRoute(),
+                      );
+                    },
+                    child: const SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          'Перейти к оплате',
+                          textAlign: TextAlign.center,
+                        )),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -221,6 +221,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           userName: event.userName,
           userPhone: event.userPhone,
           userEmail: event.userEmail,
+          products: state.products,
           deliveryId: (state as PaymentsOrderState).delivery.id,
           deliveryType: (state as PaymentsOrderState).delivery.type,
           paymentId: (state as PaymentsOrderState).payment.id,
