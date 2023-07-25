@@ -9,10 +9,12 @@ class SliverDeliveriesWidget extends StatelessWidget {
   const SliverDeliveriesWidget({
     super.key,
     required this.deliveries,
+    this.selectedDelivery,
     required this.theme,
   });
 
   final List<Delivery> deliveries;
+  final Delivery? selectedDelivery;
   final ThemeData theme;
 
   @override
@@ -24,7 +26,7 @@ class SliverDeliveriesWidget extends StatelessWidget {
           return _Delivery(
             delivery: delivery,
             theme: theme,
-            selected: delivery,
+            selected: selectedDelivery,
             onTap: () => context.read<OrderBloc>().add(
                   SelectDeliveryOrderEvent(
                     delivery: delivery,

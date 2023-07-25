@@ -10,9 +10,10 @@ import 'package:the_shop/router/app_router.dart';
 import 'package:the_shop/util/extensions/money_formatting.dart';
 
 class ProductDetailWidget extends StatelessWidget {
-  const ProductDetailWidget({super.key, required this.product});
+  const ProductDetailWidget({super.key, required this.product, required this.addToCart});
 
   final ProductDetail product;
+  final VoidCallback addToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +81,7 @@ class ProductDetailWidget extends StatelessWidget {
                 ),
                 _CartButton(
                   product: product,
+                  addToCart: addToCart,
                 ),
                 Text(
                   product.description ?? '',
@@ -98,10 +100,11 @@ class ProductDetailWidget extends StatelessWidget {
 
 class _CartButton extends StatelessWidget {
   const _CartButton({
-    required this.product,
+    required this.product, required this.addToCart,
   });
 
   final ProductDetail product;
+  final VoidCallback addToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -117,13 +120,7 @@ class _CartButton extends StatelessWidget {
             child: const Text(
               'В корзину',
             ),
-            onPressed: () {
-              context.read<CartBloc>().add(
-                    CartEvent.addProductToCart(
-                      request: CartUpdate(productId: product.id),
-                    ),
-                  );
-            },
+            onPressed: addToCart
           );
         }
 

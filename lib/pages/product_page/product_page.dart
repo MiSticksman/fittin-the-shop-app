@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:the_shop/app/app_components.dart';
+import 'package:the_shop/data/dto/cart/cart_update.dart';
 import 'package:the_shop/domain/models/catalog/product.dart';
+import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/components/loading.dart';
 import 'package:the_shop/pages/product_page/bloc/product_bloc.dart';
 import 'package:the_shop/pages/product_page/widgets/product_detail_widget.dart';
@@ -45,7 +47,16 @@ class _ProductPageState extends State<ProductPage> {
               return _ProductPreview(product: widget.productPreview);
             }
             if (state is ProductLoadedState) {
-              return ProductDetailWidget(product: state.product);
+              return ProductDetailWidget(
+                product: state.product,
+                addToCart: () {
+                  context.read<CartBloc>().add(
+                        CartEvent.addProductToCart(
+                          request: CartUpdate(productId: state.product.id),
+                        ),
+                      );
+                },
+              );
             }
             if (state is ProductLoadingState) {
               return const LoadingIndicator();
@@ -113,7 +124,7 @@ class _ProductPreview extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     RatingBarIndicator(
-                      rating: product.rating?.toDouble() ?? 0,
+                      rating: product.rating ?? 0,
                       itemBuilder: (context, index) => const Icon(
                         Icons.star,
                         color: Colors.amber,

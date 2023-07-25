@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/app/app_components.dart';
 import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
 import 'package:the_shop/domain/models/payment/payment.dart';
+import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/components/constants.dart';
 import 'package:the_shop/pages/components/loading.dart';
 import 'package:the_shop/pages/components/sliver_app_bar.dart';
@@ -41,6 +42,7 @@ class _OrderPageState extends State<OrderPage> {
     phoneTextController = TextEditingController();
     emailTextController = TextEditingController();
     commentTextController = TextEditingController();
+    // без авторизации пока так
     nameTextController.text = 'Vadim';
     phoneTextController.text = '9290091219';
     emailTextController.text = 'vadim02101@gmail.com';
@@ -114,6 +116,7 @@ class _OrderPageState extends State<OrderPage> {
                       ),
                       SliverDeliveriesWidget(
                         deliveries: state.deliveries,
+                        selectedDelivery: state.delivery,
                         theme: theme,
                       ),
                       SliverDeliveriesInfoWidget(
@@ -146,6 +149,7 @@ class _OrderPageState extends State<OrderPage> {
                       ),
                       SliverDeliveriesWidget(
                         deliveries: state.deliveries,
+                        selectedDelivery: state.delivery,
                         theme: theme,
                       ),
                       SliverDeliveriesInfoWidget(
@@ -165,7 +169,7 @@ class _OrderPageState extends State<OrderPage> {
                             return _Payment(
                               payment: payment,
                               theme: theme,
-                              selected: payment,
+                              selected: state.payment,
                               onTap: () {
                                 context.read<OrderBloc>().add(
                                       SelectPaymentOrderEvent(
@@ -238,6 +242,7 @@ class _OrderPageState extends State<OrderPage> {
                       ElevatedButton(
                         onPressed: () {
                           context.router.push(const CatalogTab());
+                          context.read<CartBloc>().add(const LoadCartEvent());
                         },
                         child: const Text('Вернуться к покупкам'),
                       ),

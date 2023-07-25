@@ -12,7 +12,9 @@ class CartListWidget extends StatelessWidget {
   final CalculatedCart cart;
 
   @override
-  Widget build(BuildContext context, ) {
+  Widget build(
+    BuildContext context,
+  ) {
     return ListView.builder(
       itemCount: cart.products.length,
       itemBuilder: (BuildContext context, int index) {
@@ -72,20 +74,30 @@ class CartListWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: IconButton(
-                    onPressed: cartItem.count != 1
-                        ? () {
-                      context.read<CartBloc>().add(
-                        AddProductCountEvent(
-                          request: CartUpdate(
-                            productId: cartItem.product.id,
-                            count: cartItem.count - 1,
-                          ),
-                        ),
-                      );
-                    }
-                        : null,
-                    icon: const Icon(
-                      Icons.remove,
+                    onPressed: () {
+                      if (cartItem.count != 1) {
+                        context.read<CartBloc>().add(
+                              AddProductCountEvent(
+                                request: CartUpdate(
+                                  productId: cartItem.product.id,
+                                  count: cartItem.count - 1,
+                                ),
+                              ),
+                            );
+                      } else {
+                        context.read<CartBloc>().add(
+                              DeleteProductFromCartEvent(
+                                request: CartUpdate(
+                                  productId: cartItem.product.id,
+                                ),
+                              ),
+                            );
+                      }
+                    },
+                    icon: Icon(
+                      cartItem.count == 1
+                          ? Icons.remove_shopping_cart
+                          : Icons.remove,
                     ),
                   ),
                 ),
@@ -97,13 +109,13 @@ class CartListWidget extends StatelessWidget {
                   child: IconButton(
                     onPressed: () {
                       context.read<CartBloc>().add(
-                        AddProductCountEvent(
-                          request: CartUpdate(
-                            productId: cartItem.product.id,
-                            count: cartItem.count + 1,
-                          ),
-                        ),
-                      );
+                            AddProductCountEvent(
+                              request: CartUpdate(
+                                productId: cartItem.product.id,
+                                count: cartItem.count + 1,
+                              ),
+                            ),
+                          );
                     },
                     icon: const Icon(Icons.add),
                   ),
