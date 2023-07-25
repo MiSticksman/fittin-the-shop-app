@@ -20,13 +20,13 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Корзина'),
-        centerTitle: true,
-      ),
-      body: Material(
-        child: BlocBuilder<CartBloc, CartState>(
+    return Material(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Корзина'),
+          centerTitle: true,
+        ),
+        body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
             if (state is ErrorCartState) {
               return const Center(
@@ -40,14 +40,11 @@ class _CartPageState extends State<CartPage> {
 
             if (cart.products.isEmpty) {
               return Center(
-                child: Column(
-                  children: [
-                    const Text('В Вашей корзине пока ничего нет'),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('Перейти к покупкам'),
-                    ),
-                  ],
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.router.navigate(const CatalogTab());
+                  },
+                  child: const Text('ПЕРЕЙТИ К ПОКУПКАМ'),
                 ),
               );
             }
@@ -56,82 +53,83 @@ class _CartPageState extends State<CartPage> {
             );
           },
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: BlocBuilder<CartBloc, CartState>(
-        builder: (context, state) {
-          return Visibility(
-            visible: state.cart.products.isNotEmpty,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Card(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'К оплате',
-                            style: theme.textTheme.bodyMedium?.copyWith(
-                              color: theme.colorScheme.onBackground,
-                            ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              text: (state.cart.price ?? '0'),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            return Visibility(
+              visible: state.cart.products.isNotEmpty,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Card(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 10,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'К оплате',
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 color: theme.colorScheme.onBackground,
                               ),
-                              children: [
-                                const TextSpan(
-                                  text: ' ',
-                                ),
-                                if (state.cart.oldPrice != null)
-                                  TextSpan(
-                                    text: state.cart.oldPrice,
-                                    style: theme.textTheme.bodyMedium?.copyWith(
-                                      color: theme.colorScheme.onBackground,
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
-                                  ),
-                              ],
                             ),
-                          ),
-                        ],
+                            RichText(
+                              text: TextSpan(
+                                text: (state.cart.price ?? '0'),
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.colorScheme.onBackground,
+                                ),
+                                children: [
+                                  const TextSpan(
+                                    text: ' ',
+                                  ),
+                                  if (state.cart.oldPrice != null)
+                                    TextSpan(
+                                      text: state.cart.oldPrice,
+                                      style:
+                                          theme.textTheme.bodyMedium?.copyWith(
+                                        color: theme.colorScheme.onBackground,
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.router.navigate(
-                        OrderRoute(
-                          products: state.cart.products
-                              .map((p) => CartProductWithCount(
-                                  productId: p.product.id, count: p.count))
-                              .toList(),
-                        ),
-                      );
-                    },
-                    child: const SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          'Перейти к оплате',
-                          textAlign: TextAlign.center,
-                        )),
-                  ),
-                ],
+                    ElevatedButton(
+                      onPressed: () {
+                        context.router.navigate(
+                          OrderRoute(
+                            products: state.cart.products
+                                .map((p) => CartProductWithCount(
+                                    productId: p.product.id, count: p.count))
+                                .toList(),
+                          ),
+                        );
+                      },
+                      child: const SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            'Перейти к оплате',
+                            textAlign: TextAlign.center,
+                          )),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

@@ -8,7 +8,7 @@ part 'delivery_request.g.dart';
 @freezed
 abstract class DeliveryRequest with _$DeliveryRequest {
   const factory DeliveryRequest({
-    @JsonKey(name: 'city_fias') String? cityFias,
+    @JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
     List<CartProductWithCount>? products,
   }) = _DeliveryRequest;
 

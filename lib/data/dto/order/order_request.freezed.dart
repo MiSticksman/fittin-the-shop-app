@@ -20,37 +20,42 @@ OrderRequest _$OrderRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderRequest {
-  @JsonKey(name: 'city_fias')
+  @JsonKey(name: 'city_fias', includeIfNull: false)
   String? get cityFias => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   String? get promocode => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   List<CartProductWithCount>? get products =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'user_name')
   String get userName => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_phone')
   String get userPhone => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user_email')
+  @JsonKey(name: 'user_email', includeIfNull: false)
   String? get userEmail => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', includeIfNull: false)
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_id')
   String get deliveryId => throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_type')
   String get deliveryType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'delivery_name')
+  @JsonKey(name: 'delivery_name', includeIfNull: false)
   String? get deliveryName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'delivery_date')
+  @JsonKey(name: 'delivery_date', includeIfNull: false)
   String? get deliveryDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'payment_id')
   String get paymentId => throw _privateConstructorUsedError;
   @JsonKey(name: 'payment_type')
   String get paymentType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_name')
+  @JsonKey(name: 'payment_name', includeIfNull: false)
   String? get paymentName => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   int? get discount => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   String? get address => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
   String? get comment => throw _privateConstructorUsedError;
-  @JsonKey(name: 'repeated_days')
+  @JsonKey(name: 'repeated_days', includeIfNull: false)
   int? get repeatedDays => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -66,24 +71,26 @@ abstract class $OrderRequestCopyWith<$Res> {
       _$OrderRequestCopyWithImpl<$Res, OrderRequest>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'city_fias') String? cityFias,
-      String? promocode,
-      List<CartProductWithCount>? products,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) String? cityFias,
+      @JsonKey(includeIfNull: false) String? promocode,
+      @JsonKey(includeIfNull: false) List<CartProductWithCount>? products,
       @JsonKey(name: 'user_name') String userName,
       @JsonKey(name: 'user_phone') String userPhone,
-      @JsonKey(name: 'user_email') String? userEmail,
-      @JsonKey(name: 'created_at') String? createdAt,
+      @JsonKey(name: 'user_email', includeIfNull: false) String? userEmail,
+      @JsonKey(name: 'created_at', includeIfNull: false) String? createdAt,
       @JsonKey(name: 'delivery_id') String deliveryId,
       @JsonKey(name: 'delivery_type') String deliveryType,
-      @JsonKey(name: 'delivery_name') String? deliveryName,
-      @JsonKey(name: 'delivery_date') String? deliveryDate,
+      @JsonKey(name: 'delivery_name', includeIfNull: false)
+      String? deliveryName,
+      @JsonKey(name: 'delivery_date', includeIfNull: false)
+      String? deliveryDate,
       @JsonKey(name: 'payment_id') String paymentId,
       @JsonKey(name: 'payment_type') String paymentType,
-      @JsonKey(name: 'payment_name') String? paymentName,
-      int? discount,
-      String? address,
-      String? comment,
-      @JsonKey(name: 'repeated_days') int? repeatedDays});
+      @JsonKey(name: 'payment_name', includeIfNull: false) String? paymentName,
+      @JsonKey(includeIfNull: false) int? discount,
+      @JsonKey(includeIfNull: false) String? address,
+      @JsonKey(includeIfNull: false) String? comment,
+      @JsonKey(name: 'repeated_days', includeIfNull: false) int? repeatedDays});
 }
 
 /// @nodoc
@@ -204,24 +211,26 @@ abstract class _$$_OrderRequestCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'city_fias') String? cityFias,
-      String? promocode,
-      List<CartProductWithCount>? products,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) String? cityFias,
+      @JsonKey(includeIfNull: false) String? promocode,
+      @JsonKey(includeIfNull: false) List<CartProductWithCount>? products,
       @JsonKey(name: 'user_name') String userName,
       @JsonKey(name: 'user_phone') String userPhone,
-      @JsonKey(name: 'user_email') String? userEmail,
-      @JsonKey(name: 'created_at') String? createdAt,
+      @JsonKey(name: 'user_email', includeIfNull: false) String? userEmail,
+      @JsonKey(name: 'created_at', includeIfNull: false) String? createdAt,
       @JsonKey(name: 'delivery_id') String deliveryId,
       @JsonKey(name: 'delivery_type') String deliveryType,
-      @JsonKey(name: 'delivery_name') String? deliveryName,
-      @JsonKey(name: 'delivery_date') String? deliveryDate,
+      @JsonKey(name: 'delivery_name', includeIfNull: false)
+      String? deliveryName,
+      @JsonKey(name: 'delivery_date', includeIfNull: false)
+      String? deliveryDate,
       @JsonKey(name: 'payment_id') String paymentId,
       @JsonKey(name: 'payment_type') String paymentType,
-      @JsonKey(name: 'payment_name') String? paymentName,
-      int? discount,
-      String? address,
-      String? comment,
-      @JsonKey(name: 'repeated_days') int? repeatedDays});
+      @JsonKey(name: 'payment_name', includeIfNull: false) String? paymentName,
+      @JsonKey(includeIfNull: false) int? discount,
+      @JsonKey(includeIfNull: false) String? address,
+      @JsonKey(includeIfNull: false) String? comment,
+      @JsonKey(name: 'repeated_days', includeIfNull: false) int? repeatedDays});
 }
 
 /// @nodoc
@@ -335,36 +344,38 @@ class __$$_OrderRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OrderRequest implements _OrderRequest {
   const _$_OrderRequest(
-      {@JsonKey(name: 'city_fias') this.cityFias,
-      this.promocode,
-      final List<CartProductWithCount>? products,
+      {@JsonKey(name: 'city_fias', includeIfNull: false) this.cityFias,
+      @JsonKey(includeIfNull: false) this.promocode,
+      @JsonKey(includeIfNull: false) final List<CartProductWithCount>? products,
       @JsonKey(name: 'user_name') required this.userName,
       @JsonKey(name: 'user_phone') required this.userPhone,
-      @JsonKey(name: 'user_email') this.userEmail,
-      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'user_email', includeIfNull: false) this.userEmail,
+      @JsonKey(name: 'created_at', includeIfNull: false) this.createdAt,
       @JsonKey(name: 'delivery_id') required this.deliveryId,
       @JsonKey(name: 'delivery_type') required this.deliveryType,
-      @JsonKey(name: 'delivery_name') this.deliveryName,
-      @JsonKey(name: 'delivery_date') this.deliveryDate,
+      @JsonKey(name: 'delivery_name', includeIfNull: false) this.deliveryName,
+      @JsonKey(name: 'delivery_date', includeIfNull: false) this.deliveryDate,
       @JsonKey(name: 'payment_id') required this.paymentId,
       @JsonKey(name: 'payment_type') required this.paymentType,
-      @JsonKey(name: 'payment_name') this.paymentName,
-      this.discount,
-      this.address,
-      this.comment,
-      @JsonKey(name: 'repeated_days') this.repeatedDays})
+      @JsonKey(name: 'payment_name', includeIfNull: false) this.paymentName,
+      @JsonKey(includeIfNull: false) this.discount,
+      @JsonKey(includeIfNull: false) this.address,
+      @JsonKey(includeIfNull: false) this.comment,
+      @JsonKey(name: 'repeated_days', includeIfNull: false) this.repeatedDays})
       : _products = products;
 
   factory _$_OrderRequest.fromJson(Map<String, dynamic> json) =>
       _$$_OrderRequestFromJson(json);
 
   @override
-  @JsonKey(name: 'city_fias')
+  @JsonKey(name: 'city_fias', includeIfNull: false)
   final String? cityFias;
   @override
+  @JsonKey(includeIfNull: false)
   final String? promocode;
   final List<CartProductWithCount>? _products;
   @override
+  @JsonKey(includeIfNull: false)
   List<CartProductWithCount>? get products {
     final value = _products;
     if (value == null) return null;
@@ -380,10 +391,10 @@ class _$_OrderRequest implements _OrderRequest {
   @JsonKey(name: 'user_phone')
   final String userPhone;
   @override
-  @JsonKey(name: 'user_email')
+  @JsonKey(name: 'user_email', includeIfNull: false)
   final String? userEmail;
   @override
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', includeIfNull: false)
   final String? createdAt;
   @override
   @JsonKey(name: 'delivery_id')
@@ -392,10 +403,10 @@ class _$_OrderRequest implements _OrderRequest {
   @JsonKey(name: 'delivery_type')
   final String deliveryType;
   @override
-  @JsonKey(name: 'delivery_name')
+  @JsonKey(name: 'delivery_name', includeIfNull: false)
   final String? deliveryName;
   @override
-  @JsonKey(name: 'delivery_date')
+  @JsonKey(name: 'delivery_date', includeIfNull: false)
   final String? deliveryDate;
   @override
   @JsonKey(name: 'payment_id')
@@ -404,16 +415,19 @@ class _$_OrderRequest implements _OrderRequest {
   @JsonKey(name: 'payment_type')
   final String paymentType;
   @override
-  @JsonKey(name: 'payment_name')
+  @JsonKey(name: 'payment_name', includeIfNull: false)
   final String? paymentName;
   @override
+  @JsonKey(includeIfNull: false)
   final int? discount;
   @override
+  @JsonKey(includeIfNull: false)
   final String? address;
   @override
+  @JsonKey(includeIfNull: false)
   final String? comment;
   @override
-  @JsonKey(name: 'repeated_days')
+  @JsonKey(name: 'repeated_days', includeIfNull: false)
   final int? repeatedDays;
 
   @override
@@ -500,35 +514,42 @@ class _$_OrderRequest implements _OrderRequest {
 
 abstract class _OrderRequest implements OrderRequest {
   const factory _OrderRequest(
-          {@JsonKey(name: 'city_fias') final String? cityFias,
-          final String? promocode,
-          final List<CartProductWithCount>? products,
-          @JsonKey(name: 'user_name') required final String userName,
-          @JsonKey(name: 'user_phone') required final String userPhone,
-          @JsonKey(name: 'user_email') final String? userEmail,
-          @JsonKey(name: 'created_at') final String? createdAt,
-          @JsonKey(name: 'delivery_id') required final String deliveryId,
-          @JsonKey(name: 'delivery_type') required final String deliveryType,
-          @JsonKey(name: 'delivery_name') final String? deliveryName,
-          @JsonKey(name: 'delivery_date') final String? deliveryDate,
-          @JsonKey(name: 'payment_id') required final String paymentId,
-          @JsonKey(name: 'payment_type') required final String paymentType,
-          @JsonKey(name: 'payment_name') final String? paymentName,
-          final int? discount,
-          final String? address,
-          final String? comment,
-          @JsonKey(name: 'repeated_days') final int? repeatedDays}) =
-      _$_OrderRequest;
+      {@JsonKey(name: 'city_fias', includeIfNull: false) final String? cityFias,
+      @JsonKey(includeIfNull: false) final String? promocode,
+      @JsonKey(includeIfNull: false) final List<CartProductWithCount>? products,
+      @JsonKey(name: 'user_name') required final String userName,
+      @JsonKey(name: 'user_phone') required final String userPhone,
+      @JsonKey(name: 'user_email', includeIfNull: false)
+      final String? userEmail,
+      @JsonKey(name: 'created_at', includeIfNull: false)
+      final String? createdAt,
+      @JsonKey(name: 'delivery_id') required final String deliveryId,
+      @JsonKey(name: 'delivery_type') required final String deliveryType,
+      @JsonKey(name: 'delivery_name', includeIfNull: false)
+      final String? deliveryName,
+      @JsonKey(name: 'delivery_date', includeIfNull: false)
+      final String? deliveryDate,
+      @JsonKey(name: 'payment_id') required final String paymentId,
+      @JsonKey(name: 'payment_type') required final String paymentType,
+      @JsonKey(name: 'payment_name', includeIfNull: false)
+      final String? paymentName,
+      @JsonKey(includeIfNull: false) final int? discount,
+      @JsonKey(includeIfNull: false) final String? address,
+      @JsonKey(includeIfNull: false) final String? comment,
+      @JsonKey(name: 'repeated_days', includeIfNull: false)
+      final int? repeatedDays}) = _$_OrderRequest;
 
   factory _OrderRequest.fromJson(Map<String, dynamic> json) =
       _$_OrderRequest.fromJson;
 
   @override
-  @JsonKey(name: 'city_fias')
+  @JsonKey(name: 'city_fias', includeIfNull: false)
   String? get cityFias;
   @override
+  @JsonKey(includeIfNull: false)
   String? get promocode;
   @override
+  @JsonKey(includeIfNull: false)
   List<CartProductWithCount>? get products;
   @override
   @JsonKey(name: 'user_name')
@@ -537,10 +558,10 @@ abstract class _OrderRequest implements OrderRequest {
   @JsonKey(name: 'user_phone')
   String get userPhone;
   @override
-  @JsonKey(name: 'user_email')
+  @JsonKey(name: 'user_email', includeIfNull: false)
   String? get userEmail;
   @override
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', includeIfNull: false)
   String? get createdAt;
   @override
   @JsonKey(name: 'delivery_id')
@@ -549,10 +570,10 @@ abstract class _OrderRequest implements OrderRequest {
   @JsonKey(name: 'delivery_type')
   String get deliveryType;
   @override
-  @JsonKey(name: 'delivery_name')
+  @JsonKey(name: 'delivery_name', includeIfNull: false)
   String? get deliveryName;
   @override
-  @JsonKey(name: 'delivery_date')
+  @JsonKey(name: 'delivery_date', includeIfNull: false)
   String? get deliveryDate;
   @override
   @JsonKey(name: 'payment_id')
@@ -561,16 +582,19 @@ abstract class _OrderRequest implements OrderRequest {
   @JsonKey(name: 'payment_type')
   String get paymentType;
   @override
-  @JsonKey(name: 'payment_name')
+  @JsonKey(name: 'payment_name', includeIfNull: false)
   String? get paymentName;
   @override
+  @JsonKey(includeIfNull: false)
   int? get discount;
   @override
+  @JsonKey(includeIfNull: false)
   String? get address;
   @override
+  @JsonKey(includeIfNull: false)
   String? get comment;
   @override
-  @JsonKey(name: 'repeated_days')
+  @JsonKey(name: 'repeated_days', includeIfNull: false)
   int? get repeatedDays;
   @override
   @JsonKey(ignore: true)

@@ -21,9 +21,9 @@ CatalogProduct _$CatalogProductFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CatalogProduct {
   int get id => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
+  Decimal get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'old_price')
-  String? get oldPrice => throw _privateConstructorUsedError;
+  Decimal? get oldPrice => throw _privateConstructorUsedError;
   String get discount => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String get brand => throw _privateConstructorUsedError;
@@ -48,8 +48,8 @@ abstract class $CatalogProductCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String price,
-      @JsonKey(name: 'old_price') String? oldPrice,
+      Decimal price,
+      @JsonKey(name: 'old_price') Decimal? oldPrice,
       String discount,
       String? name,
       String brand,
@@ -93,11 +93,11 @@ class _$CatalogProductCopyWithImpl<$Res, $Val extends CatalogProduct>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Decimal,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Decimal?,
       discount: null == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -144,8 +144,8 @@ abstract class _$$_CatalogProductCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String price,
-      @JsonKey(name: 'old_price') String? oldPrice,
+      Decimal price,
+      @JsonKey(name: 'old_price') Decimal? oldPrice,
       String discount,
       String? name,
       String brand,
@@ -187,11 +187,11 @@ class __$$_CatalogProductCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Decimal,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Decimal?,
       discount: null == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -251,10 +251,10 @@ class _$_CatalogProduct implements _CatalogProduct {
   @override
   final int id;
   @override
-  final String price;
+  final Decimal price;
   @override
   @JsonKey(name: 'old_price')
-  final String? oldPrice;
+  final Decimal? oldPrice;
   @override
   final String discount;
   @override
@@ -338,8 +338,8 @@ class _$_CatalogProduct implements _CatalogProduct {
 abstract class _CatalogProduct implements CatalogProduct {
   const factory _CatalogProduct(
           {required final int id,
-          required final String price,
-          @JsonKey(name: 'old_price') final String? oldPrice,
+          required final Decimal price,
+          @JsonKey(name: 'old_price') final Decimal? oldPrice,
           required final String discount,
           final String? name,
           required final String brand,
@@ -356,10 +356,10 @@ abstract class _CatalogProduct implements CatalogProduct {
   @override
   int get id;
   @override
-  String get price;
+  Decimal get price;
   @override
   @JsonKey(name: 'old_price')
-  String? get oldPrice;
+  Decimal? get oldPrice;
   @override
   String get discount;
   @override

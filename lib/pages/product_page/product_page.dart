@@ -29,7 +29,6 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocProvider<ProductBloc>(
       create: (context) => ProductBloc(
           product: widget.productPreview,
@@ -47,6 +46,9 @@ class _ProductPageState extends State<ProductPage> {
             }
             if (state is ProductLoadedState) {
               return ProductDetailWidget(product: state.product);
+            }
+            if (state is ProductLoadingState) {
+              return const LoadingIndicator();
             }
             return const Center(
               child: Text('Произошла ошибка'),

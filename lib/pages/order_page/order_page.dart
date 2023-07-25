@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,7 @@ import 'package:the_shop/pages/components/sliver_app_bar.dart';
 import 'package:the_shop/pages/order_page/bloc/order_bloc.dart';
 import 'package:the_shop/pages/order_page/widgets/sliver_deliveries_widgets.dart';
 import 'package:the_shop/pages/order_page/widgets/sliver_order_user_data.dart';
-
+import 'package:the_shop/router/app_router.dart';
 
 @RoutePage()
 class OrderPage extends StatefulWidget {
@@ -29,8 +30,6 @@ class _OrderPageState extends State<OrderPage> {
   late final TextEditingController emailTextController;
   late final TextEditingController commentTextController;
 
-
-
   @override
   void initState() {
     super.initState();
@@ -45,7 +44,6 @@ class _OrderPageState extends State<OrderPage> {
     nameTextController.text = 'Vadim';
     phoneTextController.text = '9290091219';
     emailTextController.text = 'vadim02101@gmail.com';
-
   }
 
   @override
@@ -59,213 +57,212 @@ class _OrderPageState extends State<OrderPage> {
       borderRadius: const BorderRadius.all(Radius.circular(10)),
     );
 
-    return BlocProvider(
-      create: (context) {
-        final OrderBloc bloc = OrderBloc(
+    return Material(
+      child: BlocProvider(
+        create: (context) => OrderBloc(
           catalogService: AppComponents().catalogService,
           deliveryService: AppComponents().deliveryService,
           paymentService: AppComponents().paymentService,
           orderService: AppComponents().orderService,
           products: widget.products,
-          userName: nameTextController.text,
-          userPhone: phoneTextController.text,
-          userEmail: emailTextController.text,
-        );
-        bloc.add(
-          LoadDeliveriesOrderEvent(
-            userName: nameTextController.text,
-            userPhone: phoneTextController.text,
-            userEmail: emailTextController.text,
-          ),
-        );
-        return bloc;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(''),
-        ),
-        body: Material(
-          child: Center(
-            child: Scaffold(
-              appBar: AppBar(
-                title: const Text('Оформление заказа'),
-                centerTitle: true,
+        )..add(const LoadDeliveriesOrderEvent()),
+        child: Scaffold(
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: theme.colorScheme.primary, //change your color here
               ),
-              body:
-                  BlocBuilder<OrderBloc, OrderState>(builder: (context, state) {
-                if (state is InitOrderState) {
-                  nameTextController.text = state.userName;
-                  phoneTextController.text = state.userPhone;
-                  emailTextController.text = state.userEmail ?? '';
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                    ),
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverOrderUserDataWidget(
-                          theme: theme,
-                          border: border,
-                          nameTextController: nameTextController,
-                          phoneTextController: phoneTextController,
-                          emailTextController: emailTextController,
-                        ),
-                      ],
-                    ),
-                  );
-                }
-
-                if (state is DeliveriesOrderState) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                    ),
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverOrderUserDataWidget(
-                          theme: theme,
-                          border: border,
-                          nameTextController: nameTextController,
-                          phoneTextController: phoneTextController,
-                          emailTextController: emailTextController,
-                        ),
-                        SliverBar(
-                          theme: theme,
-                          title: 'Доставки',
-                        ),
-                        SliverDeliveriesWidget(
-
-                          deliveries: state.deliveries,
-                          theme: theme,
-                          nameTextController: nameTextController,
-                          phoneTextController: phoneTextController,
-                          emailTextController: emailTextController,
-                        ),
-                        SliverDeliveriesInfoWidget(
-                          delivery: state.delivery,
-                          theme: theme,
-                          border: border,
-                          emailTextController: emailTextController,
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                if (state is PaymentsOrderState) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                    ),
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverOrderUserDataWidget(
-                          theme: theme,
-                          border: border,
-                          nameTextController: nameTextController,
-                          phoneTextController: phoneTextController,
-                          emailTextController: emailTextController,
-                        ),
-                        SliverBar(
-                          theme: theme,
-                          title: 'Доставки',
-                        ),
-                        SliverDeliveriesWidget(
-                          deliveries: state.deliveries,
-                          theme: theme,
-                          nameTextController: nameTextController,
-                          phoneTextController: phoneTextController,
-                          emailTextController: emailTextController,
-                        ),
-                        SliverDeliveriesInfoWidget(
-                          delivery: state.delivery,
-                          theme: theme,
-                          border: border,
-                          emailTextController: emailTextController,
-                        ),
-                        SliverBar(
-                          theme: theme,
-                          title: 'Способы оплаты',
-                        ),
-                        SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            (context, index) {
-                              final payment = state.payments[index];
-                              return _Payment(
-                                payment: payment,
-                                theme: theme,
-                                selected: payment,
-                                onTap: () {
-                                  context.read<OrderBloc>().add(
-                                        SelectPaymentOrderEvent(
-                                          payment: payment,
-                                          userName: nameTextController.text,
-                                          userPhone: phoneTextController.text,
-                                          userEmail: emailTextController.text,
-                                        ),
-                                      );
-                                },
-                              );
-                            },
-                            childCount: state.payments.length,
-                          ),
-                        ),
-                        SliverList(
-                          delegate: SliverChildListDelegate(
-                            [
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              TextField(
-                                controller: commentTextController,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.colorScheme.onBackground,
-                                ),
-                                decoration: InputDecoration(
-                                  focusedBorder: border,
-                                  focusedErrorBorder: border,
-                                  disabledBorder: border,
-                                  enabledBorder: border,
-                                  border: border,
-                                  prefixIcon: Icon(
-                                    Icons.comment,
-                                    color: theme.colorScheme.primary,
-                                  ),
-                                  contentPadding: EdgeInsets.zero,
-                                  hintText: 'Комментарий',
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              FilledButton(
-                                onPressed: () {
-                                  context.read<OrderBloc>().add(
-                                        OrderCreateOrderEvent(
-                                          products: widget.products,
-                                          userName: nameTextController.text,
-                                          userPhone: phoneTextController.text,
-                                          userEmail: emailTextController.text,
-                                          comment: commentTextController.text,
-                                        ),
-                                      );
-                                },
-                                child: const Text('Оформить заказ'),
-                              ),
-                              const SizedBox(
-                                height: 40,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                return const LoadingIndicator();
-              }),
+              title: const Text('Оформление заказа'),
+              centerTitle: true,
             ),
-          ),
-        ),
+            body: BlocBuilder<OrderBloc, OrderState>(builder: (context, state) {
+              if (state is InitOrderState) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                  ),
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverOrderUserDataWidget(
+                        theme: theme,
+                        border: border,
+                        nameTextController: nameTextController,
+                        phoneTextController: phoneTextController,
+                        emailTextController: emailTextController,
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              if (state is DeliveriesOrderState) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                  ),
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverOrderUserDataWidget(
+                        theme: theme,
+                        border: border,
+                        nameTextController: nameTextController,
+                        phoneTextController: phoneTextController,
+                        emailTextController: emailTextController,
+                      ),
+                      SliverBar(
+                        theme: theme,
+                        title: 'Доставки',
+                      ),
+                      SliverDeliveriesWidget(
+                        deliveries: state.deliveries,
+                        theme: theme,
+                      ),
+                      SliverDeliveriesInfoWidget(
+                        delivery: state.delivery,
+                        theme: theme,
+                        border: border,
+                        emailTextController: emailTextController,
+                      ),
+                    ],
+                  ),
+                );
+              }
+              if (state is PaymentsOrderState) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                  ),
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverOrderUserDataWidget(
+                        theme: theme,
+                        border: border,
+                        nameTextController: nameTextController,
+                        phoneTextController: phoneTextController,
+                        emailTextController: emailTextController,
+                      ),
+                      SliverBar(
+                        theme: theme,
+                        title: 'Доставки',
+                      ),
+                      SliverDeliveriesWidget(
+                        deliveries: state.deliveries,
+                        theme: theme,
+                      ),
+                      SliverDeliveriesInfoWidget(
+                        delivery: state.delivery,
+                        theme: theme,
+                        border: border,
+                        emailTextController: emailTextController,
+                      ),
+                      SliverBar(
+                        theme: theme,
+                        title: 'Способы оплаты',
+                      ),
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            final payment = state.payments[index];
+                            return _Payment(
+                              payment: payment,
+                              theme: theme,
+                              selected: payment,
+                              onTap: () {
+                                context.read<OrderBloc>().add(
+                                      SelectPaymentOrderEvent(
+                                        payment: payment,
+                                      ),
+                                    );
+                              },
+                            );
+                          },
+                          childCount: state.payments.length,
+                        ),
+                      ),
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            TextField(
+                              controller: commentTextController,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onBackground,
+                              ),
+                              decoration: InputDecoration(
+                                focusedBorder: border,
+                                focusedErrorBorder: border,
+                                disabledBorder: border,
+                                enabledBorder: border,
+                                border: border,
+                                prefixIcon: Icon(
+                                  Icons.comment,
+                                  color: theme.colorScheme.primary,
+                                ),
+                                contentPadding: EdgeInsets.zero,
+                                hintText: 'Комментарий',
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            FilledButton(
+                              onPressed: () {
+                                context.read<OrderBloc>().add(
+                                      OrderCreateOrderEvent(
+                                        products: widget.products,
+                                        userName: nameTextController.text,
+                                        userPhone: phoneTextController.text,
+                                        userEmail: emailTextController.text,
+                                        comment: commentTextController.text,
+                                      ),
+                                    );
+                              },
+                              child: const Text('Оформить заказ'),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              if (state is CreatedOrderState) {
+                return Center(
+                  child: Column(
+                    children: [
+                      const Text('Заказ успешно сформирован'),
+                      ElevatedButton(
+                        onPressed: () {
+                          context.router.push(const CatalogTab());
+                        },
+                        child: const Text('Вернуться к покупкам'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              if (state is ErrorOrderState) {
+                return Center(
+                  child: Column(
+                    children: [
+                      const Text(
+                          'Произошла ошиибка! Возможно, Вы пытаетесь заказать продукты у разных фермеров.'),
+                      ElevatedButton(
+                        onPressed: () {
+                          context.router.pop();
+                        },
+                        child: const Text('Вернуться в корзину'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return const LoadingIndicator();
+            })),
       ),
     );
   }

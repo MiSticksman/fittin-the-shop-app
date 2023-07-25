@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/data/dto/cart/calculated_cart.dart';
 import 'package:the_shop/data/dto/cart/cart_update.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
+import 'package:the_shop/util/extensions/money_formatting.dart';
 
 class CartListWidget extends StatelessWidget {
   const CartListWidget({super.key, required this.cart});
@@ -39,15 +40,15 @@ class CartListWidget extends StatelessWidget {
             ),
           ),
           title: Text(
-            '${cartItem.product.name} (${cartItem.count} ед.)',
+            '${cartItem.product.name}',
             style: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.onBackground,
             ),
           ),
           subtitle: RichText(
             text: TextSpan(
-              text: cartItem.product.price,
-              style: theme.textTheme.bodyMedium?.copyWith(
+              text: cartItem.product.price.formatMoney(),
+              style: theme.textTheme.titleMedium?.copyWith(
                 color: theme.colorScheme.onBackground,
               ),
               children: [
@@ -56,7 +57,7 @@ class CartListWidget extends StatelessWidget {
                 ),
                 if (oldPrice != null)
                   TextSpan(
-                    text: oldPrice,
+                    text: oldPrice.formatMoney(),
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: theme.colorScheme.onBackground,
                       decoration: TextDecoration.lineThrough,
@@ -88,10 +89,10 @@ class CartListWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                    child: Text(
-                      cartItem.count.toString(),
-                    )),
+                Text(
+                  cartItem.count.toString(),
+                  style: theme.textTheme.titleMedium,
+                ),
                 Expanded(
                   child: IconButton(
                     onPressed: () {

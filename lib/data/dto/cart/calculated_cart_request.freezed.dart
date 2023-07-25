@@ -21,6 +21,7 @@ CalculatedCartRequest _$CalculatedCartRequestFromJson(
 
 /// @nodoc
 mixin _$CalculatedCartRequest {
+  @JsonKey(includeIfNull: false)
   String? get promocode => throw _privateConstructorUsedError;
   List<CartProductWithCount>? get products =>
       throw _privateConstructorUsedError;
@@ -37,7 +38,9 @@ abstract class $CalculatedCartRequestCopyWith<$Res> {
           $Res Function(CalculatedCartRequest) then) =
       _$CalculatedCartRequestCopyWithImpl<$Res, CalculatedCartRequest>;
   @useResult
-  $Res call({String? promocode, List<CartProductWithCount>? products});
+  $Res call(
+      {@JsonKey(includeIfNull: false) String? promocode,
+      List<CartProductWithCount>? products});
 }
 
 /// @nodoc
@@ -78,7 +81,9 @@ abstract class _$$_CalculatedCartRequestCopyWith<$Res>
       __$$_CalculatedCartRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? promocode, List<CartProductWithCount>? products});
+  $Res call(
+      {@JsonKey(includeIfNull: false) String? promocode,
+      List<CartProductWithCount>? products});
 }
 
 /// @nodoc
@@ -112,13 +117,15 @@ class __$$_CalculatedCartRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CalculatedCartRequest implements _CalculatedCartRequest {
   const _$_CalculatedCartRequest(
-      {this.promocode, final List<CartProductWithCount>? products})
+      {@JsonKey(includeIfNull: false) this.promocode,
+      final List<CartProductWithCount>? products})
       : _products = products;
 
   factory _$_CalculatedCartRequest.fromJson(Map<String, dynamic> json) =>
       _$$_CalculatedCartRequestFromJson(json);
 
   @override
+  @JsonKey(includeIfNull: false)
   final String? promocode;
   final List<CartProductWithCount>? _products;
   @override
@@ -167,13 +174,14 @@ class _$_CalculatedCartRequest implements _CalculatedCartRequest {
 
 abstract class _CalculatedCartRequest implements CalculatedCartRequest {
   const factory _CalculatedCartRequest(
-      {final String? promocode,
+      {@JsonKey(includeIfNull: false) final String? promocode,
       final List<CartProductWithCount>? products}) = _$_CalculatedCartRequest;
 
   factory _CalculatedCartRequest.fromJson(Map<String, dynamic> json) =
       _$_CalculatedCartRequest.fromJson;
 
   @override
+  @JsonKey(includeIfNull: false)
   String? get promocode;
   @override
   List<CartProductWithCount>? get products;

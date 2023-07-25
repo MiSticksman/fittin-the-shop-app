@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/router/app_router.dart';
 
 @RoutePage()
@@ -15,21 +17,25 @@ class HomePage extends StatelessWidget {
         CartTab(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
-        return CupertinoTabBar(
-          currentIndex: tabsRouter.activeIndex,
-          onTap: tabsRouter.setActiveIndex,
-          items: [
-            CustomBottomNavigationBarItem(
-              icon: Icons.manage_search,
-              label: 'Каталог',
-            ),
-            CustomBottomNavigationBarItem(
-              icon: Icons.shopping_bag_outlined,
-              label: 'Корзина',
-              // badgeChar: count > 0 ? count.toInt().toString() : null,
-            ),
-          ],
-        );
+        // не уверен в правильно данного решения отображения количества товаров в корзине, но это работает
+        return BlocBuilder<CartBloc, CartState>(builder: (context, state) {
+          final count = state.cart.products.length;
+          return CupertinoTabBar(
+            currentIndex: tabsRouter.activeIndex,
+            onTap: tabsRouter.setActiveIndex,
+            items: [
+              CustomBottomNavigationBarItem(
+                icon: Icons.manage_search,
+                label: 'Каталог',
+              ),
+              CustomBottomNavigationBarItem(
+                icon: Icons.shopping_bag_outlined,
+                label: 'Корзина',
+                badgeChar: count > 0 ? count.toString() : null,
+              ),
+            ],
+          );
+        });
       },
     );
   }

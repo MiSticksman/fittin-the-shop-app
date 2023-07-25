@@ -18,12 +18,12 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       deliveryId: json['delivery_id'] as String,
       deliveryType: json['delivery_type'] as String,
       deliveryName: json['delivery_name'] as String?,
-      deliveryPrice: json['delivery_price'] as int?,
+      deliveryPrice: json['delivery_price'] as int? ?? 0,
       deliveryDate: json['delivery_date'] as String?,
       paymentId: json['payment_id'] as String,
       paymentType: json['payment_type'] as String,
       paymentName: json['payment_name'] as String?,
-      itemPrice: json['item_price'] as int,
+      itemsPrice: json['items_price'] as String,
       discount: json['discount'] as int?,
       fullPrice: json['full_price'] as String?,
       promocode: json['promocode'] as String?,
@@ -31,8 +31,8 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       comment: json['comment'] as String?,
       errorText: json['error_text'] as String?,
       brand: json['brand'] as String?,
-      status: json['status'] as int?,
-      repeatedDays: json['repeated_days'] as int?,
+      status: json['status'] as int? ?? 0,
+      repeatedDays: json['repeated_days'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
@@ -50,7 +50,7 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'payment_id': instance.paymentId,
       'payment_type': instance.paymentType,
       'payment_name': instance.paymentName,
-      'item_price': instance.itemPrice,
+      'items_price': instance.itemsPrice,
       'discount': instance.discount,
       'full_price': instance.fullPrice,
       'promocode': instance.promocode,
@@ -68,7 +68,7 @@ _$_OrderItem _$$_OrderItemFromJson(Map<String, dynamic> json) => _$_OrderItem(
       picture: json['picture'] as String,
       count: json['count'] as int,
       price: json['price'] as String,
-      discount: json['discount'] as int?,
+      discount: json['discount'] as int? ?? 0,
       order: json['order'] as int?,
       product: json['product'] as int?,
     );

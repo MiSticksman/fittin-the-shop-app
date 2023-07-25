@@ -7,7 +7,7 @@ part 'calculated_cart_request.g.dart';
 @freezed
 abstract class CalculatedCartRequest with _$CalculatedCartRequest {
   const factory CalculatedCartRequest({
-    String? promocode,
+    @JsonKey(includeIfNull: false) String? promocode,
     List<CartProductWithCount>? products,
   }) = _CalculatedCartRequest;
 

@@ -36,7 +36,7 @@ mixin _$Order {
   String get deliveryType => throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_name')
   String? get deliveryName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'delivery_price')
+  @JsonKey(name: 'delivery_price', defaultValue: 0)
   int? get deliveryPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_date')
   String? get deliveryDate => throw _privateConstructorUsedError;
@@ -46,8 +46,8 @@ mixin _$Order {
   String get paymentType => throw _privateConstructorUsedError;
   @JsonKey(name: 'payment_name')
   String? get paymentName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'item_price')
-  int get itemPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'items_price')
+  String get itemsPrice => throw _privateConstructorUsedError;
   int? get discount => throw _privateConstructorUsedError;
   @JsonKey(name: 'full_price')
   String? get fullPrice => throw _privateConstructorUsedError;
@@ -57,8 +57,9 @@ mixin _$Order {
   @JsonKey(name: 'error_text')
   String? get errorText => throw _privateConstructorUsedError;
   String? get brand => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
   int? get status => throw _privateConstructorUsedError;
-  @JsonKey(name: 'repeated_days')
+  @JsonKey(name: 'repeated_days', defaultValue: 0)
   int? get repeatedDays => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -81,12 +82,12 @@ abstract class $OrderCopyWith<$Res> {
       @JsonKey(name: 'delivery_id') String deliveryId,
       @JsonKey(name: 'delivery_type') String deliveryType,
       @JsonKey(name: 'delivery_name') String? deliveryName,
-      @JsonKey(name: 'delivery_price') int? deliveryPrice,
+      @JsonKey(name: 'delivery_price', defaultValue: 0) int? deliveryPrice,
       @JsonKey(name: 'delivery_date') String? deliveryDate,
       @JsonKey(name: 'payment_id') String paymentId,
       @JsonKey(name: 'payment_type') String paymentType,
       @JsonKey(name: 'payment_name') String? paymentName,
-      @JsonKey(name: 'item_price') int itemPrice,
+      @JsonKey(name: 'items_price') String itemsPrice,
       int? discount,
       @JsonKey(name: 'full_price') String? fullPrice,
       String? promocode,
@@ -94,8 +95,8 @@ abstract class $OrderCopyWith<$Res> {
       String? comment,
       @JsonKey(name: 'error_text') String? errorText,
       String? brand,
-      int? status,
-      @JsonKey(name: 'repeated_days') int? repeatedDays});
+      @JsonKey(defaultValue: 0) int? status,
+      @JsonKey(name: 'repeated_days', defaultValue: 0) int? repeatedDays});
 }
 
 /// @nodoc
@@ -125,7 +126,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? paymentId = null,
     Object? paymentType = null,
     Object? paymentName = freezed,
-    Object? itemPrice = null,
+    Object? itemsPrice = null,
     Object? discount = freezed,
     Object? fullPrice = freezed,
     Object? promocode = freezed,
@@ -193,10 +194,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.paymentName
           : paymentName // ignore: cast_nullable_to_non_nullable
               as String?,
-      itemPrice: null == itemPrice
-          ? _value.itemPrice
-          : itemPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+      itemsPrice: null == itemsPrice
+          ? _value.itemsPrice
+          : itemsPrice // ignore: cast_nullable_to_non_nullable
+              as String,
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -253,12 +254,12 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       @JsonKey(name: 'delivery_id') String deliveryId,
       @JsonKey(name: 'delivery_type') String deliveryType,
       @JsonKey(name: 'delivery_name') String? deliveryName,
-      @JsonKey(name: 'delivery_price') int? deliveryPrice,
+      @JsonKey(name: 'delivery_price', defaultValue: 0) int? deliveryPrice,
       @JsonKey(name: 'delivery_date') String? deliveryDate,
       @JsonKey(name: 'payment_id') String paymentId,
       @JsonKey(name: 'payment_type') String paymentType,
       @JsonKey(name: 'payment_name') String? paymentName,
-      @JsonKey(name: 'item_price') int itemPrice,
+      @JsonKey(name: 'items_price') String itemsPrice,
       int? discount,
       @JsonKey(name: 'full_price') String? fullPrice,
       String? promocode,
@@ -266,8 +267,8 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String? comment,
       @JsonKey(name: 'error_text') String? errorText,
       String? brand,
-      int? status,
-      @JsonKey(name: 'repeated_days') int? repeatedDays});
+      @JsonKey(defaultValue: 0) int? status,
+      @JsonKey(name: 'repeated_days', defaultValue: 0) int? repeatedDays});
 }
 
 /// @nodoc
@@ -293,7 +294,7 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? paymentId = null,
     Object? paymentType = null,
     Object? paymentName = freezed,
-    Object? itemPrice = null,
+    Object? itemsPrice = null,
     Object? discount = freezed,
     Object? fullPrice = freezed,
     Object? promocode = freezed,
@@ -361,10 +362,10 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
           ? _value.paymentName
           : paymentName // ignore: cast_nullable_to_non_nullable
               as String?,
-      itemPrice: null == itemPrice
-          ? _value.itemPrice
-          : itemPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+      itemsPrice: null == itemsPrice
+          ? _value.itemsPrice
+          : itemsPrice // ignore: cast_nullable_to_non_nullable
+              as String,
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
@@ -418,12 +419,12 @@ class _$_Order implements _Order {
       @JsonKey(name: 'delivery_id') required this.deliveryId,
       @JsonKey(name: 'delivery_type') required this.deliveryType,
       @JsonKey(name: 'delivery_name') this.deliveryName,
-      @JsonKey(name: 'delivery_price') this.deliveryPrice,
+      @JsonKey(name: 'delivery_price', defaultValue: 0) this.deliveryPrice,
       @JsonKey(name: 'delivery_date') this.deliveryDate,
       @JsonKey(name: 'payment_id') required this.paymentId,
       @JsonKey(name: 'payment_type') required this.paymentType,
       @JsonKey(name: 'payment_name') this.paymentName,
-      @JsonKey(name: 'item_price') required this.itemPrice,
+      @JsonKey(name: 'items_price') required this.itemsPrice,
       this.discount,
       @JsonKey(name: 'full_price') this.fullPrice,
       this.promocode,
@@ -431,8 +432,8 @@ class _$_Order implements _Order {
       this.comment,
       @JsonKey(name: 'error_text') this.errorText,
       this.brand,
-      this.status,
-      @JsonKey(name: 'repeated_days') this.repeatedDays})
+      @JsonKey(defaultValue: 0) this.status,
+      @JsonKey(name: 'repeated_days', defaultValue: 0) this.repeatedDays})
       : _items = items;
 
   factory _$_Order.fromJson(Map<String, dynamic> json) =>
@@ -470,7 +471,7 @@ class _$_Order implements _Order {
   @JsonKey(name: 'delivery_name')
   final String? deliveryName;
   @override
-  @JsonKey(name: 'delivery_price')
+  @JsonKey(name: 'delivery_price', defaultValue: 0)
   final int? deliveryPrice;
   @override
   @JsonKey(name: 'delivery_date')
@@ -485,8 +486,8 @@ class _$_Order implements _Order {
   @JsonKey(name: 'payment_name')
   final String? paymentName;
   @override
-  @JsonKey(name: 'item_price')
-  final int itemPrice;
+  @JsonKey(name: 'items_price')
+  final String itemsPrice;
   @override
   final int? discount;
   @override
@@ -504,14 +505,15 @@ class _$_Order implements _Order {
   @override
   final String? brand;
   @override
+  @JsonKey(defaultValue: 0)
   final int? status;
   @override
-  @JsonKey(name: 'repeated_days')
+  @JsonKey(name: 'repeated_days', defaultValue: 0)
   final int? repeatedDays;
 
   @override
   String toString() {
-    return 'Order(id: $id, items: $items, userId: $userId, userPhone: $userPhone, userEmail: $userEmail, createdAt: $createdAt, deliveryId: $deliveryId, deliveryType: $deliveryType, deliveryName: $deliveryName, deliveryPrice: $deliveryPrice, deliveryDate: $deliveryDate, paymentId: $paymentId, paymentType: $paymentType, paymentName: $paymentName, itemPrice: $itemPrice, discount: $discount, fullPrice: $fullPrice, promocode: $promocode, address: $address, comment: $comment, errorText: $errorText, brand: $brand, status: $status, repeatedDays: $repeatedDays)';
+    return 'Order(id: $id, items: $items, userId: $userId, userPhone: $userPhone, userEmail: $userEmail, createdAt: $createdAt, deliveryId: $deliveryId, deliveryType: $deliveryType, deliveryName: $deliveryName, deliveryPrice: $deliveryPrice, deliveryDate: $deliveryDate, paymentId: $paymentId, paymentType: $paymentType, paymentName: $paymentName, itemsPrice: $itemsPrice, discount: $discount, fullPrice: $fullPrice, promocode: $promocode, address: $address, comment: $comment, errorText: $errorText, brand: $brand, status: $status, repeatedDays: $repeatedDays)';
   }
 
   @override
@@ -544,8 +546,8 @@ class _$_Order implements _Order {
                 other.paymentType == paymentType) &&
             (identical(other.paymentName, paymentName) ||
                 other.paymentName == paymentName) &&
-            (identical(other.itemPrice, itemPrice) ||
-                other.itemPrice == itemPrice) &&
+            (identical(other.itemsPrice, itemsPrice) ||
+                other.itemsPrice == itemsPrice) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
             (identical(other.fullPrice, fullPrice) ||
@@ -580,7 +582,7 @@ class _$_Order implements _Order {
         paymentId,
         paymentType,
         paymentName,
-        itemPrice,
+        itemsPrice,
         discount,
         fullPrice,
         promocode,
@@ -617,12 +619,13 @@ abstract class _Order implements Order {
       @JsonKey(name: 'delivery_id') required final String deliveryId,
       @JsonKey(name: 'delivery_type') required final String deliveryType,
       @JsonKey(name: 'delivery_name') final String? deliveryName,
-      @JsonKey(name: 'delivery_price') final int? deliveryPrice,
+      @JsonKey(name: 'delivery_price', defaultValue: 0)
+      final int? deliveryPrice,
       @JsonKey(name: 'delivery_date') final String? deliveryDate,
       @JsonKey(name: 'payment_id') required final String paymentId,
       @JsonKey(name: 'payment_type') required final String paymentType,
       @JsonKey(name: 'payment_name') final String? paymentName,
-      @JsonKey(name: 'item_price') required final int itemPrice,
+      @JsonKey(name: 'items_price') required final String itemsPrice,
       final int? discount,
       @JsonKey(name: 'full_price') final String? fullPrice,
       final String? promocode,
@@ -630,8 +633,9 @@ abstract class _Order implements Order {
       final String? comment,
       @JsonKey(name: 'error_text') final String? errorText,
       final String? brand,
-      final int? status,
-      @JsonKey(name: 'repeated_days') final int? repeatedDays}) = _$_Order;
+      @JsonKey(defaultValue: 0) final int? status,
+      @JsonKey(name: 'repeated_days', defaultValue: 0)
+      final int? repeatedDays}) = _$_Order;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
 
@@ -661,7 +665,7 @@ abstract class _Order implements Order {
   @JsonKey(name: 'delivery_name')
   String? get deliveryName;
   @override
-  @JsonKey(name: 'delivery_price')
+  @JsonKey(name: 'delivery_price', defaultValue: 0)
   int? get deliveryPrice;
   @override
   @JsonKey(name: 'delivery_date')
@@ -676,8 +680,8 @@ abstract class _Order implements Order {
   @JsonKey(name: 'payment_name')
   String? get paymentName;
   @override
-  @JsonKey(name: 'item_price')
-  int get itemPrice;
+  @JsonKey(name: 'items_price')
+  String get itemsPrice;
   @override
   int? get discount;
   @override
@@ -695,9 +699,10 @@ abstract class _Order implements Order {
   @override
   String? get brand;
   @override
+  @JsonKey(defaultValue: 0)
   int? get status;
   @override
-  @JsonKey(name: 'repeated_days')
+  @JsonKey(name: 'repeated_days', defaultValue: 0)
   int? get repeatedDays;
   @override
   @JsonKey(ignore: true)
@@ -716,6 +721,7 @@ mixin _$OrderItem {
   String get picture => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
   int? get discount => throw _privateConstructorUsedError;
   int? get order => throw _privateConstructorUsedError;
   int? get product => throw _privateConstructorUsedError;
@@ -737,7 +743,7 @@ abstract class $OrderItemCopyWith<$Res> {
       String picture,
       int count,
       String price,
-      int? discount,
+      @JsonKey(defaultValue: 0) int? discount,
       int? order,
       int? product});
 }
@@ -814,7 +820,7 @@ abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
       String picture,
       int count,
       String price,
-      int? discount,
+      @JsonKey(defaultValue: 0) int? discount,
       int? order,
       int? product});
 }
@@ -885,7 +891,7 @@ class _$_OrderItem implements _OrderItem {
       required this.picture,
       required this.count,
       required this.price,
-      this.discount,
+      @JsonKey(defaultValue: 0) this.discount,
       this.order,
       this.product});
 
@@ -903,6 +909,7 @@ class _$_OrderItem implements _OrderItem {
   @override
   final String price;
   @override
+  @JsonKey(defaultValue: 0)
   final int? discount;
   @override
   final int? order;
@@ -956,7 +963,7 @@ abstract class _OrderItem implements OrderItem {
       required final String picture,
       required final int count,
       required final String price,
-      final int? discount,
+      @JsonKey(defaultValue: 0) final int? discount,
       final int? order,
       final int? product}) = _$_OrderItem;
 
@@ -974,6 +981,7 @@ abstract class _OrderItem implements OrderItem {
   @override
   String get price;
   @override
+  @JsonKey(defaultValue: 0)
   int? get discount;
   @override
   int? get order;

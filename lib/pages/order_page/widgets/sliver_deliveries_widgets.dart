@@ -10,16 +10,10 @@ class SliverDeliveriesWidget extends StatelessWidget {
     super.key,
     required this.deliveries,
     required this.theme,
-    required this.nameTextController,
-    required this.phoneTextController,
-    required this.emailTextController,
   });
 
   final List<Delivery> deliveries;
   final ThemeData theme;
-  final TextEditingController nameTextController;
-  final TextEditingController phoneTextController;
-  final TextEditingController emailTextController;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +28,6 @@ class SliverDeliveriesWidget extends StatelessWidget {
             onTap: () => context.read<OrderBloc>().add(
                   SelectDeliveryOrderEvent(
                     delivery: delivery,
-                    userName: nameTextController.text,
-                    userPhone: phoneTextController.text,
-                    userEmail: emailTextController.text,
                   ),
                 ),
           );

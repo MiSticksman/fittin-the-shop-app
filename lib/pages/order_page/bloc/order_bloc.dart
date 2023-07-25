@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
 import 'package:the_shop/data/dto/order/order_request.dart';
 import 'package:the_shop/data/dto/payment/payment_request.dart';
-import 'package:the_shop/data/service/cart_service/cart_service.dart';
 import 'package:the_shop/data/service/catalog_service/catalog_service.dart';
 import 'package:the_shop/data/service/delivery_service/delivery_service.dart';
 import 'package:the_shop/data/service/order_service/order_service.dart';
@@ -19,16 +18,10 @@ class OrderState with _$OrderState {
   const OrderState._();
 
   const factory OrderState.init({
-    required String userName,
-    required String userPhone,
-    String? userEmail,
     required List<CartProductWithCount> products,
   }) = InitOrderState;
 
-  const factory OrderState.deliveries({
-    String? userName,
-    String? userPhone,
-    String? userEmail,
+  const factory OrderState.deliveriesLoaded({
     required List<CartProductWithCount> products,
     required List<Delivery> deliveries,
     required Delivery delivery,
@@ -36,10 +29,7 @@ class OrderState with _$OrderState {
     String? deliveryName,
   }) = DeliveriesOrderState;
 
-  const factory OrderState.payments({
-    String? userName,
-    String? userPhone,
-    String? userEmail,
+  const factory OrderState.paymentsLoaded({
     required List<CartProductWithCount> products,
     required List<Delivery> deliveries,
     required Delivery delivery,
@@ -55,6 +45,10 @@ class OrderState with _$OrderState {
     required Payment payment,
   }) = CreateOrderState;
 
+  const factory OrderState.orderCreated({
+    required List<CartProductWithCount> products,
+  }) = CreatedOrderState;
+
   const factory OrderState.error({
     required List<CartProductWithCount> products,
     @Default('Ошибка') String message,
@@ -63,23 +57,13 @@ class OrderState with _$OrderState {
 
 @freezed
 class OrderEvent with _$OrderEvent {
-  const factory OrderEvent.loadDeliveries({
-    String? userName,
-    String? userPhone,
-    String? userEmail,
-  }) = LoadDeliveriesOrderEvent;
+  const factory OrderEvent.loadDeliveries() = LoadDeliveriesOrderEvent;
 
   const factory OrderEvent.selectDelivery({
-    String? userName,
-    String? userPhone,
-    String? userEmail,
     required Delivery delivery,
   }) = SelectDeliveryOrderEvent;
 
   const factory OrderEvent.selectPayment({
-    String? userName,
-    String? userPhone,
-    String? userEmail,
     Delivery? delivery,
     required Payment payment,
   }) = SelectPaymentOrderEvent;
@@ -105,15 +89,9 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     required this.paymentService,
     required this.orderService,
     required List<CartProductWithCount> products,
-    required String userName,
-    required String userPhone,
-    String? userEmail,
   }) : super(
           OrderState.init(
             products: products,
-            userName: userName,
-            userPhone: userPhone,
-            userEmail: userEmail,
           ),
         ) {
     on<OrderEvent>(
@@ -141,33 +119,33 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     LoadDeliveriesOrderEvent event,
     Emitter<OrderState> emit,
   ) async {
-    final deliveries = await deliveryService.deliveries();
-    emit(
-      DeliveriesOrderState(
-        userName: event.userName,
-        userPhone: event.userPhone,
-        userEmail: event.userEmail,
-        products: state.products,
-        deliveries: deliveries,
-        delivery: deliveries.first,
-        deliveryDate: DateTime.now(),
-      ),
-    );
+    try {
+      final deliveries = await deliveryService.deliveries();
+      emit(
+        DeliveriesOrderState(
+          products: state.products,
+          deliveries: deliveries,
+          delivery: deliveries.first,
+          deliveryDate: DateTime.now(),
+        ),
+      );
+    } catch (e) {
+      emit(ErrorOrderState(products: state.products));
+      emit(InitOrderState(products: state.products));
+    }
   }
 
   Future<void> _selectDeliveryAndLoadPayments(
     SelectDeliveryOrderEvent event,
     Emitter<OrderState> emit,
   ) async {
+    final state = this.state;
     if (state is DeliveriesOrderState) {
       final delivery = event.delivery;
       emit(
         DeliveriesOrderState(
-          userName: event.userName,
-          userPhone: event.userPhone,
-          userEmail: event.userEmail,
           products: state.products,
-          deliveries: (state as DeliveriesOrderState).deliveries,
+          deliveries: state.deliveries,
           delivery: delivery,
           deliveryDate: DateTime.now(),
         ),
@@ -175,37 +153,34 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       final payments = await paymentService.payments(
         request: PaymentRequest(
           products: state.products,
-          deliveryId: (state as DeliveriesOrderState).delivery.id,
+          deliveryId: state.delivery.id,
         ),
       );
       emit(
         PaymentsOrderState(
           products: state.products,
-          deliveries: (state as DeliveriesOrderState).deliveries,
+          deliveries: state.deliveries,
           delivery: delivery,
           payments: payments,
           payment: payments.first,
         ),
       );
     }
-
   }
 
   Future<void> _selectPayment(
     SelectPaymentOrderEvent event,
     Emitter<OrderState> emit,
   ) async {
+    final state = this.state;
     if (state is PaymentsOrderState) {
       final payment = event.payment;
       emit(
         PaymentsOrderState(
-          userName: event.userName,
-          userPhone: event.userPhone,
-          userEmail: event.userEmail,
           products: state.products,
-          deliveries: (state as PaymentsOrderState).deliveries,
-          delivery: event.delivery ?? (state as PaymentsOrderState).delivery,
-          payments: (state as PaymentsOrderState).payments,
+          deliveries: state.deliveries,
+          delivery: event.delivery ?? state.delivery,
+          payments: state.payments,
           payment: payment,
         ),
       );
@@ -217,25 +192,21 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     Emitter<OrderState> emit,
   ) async {
     try {
+      final state = this.state;
       if (state is PaymentsOrderState) {
         final request = OrderRequest(
           userName: event.userName,
           userPhone: event.userPhone,
           userEmail: event.userEmail,
-          products: event.products,
-          deliveryId: (state as PaymentsOrderState).delivery.id,
-          deliveryType: (state as PaymentsOrderState).delivery.type,
-          paymentId: (state as PaymentsOrderState).payment.id,
-          paymentType: (state as PaymentsOrderState).payment.type,
+          products: List.of(event.products),
+          deliveryId: state.delivery.id,
+          deliveryType: state.delivery.type,
+          paymentId: state.payment.id,
+          paymentType: state.payment.type,
         );
-        await orderService.postOrder(
-          request: request
-        );
+        await orderService.postOrder(request: request);
         emit(
-          InitOrderState(
-              userName: event.userName,
-              userPhone: event.userPhone,
-              userEmail: event.userEmail,
+          CreatedOrderState(
               products: event.products),
         );
       }

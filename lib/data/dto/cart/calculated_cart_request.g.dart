@@ -16,8 +16,16 @@ _$_CalculatedCartRequest _$$_CalculatedCartRequestFromJson(
     );
 
 Map<String, dynamic> _$$_CalculatedCartRequestToJson(
-        _$_CalculatedCartRequest instance) =>
-    <String, dynamic>{
-      'promocode': instance.promocode,
-      'products': instance.products,
-    };
+    _$_CalculatedCartRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('promocode', instance.promocode);
+  val['products'] = instance.products;
+  return val;
+}

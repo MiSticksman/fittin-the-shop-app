@@ -86,7 +86,7 @@ class _ProductDescription extends StatelessWidget {
             child: FittedBox(
               child: Text(
                 product.name ?? 'название',
-                style: theme.textTheme.bodyLarge
+                style: theme.textTheme.bodyMedium
                     ?.copyWith(color: theme.colorScheme.onBackground),
               ),
             ),
@@ -101,7 +101,7 @@ class _ProductDescription extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         text: product.price.formatMoney(),
-                        style: theme.textTheme.bodyMedium?.copyWith(
+                        style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onBackground,
                         ),
                         children: [
@@ -111,7 +111,7 @@ class _ProductDescription extends StatelessWidget {
                           if (oldPrice != null)
                             TextSpan(
                               text: oldPrice.formatMoney(),
-                              style: theme.textTheme.bodyMedium?.copyWith(
+                              style: theme.textTheme.bodySmall?.copyWith(
                                 color: theme.colorScheme.onBackground,
                                 decoration: TextDecoration.lineThrough,
                               ),

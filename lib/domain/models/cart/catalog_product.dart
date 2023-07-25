@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:the_shop/domain/models/badge/badge.dart';
 
@@ -9,8 +10,8 @@ part 'catalog_product.g.dart';
 abstract class CatalogProduct with _$CatalogProduct {
   const factory CatalogProduct({
     required int id,
-    required String price,
-    @JsonKey(name: 'old_price') String? oldPrice,
+    required Decimal price,
+    @JsonKey(name: 'old_price') Decimal? oldPrice,
     required String discount,
     String? name,
     required String brand,

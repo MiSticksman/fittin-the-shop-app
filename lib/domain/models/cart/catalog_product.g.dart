@@ -9,8 +9,10 @@ part of 'catalog_product.dart';
 _$_CatalogProduct _$$_CatalogProductFromJson(Map<String, dynamic> json) =>
     _$_CatalogProduct(
       id: json['id'] as int,
-      price: json['price'] as String,
-      oldPrice: json['old_price'] as String?,
+      price: Decimal.fromJson(json['price'] as String),
+      oldPrice: json['old_price'] == null
+          ? null
+          : Decimal.fromJson(json['old_price'] as String),
       discount: json['discount'] as String,
       name: json['name'] as String?,
       brand: json['brand'] as String,

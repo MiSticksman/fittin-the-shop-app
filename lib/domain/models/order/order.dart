@@ -16,12 +16,12 @@ abstract class Order with _$Order {
     @JsonKey(name: 'delivery_id') required String deliveryId,
     @JsonKey(name: 'delivery_type') required String deliveryType,
     @JsonKey(name: 'delivery_name') String? deliveryName,
-    @JsonKey(name: 'delivery_price') int? deliveryPrice,
+    @JsonKey(name: 'delivery_price', defaultValue: 0) int? deliveryPrice,
     @JsonKey(name: 'delivery_date') String? deliveryDate,
     @JsonKey(name: 'payment_id') required String paymentId,
     @JsonKey(name: 'payment_type') required String paymentType,
     @JsonKey(name: 'payment_name') String? paymentName,
-    @JsonKey(name: 'item_price') required int itemPrice,
+    @JsonKey(name: 'items_price') required String itemsPrice,
     int? discount,
     @JsonKey(name: 'full_price') String? fullPrice,
     String? promocode,
@@ -29,8 +29,8 @@ abstract class Order with _$Order {
     String? comment,
     @JsonKey(name: 'error_text') String? errorText,
     String? brand,
-    int? status,
-    @JsonKey(name: 'repeated_days') int? repeatedDays,
+    @JsonKey(defaultValue: 0) int? status,
+    @JsonKey(name: 'repeated_days', defaultValue: 0) int? repeatedDays,
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
@@ -44,7 +44,7 @@ abstract class OrderItem with _$OrderItem {
     required String picture,
     required int count,
     required String price,
-    int? discount,
+    @JsonKey(defaultValue: 0) int? discount,
     int? order,
     int? product,
   }) = _OrderItem;

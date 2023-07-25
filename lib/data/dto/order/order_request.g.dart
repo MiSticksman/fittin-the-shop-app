@@ -30,24 +30,32 @@ _$_OrderRequest _$$_OrderRequestFromJson(Map<String, dynamic> json) =>
       repeatedDays: json['repeated_days'] as int?,
     );
 
-Map<String, dynamic> _$$_OrderRequestToJson(_$_OrderRequest instance) =>
-    <String, dynamic>{
-      'city_fias': instance.cityFias,
-      'promocode': instance.promocode,
-      'products': instance.products,
-      'user_name': instance.userName,
-      'user_phone': instance.userPhone,
-      'user_email': instance.userEmail,
-      'created_at': instance.createdAt,
-      'delivery_id': instance.deliveryId,
-      'delivery_type': instance.deliveryType,
-      'delivery_name': instance.deliveryName,
-      'delivery_date': instance.deliveryDate,
-      'payment_id': instance.paymentId,
-      'payment_type': instance.paymentType,
-      'payment_name': instance.paymentName,
-      'discount': instance.discount,
-      'address': instance.address,
-      'comment': instance.comment,
-      'repeated_days': instance.repeatedDays,
-    };
+Map<String, dynamic> _$$_OrderRequestToJson(_$_OrderRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('city_fias', instance.cityFias);
+  writeNotNull('promocode', instance.promocode);
+  writeNotNull('products', instance.products);
+  val['user_name'] = instance.userName;
+  val['user_phone'] = instance.userPhone;
+  writeNotNull('user_email', instance.userEmail);
+  writeNotNull('created_at', instance.createdAt);
+  val['delivery_id'] = instance.deliveryId;
+  val['delivery_type'] = instance.deliveryType;
+  writeNotNull('delivery_name', instance.deliveryName);
+  writeNotNull('delivery_date', instance.deliveryDate);
+  val['payment_id'] = instance.paymentId;
+  val['payment_type'] = instance.paymentType;
+  writeNotNull('payment_name', instance.paymentName);
+  writeNotNull('discount', instance.discount);
+  writeNotNull('address', instance.address);
+  writeNotNull('comment', instance.comment);
+  writeNotNull('repeated_days', instance.repeatedDays);
+  return val;
+}

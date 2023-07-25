@@ -20,7 +20,7 @@ DeliveryRequest _$DeliveryRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DeliveryRequest {
-  @JsonKey(name: 'city_fias')
+  @JsonKey(name: 'city_fias', includeIfNull: true)
   String? get cityFias => throw _privateConstructorUsedError;
   List<CartProductWithCount>? get products =>
       throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $DeliveryRequestCopyWith<$Res> {
       _$DeliveryRequestCopyWithImpl<$Res, DeliveryRequest>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'city_fias') String? cityFias,
+      {@JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
       List<CartProductWithCount>? products});
 }
 
@@ -80,7 +80,7 @@ abstract class _$$_DeliveryRequestCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'city_fias') String? cityFias,
+      {@JsonKey(name: 'city_fias', includeIfNull: true) String? cityFias,
       List<CartProductWithCount>? products});
 }
 
@@ -115,7 +115,7 @@ class __$$_DeliveryRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DeliveryRequest implements _DeliveryRequest {
   const _$_DeliveryRequest(
-      {@JsonKey(name: 'city_fias') this.cityFias,
+      {@JsonKey(name: 'city_fias', includeIfNull: true) this.cityFias,
       final List<CartProductWithCount>? products})
       : _products = products;
 
@@ -123,7 +123,7 @@ class _$_DeliveryRequest implements _DeliveryRequest {
       _$$_DeliveryRequestFromJson(json);
 
   @override
-  @JsonKey(name: 'city_fias')
+  @JsonKey(name: 'city_fias', includeIfNull: true)
   final String? cityFias;
   final List<CartProductWithCount>? _products;
   @override
@@ -171,14 +171,14 @@ class _$_DeliveryRequest implements _DeliveryRequest {
 
 abstract class _DeliveryRequest implements DeliveryRequest {
   const factory _DeliveryRequest(
-      {@JsonKey(name: 'city_fias') final String? cityFias,
+      {@JsonKey(name: 'city_fias', includeIfNull: true) final String? cityFias,
       final List<CartProductWithCount>? products}) = _$_DeliveryRequest;
 
   factory _DeliveryRequest.fromJson(Map<String, dynamic> json) =
       _$_DeliveryRequest.fromJson;
 
   @override
-  @JsonKey(name: 'city_fias')
+  @JsonKey(name: 'city_fias', includeIfNull: true)
   String? get cityFias;
   @override
   List<CartProductWithCount>? get products;

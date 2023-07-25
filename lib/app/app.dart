@@ -13,17 +13,63 @@ final class AppText {
     fontWeight: FontWeight.w500,
   );
 
-  static final TextStyle bodySmall = GoogleFonts.montserrat(
-    fontSize: 12,
+  static final TextStyle bodySmall10pt = GoogleFonts.montserrat(
+    fontSize: 10,
     letterSpacing: 0.4,
-    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w300,
+    height: 1.32,
     color: Colors.black,
   );
 
-  static final TextStyle mediumBodySmall16pt = GoogleFonts.montserrat(
-    fontSize: 16,
+  static final TextStyle bodyMedium12pt = GoogleFonts.montserrat(
+    fontSize: 12,
+    letterSpacing: 0.4,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w400,
+    height: 1.32,
+    color: Colors.black,
+  );
+
+  static final TextStyle bodyLarge14pt = GoogleFonts.montserrat(
+    fontSize: 14,
+    letterSpacing: 0.4,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w400,
+    height: 1.32,
+    color: Colors.black,
+  );
+
+  static final TextStyle mediumBodySmall14pt = GoogleFonts.montserrat(
+    fontSize: 14,
+    letterSpacing: 0.4,
+    height: 1.32,
+    fontWeight: FontWeight.w400,
+  );
+
+  static final TextStyle mediumBodySmall12pt = GoogleFonts.montserrat(
+    fontSize: 12,
     letterSpacing: 0.4,
     fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle mediumBodySmallBold = GoogleFonts.montserrat(
+    fontSize: 12,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w700,
+  );
+
+  static final TextStyle buttonMedium = GoogleFonts.montserrat(
+    fontSize: 12,
+    letterSpacing: 1.3,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle grayHintText = GoogleFonts.montserrat(
+    fontSize: 16,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    color: Colors.grey[600],
   );
 }
 
@@ -68,7 +114,12 @@ class ShopApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.montserratTextTheme(
             TextTheme(
+              titleSmall: AppText.grayHintText,
               titleMedium: AppText.title,
+              bodySmall: AppText.bodySmall10pt,
+              bodyMedium: AppText.bodyMedium12pt,
+              bodyLarge: AppText.bodyLarge14pt,
+              labelMedium: AppText.buttonMedium,
             ),
           ),
           colorScheme: const ColorScheme(
