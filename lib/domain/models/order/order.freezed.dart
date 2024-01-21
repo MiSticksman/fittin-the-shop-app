@@ -718,8 +718,8 @@ OrderItem _$OrderItemFromJson(Map<String, dynamic> json) {
 mixin _$OrderItem {
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get picture => throw _privateConstructorUsedError;
-  int get count => throw _privateConstructorUsedError;
+  String? get picture => throw _privateConstructorUsedError;
+  int? get count => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0)
   int? get discount => throw _privateConstructorUsedError;
@@ -740,8 +740,8 @@ abstract class $OrderItemCopyWith<$Res> {
   $Res call(
       {int? id,
       String name,
-      String picture,
-      int count,
+      String? picture,
+      int? count,
       String price,
       @JsonKey(defaultValue: 0) int? discount,
       int? order,
@@ -763,8 +763,8 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
   $Res call({
     Object? id = freezed,
     Object? name = null,
-    Object? picture = null,
-    Object? count = null,
+    Object? picture = freezed,
+    Object? count = freezed,
     Object? price = null,
     Object? discount = freezed,
     Object? order = freezed,
@@ -779,14 +779,14 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: null == picture
+      picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
-      count: null == count
+              as String?,
+      count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -817,8 +817,8 @@ abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
   $Res call(
       {int? id,
       String name,
-      String picture,
-      int count,
+      String? picture,
+      int? count,
       String price,
       @JsonKey(defaultValue: 0) int? discount,
       int? order,
@@ -838,8 +838,8 @@ class __$$_OrderItemCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = null,
-    Object? picture = null,
-    Object? count = null,
+    Object? picture = freezed,
+    Object? count = freezed,
     Object? price = null,
     Object? discount = freezed,
     Object? order = freezed,
@@ -854,14 +854,14 @@ class __$$_OrderItemCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: null == picture
+      picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
-      count: null == count
+              as String?,
+      count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -888,8 +888,8 @@ class _$_OrderItem implements _OrderItem {
   const _$_OrderItem(
       {this.id,
       required this.name,
-      required this.picture,
-      required this.count,
+      this.picture,
+      this.count,
       required this.price,
       @JsonKey(defaultValue: 0) this.discount,
       this.order,
@@ -903,9 +903,9 @@ class _$_OrderItem implements _OrderItem {
   @override
   final String name;
   @override
-  final String picture;
+  final String? picture;
   @override
-  final int count;
+  final int? count;
   @override
   final String price;
   @override
@@ -960,8 +960,8 @@ abstract class _OrderItem implements OrderItem {
   const factory _OrderItem(
       {final int? id,
       required final String name,
-      required final String picture,
-      required final int count,
+      final String? picture,
+      final int? count,
       required final String price,
       @JsonKey(defaultValue: 0) final int? discount,
       final int? order,
@@ -975,9 +975,9 @@ abstract class _OrderItem implements OrderItem {
   @override
   String get name;
   @override
-  String get picture;
+  String? get picture;
   @override
-  int get count;
+  int? get count;
   @override
   String get price;
   @override

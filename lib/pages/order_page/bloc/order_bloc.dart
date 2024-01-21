@@ -61,6 +61,7 @@ class OrderEvent with _$OrderEvent {
 
   const factory OrderEvent.selectDelivery({
     required Delivery delivery,
+    required List<Delivery> deliveries,
   }) = SelectDeliveryOrderEvent;
 
   const factory OrderEvent.selectPayment({
@@ -129,6 +130,21 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           deliveryDate: DateTime.now(),
         ),
       );
+      final payments = await paymentService.payments(
+        request: const PaymentRequest(
+          products: null,
+          deliveryId: null,
+        ),
+      );
+      emit(
+          PaymentsOrderState(
+            products: state.products,
+            deliveries: deliveries,
+            delivery: deliveries.first,
+            payments: payments,
+            payment: payments.first,
+          ),
+      );
     } catch (e) {
       emit(ErrorOrderState(products: state.products));
       emit(InitOrderState(products: state.products));
@@ -140,26 +156,27 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     Emitter<OrderState> emit,
   ) async {
     final state = this.state;
-    if (state is DeliveriesOrderState) {
+    if (state is DeliveriesOrderState || state is PaymentsOrderState) {
       final delivery = event.delivery;
+      final deliveries = state is DeliveriesOrderState ? state.deliveries : event.deliveries;
       emit(
         DeliveriesOrderState(
           products: state.products,
-          deliveries: state.deliveries,
+          deliveries: deliveries,
           delivery: delivery,
           deliveryDate: DateTime.now(),
         ),
       );
       final payments = await paymentService.payments(
-        request: PaymentRequest(
-          products: state.products,
-          deliveryId: state.delivery.id,
+        request: const PaymentRequest(
+          products: null,
+          deliveryId: null,
         ),
       );
       emit(
         PaymentsOrderState(
           products: state.products,
-          deliveries: state.deliveries,
+          deliveries: deliveries,
           delivery: delivery,
           payments: payments,
           payment: payments.first,
@@ -198,7 +215,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           userName: event.userName,
           userPhone: event.userPhone,
           userEmail: event.userEmail,
-          products: List.of(event.products),
+          products: event.products,
           deliveryId: state.delivery.id,
           deliveryType: state.delivery.type,
           paymentId: state.payment.id,

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_shop/app/app_components.dart';
 import 'package:the_shop/data/dto/cart/cart_product_with_count.dart';
+import 'package:the_shop/domain/models/order/order.dart';
 import 'package:the_shop/domain/models/payment/payment.dart';
 import 'package:the_shop/pages/cart_page/bloc/cart_bloc.dart';
 import 'package:the_shop/pages/components/constants.dart';
@@ -42,10 +43,11 @@ class _OrderPageState extends State<OrderPage> {
     phoneTextController = TextEditingController();
     emailTextController = TextEditingController();
     commentTextController = TextEditingController();
+
     // без авторизации пока так
-    nameTextController.text = 'Vadim';
-    phoneTextController.text = '9290091219';
-    emailTextController.text = 'vadim02101@gmail.com';
+    nameTextController.text = 'Kseniya';
+    phoneTextController.text = '9803405526';
+    emailTextController.text = 'kseniya@gmail.com';
   }
 
   @override
@@ -236,32 +238,55 @@ class _OrderPageState extends State<OrderPage> {
               }
               if (state is CreatedOrderState) {
                 return Center(
-                  child: Column(
-                    children: [
-                      const Text('Заказ успешно сформирован'),
-                      ElevatedButton(
-                        onPressed: () {
-                          context.router.push(const CatalogTab());
-                          context.read<CartBloc>().add(const LoadCartEvent());
-                        },
-                        child: const Text('Вернуться к покупкам'),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 40,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Spacer(),
+                        const Text('Заказ успешно сформирован'),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            context.router.push(const CatalogTab());
+                            context
+                                .read<OrderBloc>()
+                                .add(const LoadDeliveriesOrderEvent());
+                            context.read<CartBloc>().add(const LoadCartEvent());
+                          },
+                          child: const Text('Вернуться к покупкам'),
+                        ),
+                        const Spacer(flex: 2),
+                      ],
+                    ),
                   ),
                 );
               }
               if (state is ErrorOrderState) {
-                return Center(
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 40,
+                  ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const Spacer(),
                       const Text(
-                          'Произошла ошиибка! Возможно, Вы пытаетесь заказать продукты у разных фермеров.'),
+                        'Произошла ошиибка! Возможно, Вы пытаетесь заказать продукты у разных фермеров.',
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
                           context.router.pop();
                         },
                         child: const Text('Вернуться в корзину'),
                       ),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 );

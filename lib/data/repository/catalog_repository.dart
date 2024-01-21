@@ -22,7 +22,8 @@ class CatalogRepository {
     try {
       final res = await _catalogService.getCatalogProducts();
       return res;
-    } on DioException catch (_) {
+    } on DioException catch (e, stackTrace) {
+      print(e.message);
       rethrow;
     }
 

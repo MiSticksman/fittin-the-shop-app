@@ -45,32 +45,6 @@ class _PaymentService implements PaymentService {
   }
 
   @override
-  Future<List<Payment>> paymentsCallback({orderId}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'order_id': orderId};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Payment>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/payments/callback',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => Payment.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
   Future<void> paymentsPay({required request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

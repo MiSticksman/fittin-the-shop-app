@@ -20,7 +20,7 @@ class CartListWidget extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         final theme = Theme.of(context);
         final cartItem = cart.products[index];
-        final oldPrice = cartItem.product.price;
+        final oldPrice = cartItem.product.oldPrice;
         return ListTile(
           onTap: () {},
           leading: AspectRatio(
@@ -29,7 +29,7 @@ class CartListWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
-                imageUrl: cartItem.product.picture,
+                imageUrl: cartItem.product.picture ?? '',
                 progressIndicatorBuilder: (_, __, ___) {
                   return const Center(
                     child: CircularProgressIndicator(),

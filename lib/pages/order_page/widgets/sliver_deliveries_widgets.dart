@@ -30,6 +30,7 @@ class SliverDeliveriesWidget extends StatelessWidget {
             onTap: () => context.read<OrderBloc>().add(
                   SelectDeliveryOrderEvent(
                     delivery: delivery,
+                    deliveries: deliveries,
                   ),
                 ),
           );
@@ -69,32 +70,22 @@ class SliverDeliveriesInfoWidget extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.calendar_month_outlined,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.calendar_month_outlined,
                 ),
-                Text(
-                  '24/7/2023',
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                  ),
+              ),
+              Text(
+                '24/01/2024',
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  color: theme.colorScheme.onBackground,
                 ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.settings,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           Visibility(
             visible: delivery != null &&

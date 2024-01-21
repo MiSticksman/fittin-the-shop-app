@@ -1836,7 +1836,8 @@ mixin _$OrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
+    required TResult Function(Delivery delivery, List<Delivery> deliveries)
+        selectDelivery,
     required TResult Function(Delivery? delivery, Payment payment)
         selectPayment,
     required TResult Function(
@@ -1851,7 +1852,8 @@ mixin _$OrderEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
+    TResult? Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult? Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult? Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -1861,7 +1863,8 @@ mixin _$OrderEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
+    TResult Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -1954,7 +1957,8 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
+    required TResult Function(Delivery delivery, List<Delivery> deliveries)
+        selectDelivery,
     required TResult Function(Delivery? delivery, Payment payment)
         selectPayment,
     required TResult Function(
@@ -1972,7 +1976,8 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
+    TResult? Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult? Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult? Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -1985,7 +1990,8 @@ class _$LoadDeliveriesOrderEvent implements LoadDeliveriesOrderEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
+    TResult Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -2046,7 +2052,7 @@ abstract class _$$SelectDeliveryOrderEventCopyWith<$Res> {
           $Res Function(_$SelectDeliveryOrderEvent) then) =
       __$$SelectDeliveryOrderEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Delivery delivery});
+  $Res call({Delivery delivery, List<Delivery> deliveries});
 
   $DeliveryCopyWith<$Res> get delivery;
 }
@@ -2063,12 +2069,17 @@ class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? delivery = null,
+    Object? deliveries = null,
   }) {
     return _then(_$SelectDeliveryOrderEvent(
       delivery: null == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
               as Delivery,
+      deliveries: null == deliveries
+          ? _value._deliveries
+          : deliveries // ignore: cast_nullable_to_non_nullable
+              as List<Delivery>,
     ));
   }
 
@@ -2084,14 +2095,23 @@ class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
-  const _$SelectDeliveryOrderEvent({required this.delivery});
+  const _$SelectDeliveryOrderEvent(
+      {required this.delivery, required final List<Delivery> deliveries})
+      : _deliveries = deliveries;
 
   @override
   final Delivery delivery;
+  final List<Delivery> _deliveries;
+  @override
+  List<Delivery> get deliveries {
+    if (_deliveries is EqualUnmodifiableListView) return _deliveries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deliveries);
+  }
 
   @override
   String toString() {
-    return 'OrderEvent.selectDelivery(delivery: $delivery)';
+    return 'OrderEvent.selectDelivery(delivery: $delivery, deliveries: $deliveries)';
   }
 
   @override
@@ -2100,11 +2120,14 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
         (other.runtimeType == runtimeType &&
             other is _$SelectDeliveryOrderEvent &&
             (identical(other.delivery, delivery) ||
-                other.delivery == delivery));
+                other.delivery == delivery) &&
+            const DeepCollectionEquality()
+                .equals(other._deliveries, _deliveries));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, delivery);
+  int get hashCode => Object.hash(
+      runtimeType, delivery, const DeepCollectionEquality().hash(_deliveries));
 
   @JsonKey(ignore: true)
   @override
@@ -2118,7 +2141,8 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
+    required TResult Function(Delivery delivery, List<Delivery> deliveries)
+        selectDelivery,
     required TResult Function(Delivery? delivery, Payment payment)
         selectPayment,
     required TResult Function(
@@ -2129,27 +2153,29 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
             String? comment)
         orderCreate,
   }) {
-    return selectDelivery(delivery);
+    return selectDelivery(delivery, deliveries);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
+    TResult? Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult? Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult? Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
         orderCreate,
   }) {
-    return selectDelivery?.call(delivery);
+    return selectDelivery?.call(delivery, deliveries);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
+    TResult Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -2157,7 +2183,7 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
     required TResult orElse(),
   }) {
     if (selectDelivery != null) {
-      return selectDelivery(delivery);
+      return selectDelivery(delivery, deliveries);
     }
     return orElse();
   }
@@ -2201,10 +2227,12 @@ class _$SelectDeliveryOrderEvent implements SelectDeliveryOrderEvent {
 }
 
 abstract class SelectDeliveryOrderEvent implements OrderEvent {
-  const factory SelectDeliveryOrderEvent({required final Delivery delivery}) =
-      _$SelectDeliveryOrderEvent;
+  const factory SelectDeliveryOrderEvent(
+      {required final Delivery delivery,
+      required final List<Delivery> deliveries}) = _$SelectDeliveryOrderEvent;
 
   Delivery get delivery;
+  List<Delivery> get deliveries;
   @JsonKey(ignore: true)
   _$$SelectDeliveryOrderEventCopyWith<_$SelectDeliveryOrderEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -2308,7 +2336,8 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
+    required TResult Function(Delivery delivery, List<Delivery> deliveries)
+        selectDelivery,
     required TResult Function(Delivery? delivery, Payment payment)
         selectPayment,
     required TResult Function(
@@ -2326,7 +2355,8 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
+    TResult? Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult? Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult? Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -2339,7 +2369,8 @@ class _$SelectPaymentOrderEvent implements SelectPaymentOrderEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
+    TResult Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -2526,7 +2557,8 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadDeliveries,
-    required TResult Function(Delivery delivery) selectDelivery,
+    required TResult Function(Delivery delivery, List<Delivery> deliveries)
+        selectDelivery,
     required TResult Function(Delivery? delivery, Payment payment)
         selectPayment,
     required TResult Function(
@@ -2544,7 +2576,8 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadDeliveries,
-    TResult? Function(Delivery delivery)? selectDelivery,
+    TResult? Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult? Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult? Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?
@@ -2557,7 +2590,8 @@ class _$OrderCreateOrderEvent implements OrderCreateOrderEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadDeliveries,
-    TResult Function(Delivery delivery)? selectDelivery,
+    TResult Function(Delivery delivery, List<Delivery> deliveries)?
+        selectDelivery,
     TResult Function(Delivery? delivery, Payment payment)? selectPayment,
     TResult Function(List<CartProductWithCount> products, String userName,
             String userPhone, String userEmail, String? comment)?

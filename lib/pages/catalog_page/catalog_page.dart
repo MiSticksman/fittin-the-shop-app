@@ -20,6 +20,7 @@ class CatalogPage extends StatefulWidget {
 class _CatalogPageState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocProvider(
       create: (context) => CatalogBloc(
           products: [], catalogRepository: AppComponents().catalogRepository)
@@ -28,7 +29,7 @@ class _CatalogPageState extends State<CatalogPage> {
         ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Подкатегория товаров'),
+          title: const Text('Список товаров'),
           centerTitle: true,
         ),
         body: BlocBuilder<CatalogBloc, CatalogState>(
@@ -63,11 +64,26 @@ class _CatalogPageState extends State<CatalogPage> {
                 return ProductCard(
                   product: product,
                   addToCart: () {
-                    context.read<CartBloc>().add(
-                          CartEvent.addProductToCart(
-                            request: CartUpdate(productId: product.id),
+                    if (product.id == 1 || product.id == 2 || product.id == 3) {
+                      context.read<CartBloc>().add(
+                            CartEvent.addProductToCart(
+                              request: CartUpdate(productId: product.id),
+                            ),
+                          );
+                    } else {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (_) => SizedBox(
+                          height: 300,
+                          child: Center(
+                            child: Text(
+                              'Извините, этот товар закончился',
+                              style: theme.textTheme.bodyLarge,
+                            ),
                           ),
-                        );
+                        ),
+                      );
+                    }
                   },
                   onTap: () {
                     context.router.navigate(

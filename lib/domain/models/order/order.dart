@@ -41,8 +41,8 @@ abstract class OrderItem with _$OrderItem {
   const factory OrderItem({
     int? id,
     required String name,
-    required String picture,
-    required int count,
+    String? picture,
+    int? count,
     required String price,
     @JsonKey(defaultValue: 0) int? discount,
     int? order,

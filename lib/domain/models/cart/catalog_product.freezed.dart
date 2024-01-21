@@ -26,10 +26,10 @@ mixin _$CatalogProduct {
   Decimal? get oldPrice => throw _privateConstructorUsedError;
   String get discount => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
-  String get picture => throw _privateConstructorUsedError;
-  String get article => throw _privateConstructorUsedError;
-  List<Badge> get badges => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
+  String? get picture => throw _privateConstructorUsedError;
+  String? get article => throw _privateConstructorUsedError;
+  List<Badge>? get badges => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews_count')
   int? get reviewsCount => throw _privateConstructorUsedError;
@@ -52,10 +52,10 @@ abstract class $CatalogProductCopyWith<$Res> {
       @JsonKey(name: 'old_price') Decimal? oldPrice,
       String discount,
       String? name,
-      String brand,
-      String picture,
-      String article,
-      List<Badge> badges,
+      String? brand,
+      String? picture,
+      String? article,
+      List<Badge>? badges,
       double? rating,
       @JsonKey(name: 'reviews_count') int? reviewsCount});
 }
@@ -78,10 +78,10 @@ class _$CatalogProductCopyWithImpl<$Res, $Val extends CatalogProduct>
     Object? oldPrice = freezed,
     Object? discount = null,
     Object? name = freezed,
-    Object? brand = null,
-    Object? picture = null,
-    Object? article = null,
-    Object? badges = null,
+    Object? brand = freezed,
+    Object? picture = freezed,
+    Object? article = freezed,
+    Object? badges = freezed,
     Object? rating = freezed,
     Object? reviewsCount = freezed,
   }) {
@@ -106,22 +106,22 @@ class _$CatalogProductCopyWithImpl<$Res, $Val extends CatalogProduct>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      brand: null == brand
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      picture: null == picture
+              as String?,
+      picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
-      article: null == article
+              as String?,
+      article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
-              as String,
-      badges: null == badges
+              as String?,
+      badges: freezed == badges
           ? _value.badges
           : badges // ignore: cast_nullable_to_non_nullable
-              as List<Badge>,
+              as List<Badge>?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -148,10 +148,10 @@ abstract class _$$_CatalogProductCopyWith<$Res>
       @JsonKey(name: 'old_price') Decimal? oldPrice,
       String discount,
       String? name,
-      String brand,
-      String picture,
-      String article,
-      List<Badge> badges,
+      String? brand,
+      String? picture,
+      String? article,
+      List<Badge>? badges,
       double? rating,
       @JsonKey(name: 'reviews_count') int? reviewsCount});
 }
@@ -172,10 +172,10 @@ class __$$_CatalogProductCopyWithImpl<$Res>
     Object? oldPrice = freezed,
     Object? discount = null,
     Object? name = freezed,
-    Object? brand = null,
-    Object? picture = null,
-    Object? article = null,
-    Object? badges = null,
+    Object? brand = freezed,
+    Object? picture = freezed,
+    Object? article = freezed,
+    Object? badges = freezed,
     Object? rating = freezed,
     Object? reviewsCount = freezed,
   }) {
@@ -200,22 +200,22 @@ class __$$_CatalogProductCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      brand: null == brand
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      picture: null == picture
+              as String?,
+      picture: freezed == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
-      article: null == article
+              as String?,
+      article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
-              as String,
-      badges: null == badges
+              as String?,
+      badges: freezed == badges
           ? _value._badges
           : badges // ignore: cast_nullable_to_non_nullable
-              as List<Badge>,
+              as List<Badge>?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -237,10 +237,10 @@ class _$_CatalogProduct implements _CatalogProduct {
       @JsonKey(name: 'old_price') this.oldPrice,
       required this.discount,
       this.name,
-      required this.brand,
-      required this.picture,
-      required this.article,
-      required final List<Badge> badges,
+      this.brand,
+      this.picture,
+      this.article,
+      final List<Badge>? badges,
       this.rating,
       @JsonKey(name: 'reviews_count') this.reviewsCount})
       : _badges = badges;
@@ -260,17 +260,19 @@ class _$_CatalogProduct implements _CatalogProduct {
   @override
   final String? name;
   @override
-  final String brand;
+  final String? brand;
   @override
-  final String picture;
+  final String? picture;
   @override
-  final String article;
-  final List<Badge> _badges;
+  final String? article;
+  final List<Badge>? _badges;
   @override
-  List<Badge> get badges {
+  List<Badge>? get badges {
+    final value = _badges;
+    if (value == null) return null;
     if (_badges is EqualUnmodifiableListView) return _badges;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_badges);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -342,10 +344,10 @@ abstract class _CatalogProduct implements CatalogProduct {
           @JsonKey(name: 'old_price') final Decimal? oldPrice,
           required final String discount,
           final String? name,
-          required final String brand,
-          required final String picture,
-          required final String article,
-          required final List<Badge> badges,
+          final String? brand,
+          final String? picture,
+          final String? article,
+          final List<Badge>? badges,
           final double? rating,
           @JsonKey(name: 'reviews_count') final int? reviewsCount}) =
       _$_CatalogProduct;
@@ -365,13 +367,13 @@ abstract class _CatalogProduct implements CatalogProduct {
   @override
   String? get name;
   @override
-  String get brand;
+  String? get brand;
   @override
-  String get picture;
+  String? get picture;
   @override
-  String get article;
+  String? get article;
   @override
-  List<Badge> get badges;
+  List<Badge>? get badges;
   @override
   double? get rating;
   @override

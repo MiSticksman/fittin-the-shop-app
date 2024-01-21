@@ -31,6 +31,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocProvider<ProductBloc>(
       create: (context) => ProductBloc(
           product: widget.productPreview,
@@ -50,16 +51,33 @@ class _ProductPageState extends State<ProductPage> {
               return ProductDetailWidget(
                 product: state.product,
                 addToCart: () {
-                  context.read<CartBloc>().add(
-                        CartEvent.addProductToCart(
-                          request: CartUpdate(productId: state.product.id),
+                  if (state.product.id == 1 ||
+                      state.product.id == 2 ||
+                      state.product.id == 3) {
+                    context.read<CartBloc>().add(
+                          CartEvent.addProductToCart(
+                            request: CartUpdate(productId: state.product.id),
+                          ),
+                        );
+                  } else {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (_) => SizedBox(
+                        height: 300,
+                        child: Center(
+                          child: Text(
+                            'Извините, этот товар закончился',
+                            style: theme.textTheme.bodyLarge,
+                          ),
                         ),
-                      );
+                      ),
+                    );
+                  }
                 },
               );
             }
             if (state is ProductLoadingState) {
-              return const LoadingIndicator();
+              return const Center(child: LoadingIndicator());
             }
             return const Center(
               child: Text('Произошла ошибка'),

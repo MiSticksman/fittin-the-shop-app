@@ -30,12 +30,12 @@ class AppComponents {
   Future<void> init() async {
     const timeout = Duration(seconds: 60);
 
-    dio.options.baseUrl = 'https://farm.fbtw.ru/';
+    dio.options.baseUrl = 'https://c0557e1b-615d-43a8-8ff2-624fe13ef96a.mock.pstmn.io';
     dio.options
       ..contentType = "application/json"
       ..responseType = ResponseType.json
-      ..headers['Authorization'] =
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkyODM0MjY0LCJpYXQiOjE2OTAyNDIyNjQsImp0aSI6Ijc5ZTFmZDI4NGJkMzQ3NTQ4MDBhYjRmZWE2ZTQ2NjlmIiwidXNlcl9pZCI6OTMsImlzX3ZlcmlmaWVkIjp0cnVlfQ.n9Y9ODN_c7uy4yov0utzJPU56wk_QMDCL5MLQVypT58'
+      // ..headers['Authorization'] =
+      //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkyODM0MjY0LCJpYXQiOjE2OTAyNDIyNjQsImp0aSI6Ijc5ZTFmZDI4NGJkMzQ3NTQ4MDBhYjRmZWE2ZTQ2NjlmIiwidXNlcl9pZCI6OTMsImlzX3ZlcmlmaWVkIjp0cnVlfQ.n9Y9ODN_c7uy4yov0utzJPU56wk_QMDCL5MLQVypT58'
       ..connectTimeout = timeout
       ..receiveTimeout = timeout
       ..sendTimeout = timeout;

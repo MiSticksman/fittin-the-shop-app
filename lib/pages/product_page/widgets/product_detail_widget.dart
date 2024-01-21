@@ -54,7 +54,7 @@ class ProductDetailWidget extends StatelessWidget {
               [
                 const SizedBox(height: 5),
                 Text(
-                  product.name ?? 'название продукта',
+                  product.name,
                   style: theme.textTheme.displaySmall?.copyWith(
                     color: theme.colorScheme.onBackground,
                   ),
@@ -116,14 +116,16 @@ class _CartButton extends StatelessWidget {
             products.where((p) => p.product.id == id).firstOrNull;
 
         if (cartProduct == null) {
-          return FilledButton(
-            child: const Text(
-              'В корзину',
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: FilledButton(
+              onPressed: addToCart,
+              child: const Text(
+                'В корзину',
+              )
             ),
-            onPressed: addToCart
           );
         }
-
         return Row(
           children: [
             Expanded(

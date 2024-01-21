@@ -15,6 +15,16 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    OrderRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderPage(
+          key: args.key,
+          products: args.products,
+        ),
+      );
+    },
     ProductRoute.name: (routeData) {
       final args = routeData.argsAs<ProductRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -26,32 +36,22 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    OrderRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: OrderPage(
-          key: args.key,
-          products: args.products,
-        ),
-      );
-    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomePage(),
       );
     },
-    CartRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CartPage(),
-      );
-    },
     CatalogRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CatalogPage(),
+      );
+    },
+    CartRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CartPage(),
       );
     },
     CatalogTab.name: (routeData) {
@@ -67,6 +67,43 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [OrderPage]
+class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
+  OrderRoute({
+    Key? key,
+    required List<CartProductWithCount> products,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderRoute.name,
+          args: OrderRouteArgs(
+            key: key,
+            products: products,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderRoute';
+
+  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
+}
+
+class OrderRouteArgs {
+  const OrderRouteArgs({
+    this.key,
+    required this.products,
+  });
+
+  final Key? key;
+
+  final List<CartProductWithCount> products;
+
+  @override
+  String toString() {
+    return 'OrderRouteArgs{key: $key, products: $products}';
+  }
 }
 
 /// generated route for
@@ -113,43 +150,6 @@ class ProductRouteArgs {
 }
 
 /// generated route for
-/// [OrderPage]
-class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
-  OrderRoute({
-    Key? key,
-    required List<CartProductWithCount> products,
-    List<PageRouteInfo>? children,
-  }) : super(
-          OrderRoute.name,
-          args: OrderRouteArgs(
-            key: key,
-            products: products,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderRoute';
-
-  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
-}
-
-class OrderRouteArgs {
-  const OrderRouteArgs({
-    this.key,
-    required this.products,
-  });
-
-  final Key? key;
-
-  final List<CartProductWithCount> products;
-
-  @override
-  String toString() {
-    return 'OrderRouteArgs{key: $key, products: $products}';
-  }
-}
-
-/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -164,20 +164,6 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CartPage]
-class CartRoute extends PageRouteInfo<void> {
-  const CartRoute({List<PageRouteInfo>? children})
-      : super(
-          CartRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CartRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [CatalogPage]
 class CatalogRoute extends PageRouteInfo<void> {
   const CatalogRoute({List<PageRouteInfo>? children})
@@ -187,6 +173,20 @@ class CatalogRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CatalogRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CartPage]
+class CartRoute extends PageRouteInfo<void> {
+  const CartRoute({List<PageRouteInfo>? children})
+      : super(
+          CartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CartRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

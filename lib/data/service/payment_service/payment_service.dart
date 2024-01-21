@@ -16,12 +16,7 @@ abstract class PaymentService {
     @Body() PaymentRequest? request,
   });
 
-  @GET(PaymentUrl.paymentsCallback)
-  Future<List<Payment>> paymentsCallback({
-    @Query('order_id') int? orderId,
-  });
 
-  // todo не забыть убедиться что здесь void
   @POST(PaymentUrl.paymentsPay)
   Future<void> paymentsPay({
     @Body() required PaymentCreate request,

@@ -65,8 +65,8 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
 _$_OrderItem _$$_OrderItemFromJson(Map<String, dynamic> json) => _$_OrderItem(
       id: json['id'] as int?,
       name: json['name'] as String,
-      picture: json['picture'] as String,
-      count: json['count'] as int,
+      picture: json['picture'] as String?,
+      count: json['count'] as int?,
       price: json['price'] as String,
       discount: json['discount'] as int? ?? 0,
       order: json['order'] as int?,
